@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     @vite('resources/css/app.css')
-    <script src="./resources/js/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background:#F6F5F2;">
     
@@ -16,10 +16,10 @@
    </svg>
 </button>
 
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<aside id="logo-sidebar" class="fixed p-3 top-0 left-0 z-40 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    
-    <div class="block max-w-sm p-1 m-4 h-full bg-white border border-gray-200 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <div class="block max-w-sm p-1 h-full bg-white border border-gray-200 rounded-2xl shadow-cust dark:bg-gray-800 dark:border-gray-700">
+        <div class="h-full px-3 py-4 overflow-y-auto dark:bg-gray-800">
             <a href="#" class="flex items-center ps-2.5 mb-5">
                 <img src="logo-perpus.png" class="w-32 ms-8" alt="Flowbite Logo" />
                 <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
@@ -34,7 +34,7 @@
                     <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                         <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
@@ -42,7 +42,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
                     <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -93,14 +93,17 @@
 </aside>
 
 <div class="p-4 pl-4 sm:ml-64">
-   <div class="p-2 ml-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+   <div class=" ml-6 rounded-lg">
+      <div class="w-full bg-white rounded-2xl shadow-cust dark:bg-gray-800 p-4 mb-4 md:p-6">
+         <h3>Dashboard</h3>
+      </div>
       <div class="grid grid-cols-3 gap-4 mb-4">
-         <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-               <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-               </svg>
-            </p>
+         <div class="flex items-center card-glass-green p-5 rounded bg-gray-50 dark:bg-gray-800">
+            <div>
+               <h3 class="text-xl font-semibold mb-2">Data Anggota</h3>
+               <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-1">100</h5>
+               <p class="text-base font-normal text-gray-500 dark:text-gray-400">Anggota</p>
+            </div>
          </div>
          <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
             <p class="text-2xl text-gray-400 dark:text-gray-500">
@@ -118,11 +121,12 @@
          </div>
       </div>
       
-      <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 mb-4 md:p-6">
+      <div class="w-full bg-white rounded-2xl shadow-cust dark:bg-gray-800 p-4 mb-4 md:p-6">
          <div class="flex justify-between">
             <div>
-               <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">32.4k</h5>
-               <p class="text-base font-normal text-gray-500 dark:text-gray-400">Users this week</p>
+               <h3 class="text-xl font-semibold mb-2">Data Kunjungan</h3>
+               <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">10</h5>
+               <p class="text-base font-normal text-gray-500 dark:text-gray-400">Minggu ini</p>
             </div>
             <div
                class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
@@ -142,10 +146,10 @@
                data-dropdown-placement="bottom"
                class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
                type="button">
-               Last 7 days
-               <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-               </svg>
+                  Last 7 days
+                  <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
                </button>
                <!-- Dropdown menu -->
                <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
@@ -170,7 +174,7 @@
                <a
                href="#"
                class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
-               Users Report
+               Report
                <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                </svg>
@@ -249,5 +253,159 @@
    </div>
 </div>
 
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+               </svg>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="js/chart.js"></script>
 </body>
 </html>
