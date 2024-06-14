@@ -1,0 +1,23 @@
+.card-glass-orange {
+    /* From https://css.glass */
+    background: rgba(255, 147, 0, 0.34);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.9px);
+    -webkit-backdrop-filter: blur(8.9px);
+    border: 1px solid rgba(255, 147, 0, 0.3);
+}
+
+.shadow-cust {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-glass-green {
+    /* From https://css.glass */
+    background: rgba(0, 255, 42, 0.34);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.9px);
+    -webkit-backdrop-filter: blur(8.9px);
+    border: 1px solid rgba(0, 255, 42, 0.3);
+}
