@@ -10,6 +10,7 @@
 <body style="background:#F6F5F2">
 
 <x-sidebar></x-sidebar>
+
 <div class="p-4 pl-4 sm:ml-64">
    <div class=" ml-6 rounded-lg">
       <x-dashboard></x-dashboard>
