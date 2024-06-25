@@ -1,5 +1,6 @@
-<div class="w-full bg-white rounded-2xl shadow-cust dark:bg-gray-800 p-4 mb-4 md:p-6">
-   <h3>Dashboard</h3>
+<div class="w-full mb-4 mt-2">
+   <h2 class="text-3xl font-semibold mx-3 pb-0">Dashboard</h2>
+   {{ Breadcrumbs::render('dashboard') }}
 </div>
 <div class="grid grid-cols-3 gap-4 mb-4">
    <div class="flex items-center card-glass-green shadow-cust p-5 rounded-2xl bg-gray-50 dark:bg-gray-800">
