@@ -13,6 +13,18 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Home', route('home'));
 });
 
+// Home > Data Anggota
+Breadcrumbs::for('anggota', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Data Anggota', route('anggota'));
+});
+
+// Home > Tambah Anggota
+Breadcrumbs::for('anggota/create-anggota', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Tambah Anggota', route('create-anggota'));
+});
+
 // Home > Dashboard
 Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
