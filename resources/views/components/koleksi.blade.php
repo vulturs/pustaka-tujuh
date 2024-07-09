@@ -1,7 +1,7 @@
 <div class="flex w-full justify-between mb-4 mt-2">
     <div>
-        <h2 class="text-3xl font-semibold mx-3 pb-0">Data Pengguna</h2>
-        {{ Breadcrumbs::render('users') }}
+        <h2 class="text-3xl font-semibold mx-3 pb-0">Koleksi</h2>
+        {{ Breadcrumbs::render('koleksi') }}
     </div>
     <div class="my-2">
         <div>
@@ -91,16 +91,34 @@
                     </div>
                 </th>
                 <th scope="col" class="px-0 text-center py-3">
-                    ID
+                    Kode Buku Induk
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    Kode DDC
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Username
+                    Tahun
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
-                    Created At
+                    Bahasa
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Kategori
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Eksemplar
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jilid
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    ID Perolehan
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Waktu Pendataan
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Action
