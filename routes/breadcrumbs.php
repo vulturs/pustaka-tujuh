@@ -25,6 +25,12 @@ Breadcrumbs::for('users', function (BreadcrumbTrail $trail) {
     $trail->push('Data Pengguna', route('users'));
 });
 
+// Home > Koleksi
+Breadcrumbs::for('koleksi', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Koleksi', route('koleksi'));
+});
+
 // Home > Blog > [Category]
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');
