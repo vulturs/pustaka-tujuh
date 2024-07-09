@@ -5,7 +5,6 @@
     </div>
 
 
-
     @if (session('failed'))
         <div class="w-full absolute top-56">
             <div class="w-fit mx-auto">
