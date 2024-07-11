@@ -44,16 +44,34 @@
                     </div>
                 </th>
                 <th scope="col" class="px-0 text-center py-3">
-                    ID
+                    Kode Buku Induk
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    Kode DDC
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Username
+                    Tahun
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
-                    Created At
+                    Bahasa
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Kategori
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Eksemplar
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jilid
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    ID Perolehan
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Waktu Pendataan
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Action

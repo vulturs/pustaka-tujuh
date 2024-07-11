@@ -18,7 +18,7 @@ class AnggotaFactory extends Factory
     {
         return [
             'nama_anggota' => fake()->name(),
-            'kelas' => 'XI RPL-2',
+            'kelas' => 'X Rekayasa Perangkat Lunak',
             'tanggal_masuk' => now(),
             'keterangan' => fake()->sentence(15),
         ];
