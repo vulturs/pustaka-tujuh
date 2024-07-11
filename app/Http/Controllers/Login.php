@@ -16,20 +16,33 @@ class Login extends Controller
     public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->intended('/')->with([
+                'success' => 'Login berhasil! Selamat datang ' . auth()->user()->nama . '!',
+            ]);
             // return dd('Sukses');
         }
 
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
-        return dd('Gagal');
+        return back()->with([
+            'failed' => 'Login gagal! Mohon masukkan username dan password yang benar',
+        ]);
+        // return dd('Gagal');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

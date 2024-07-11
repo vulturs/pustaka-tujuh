@@ -31,6 +31,12 @@ Breadcrumbs::for('koleksi', function (BreadcrumbTrail $trail) {
     $trail->push('Koleksi', route('koleksi'));
 });
 
+// Home > Anggota
+Breadcrumbs::for('anggota', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Anggota', route('anggota'));
+});
+
 // Home > Blog > [Category]
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');

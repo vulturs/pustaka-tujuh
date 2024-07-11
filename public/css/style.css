@@ -1,11 +1,11 @@
-.card-glass-orange {
+.bg-color-cust {
     /* From https://css.glass */
-    background: rgba(255, 147, 0, 0.34);
-    border-radius: 16px;
+    background: #ffe8c8;
+    /* border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.9px);
     -webkit-backdrop-filter: blur(8.9px);
-    border: 1px solid rgba(255, 147, 0, 0.3);
+    border: 1px solid rgba(255, 147, 0, 0.3); */
 }
 
 .shadow-cust {
@@ -22,12 +22,14 @@
 } */
 
 .active-nav {
-    background-color: #a0153e;
-    color: white;
+    background-color: rgb(217, 249, 157);
+    color: black;
+    /* box-shadow: 0 0 10px 5px #daf7a3,
+              0 0 20px 7px #d7f0a8; */
 }
 
 .active-nav:hover {
-    background-color: ##b81c4a;
+    background-color: background-color: rgb(217, 249, 157);;
 }
 
 .card {
@@ -213,4 +215,91 @@
     top: -45%;
     background-color: #009087;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.bg-dash {
+    background-color: #A1DD70;
+    height: 25em;
+    z-index: -1;
+}
+
+.card-cust {
+ --primary-clr: #FFC96F;
+ --dot-clr: black;
+ --play: hsl(195, 74%, 62%);
+ /* width: 200px; */
+ /* height: 170px; */
+ border-radius: 10px;
+}
+
+.card-cust {
+ /* font-family: "Arial"; */
+ /* color: #fff; */
+ display: grid;
+ cursor: pointer;
+ grid-template-rows: auto 1fr;
+}
+
+.card-cust:hover .img-section {
+ transform: translateY(0em);
+}
+
+.card-cust-desc {
+ border-radius: 10px;
+ padding: 15px;
+ position: relative;
+ top: -15px;
+ display: grid;
+ gap: .5em;
+ background: var(--primary-clr);
+  /* border: 1px solid grey; */
+}
+
+.card-cust-time {
+ font-size: 1.7em;
+ font-weight: 500;
+}
+
+.img-section {
+ transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+ border-top-left-radius: 10px;
+ border-top-right-radius: 10px;
+ /* background: hsl(195, 74%, 62%); */
+ transform: translateY(1em);
+}
+
+.card-cust-header {
+ display: flex;
+ align-items: center;
+ width: 100%;
+}
+
+.card-cust-title {
+ flex: 1;
+ font-size: 0.9em;
+ font-weight: 500;
+}
+
+.card-cust-menu {
+ display: flex;
+ /* gap: 4px; */
+ margin-inline: auto;
+}
+
+.card-cust svg {
+ float: right;
+ max-width: 100%;
+ max-height: 100%;
+}
+
+.card-cust .dot {
+ width: 5px;
+ height: 5px;
+ border-radius: 50%;
+ background: var(--dot-clr);
+}
+
+.card-cust .recent {
+ line-height: 0;
+ font-size: 0.8em;
 }

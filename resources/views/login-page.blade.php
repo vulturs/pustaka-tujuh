@@ -45,8 +45,8 @@
             <form action="/login" method="post">
                 @csrf
                 <div class="user-box mb-4">
-                    {{-- <input type="text" name="username" value="{{ old('username') }}" required> --}}
-                    <input type="email" name="email" value="{{ old('email') }}" required>
+                    <input type="text" name="username" value="{{ old('username') }}" required>
+                    {{-- <input type="email" name="email" value="{{ old('email') }}" required> --}}
                     <label>Username</label>
                 </div>
                 <div class="user-box mb-4">

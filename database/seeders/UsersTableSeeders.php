@@ -19,7 +19,7 @@ class UsersTableSeeders extends Seeder
             'nama' => 'Bima Rizki',
             'username' => 'bimabima',
             'email' => 'bimabima@gmail.com',
-            'password' => Hash::make('bimabima'),
+            'password' => Hash::make('bima'),
             'remember_token' => Str::random(10)
         ]);
     }
