@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Clases;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class AnggotaFactory extends Factory
     {
         return [
             'nama_anggota' => fake()->name(),
-            'kelas' => fake()->word(3),
+            'kelas_id' => Clases::factory(),
             'tanggal_masuk' => now(),
             'keterangan' => fake()->sentence(15),
         ];

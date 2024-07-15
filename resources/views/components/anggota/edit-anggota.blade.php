@@ -6,7 +6,8 @@
  </div>    
  {{-- @endif --}}
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
-  <form method="post" action="{{ route('anggota.store') }}">
+  <form method="post" action="{{ route('anggota.edit', $anggota->id) }}">
+    @method('PUT')
     @csrf
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
@@ -17,7 +18,7 @@
           <div class="sm:col-span-4">
             <label for="nama-anggota" class="block text-sm font-medium leading-6 text-gray-900">Nama Anggota</label>
             <div class="mt-2">
-                <input type="text" name="nama_anggota" value="{{ old('nama_anggota') }}" id="nama_anggota" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('nama_anggota') is-invalid @enderror">
+                <input type="text" name="nama_anggota" value="{{ old('nama_anggota') $anggota->nama_anggota }}" id="nama_anggota" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('nama_anggota') is-invalid @enderror">
                 @error('nama_anggota')
                     <span class="text-red-500">{{$message}}</span>
                 @enderror
@@ -25,9 +26,19 @@
           </div>
   
           <div class="sm:col-span-3">
-            <label for="kelas_id" class="block text-sm font-medium leading-6 text-gray-900">Kelas</label>
+            <label for="kelas" class="block text-sm font-medium leading-6 text-gray-900">Kelas</label>
             <div class="mt-2">
-              {{ $slot }}
+              <select id="kelas" name="kelas" value="{{ old('kelas') }}" autocomplete="kelas" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                <option>Pilih Jurusan</option>
+                <option value="Rekayasa Perangkat Lunak (RPL)" {{ old('kelas') == 'Rekayasa Perangkat Lunak (RPL)' ? 'selected' : '' }}>Rekayasa Perangkat Lunak (RPL)</option>
+                <option value="Arsitektur/Desain Permodelan dan Informasi Bangunan (DPIB)" {{ old('kelas') == 'Arsitektur/Desain Permodelan dan Informasi Bangunan (DPIB)' ? 'selected' : '' }}>Arsitektur/Desain Permodelan dan Informasi Bangunan (DPIB)</option>
+                <option value="Teknik Audio Video (TAV)" {{ old('kelas') == 'Teknik Audio Video (TAV)' ? 'selected' : '' }}>Teknik Audio Video (TAV)</option>
+                <option value="Teknik dan Bisnis Sepeda Motor (TBSM)" {{ old('kelas') == 'Teknik dan Bisnis Sepeda Motor (TBSM)' ? 'selected' : '' }}>Teknik dan Bisnis Sepeda Motor (TBSM)</option>
+                <option value="Teknik Kendaraan Ringan (TKR)" {{ old('kelas') == 'Teknik Kendaraan Ringan (TKR)' ? 'selected' : '' }}>Teknik Kendaraan Ringan (TKR)</option>
+              </select>
+              @error('kelas')
+                    <span class="text-red-500">{{$message}}</span>
+                @enderror
             </div>
           </div>
 
