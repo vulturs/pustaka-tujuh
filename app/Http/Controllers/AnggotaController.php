@@ -15,10 +15,11 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        return view('components.anggota.anggota-page', [
-            'title' => "Data Anggota",
+
+        return view('components.anggota-page', [
+            'title' => "Data Anggotas",
             // 'anggota' => $anggota
-            'anggota' => Anggota::all()
+            'anggota' => Anggota::filter()->orderBy('id')->paginate(5)
         ]);
     }
 
@@ -92,7 +93,7 @@ class AnggotaController extends Controller
 
         $validateData = $request->validate([
             'nama_anggota' => 'required|string|max:100',
-            'kelas' => 'required|string',
+            'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'nullable|string',
         ]);
