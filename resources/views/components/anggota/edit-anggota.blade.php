@@ -13,27 +13,29 @@
         </h3>
     </div>
     <div class="flex flex-col gap-4 p-6">
-        <form class="form" method="post" action="{{ route('store-anggota') }}">
+        <form class="form" method="post" action="/anggota/{{ $anggota->id_anggota }}/update">
+            @method('put')
             @csrf
             <label>
                 <input required placeholder="" type="text" class="input" name="nama_anggota"
-                    value="{{ old('nama_anggota') }}">
+                    value="{{ old('nama_anggota', $anggota->nama_anggota) }}">
                 <span>Nama Lengkap</span>
             </label>
 
 
             <label>
                 {{ $slot }}
+                {{-- {{ ${'select'} }} --}}
                 {{-- <span>contact number</span> --}}
             </label>
 
             <label>
-                <input required name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" placeholder="" type="date"
-                    class="input">
+                <input required name="tanggal_masuk" value="{{ old('tanggal_masuk', $anggota->tanggal_masuk) }}"
+                    placeholder="" type="date" class="input">
                 <span style="top:35px; font-size:.7rem;">Tanggal Masuk</span>
             </label>
             <label>
-                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('nama_anggota') }}</textarea>
+                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan', $anggota->keterangan) }}</textarea>
                 <span>Keterangan</span>
             </label>
 

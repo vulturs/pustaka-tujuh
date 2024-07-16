@@ -21,5 +21,7 @@ Route::get('/koleksi', [KoleksiController::class, 'show'])->name('koleksi');
 
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota');
 Route::get('/tambah-anggota', [AnggotaController::class, 'create'])->name('tambah-anggota');
+Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('edit-anggota');
+Route::put('/anggota/{id}/update', [AnggotaController::class, 'update'])->name('update-anggota');
 Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('delete-anggota');
 Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->name('store-anggota');

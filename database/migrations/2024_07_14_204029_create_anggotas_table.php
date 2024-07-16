@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anggotas', function (Blueprint $table) {
+        Schema::create('anggota', function (Blueprint $table) {
             $table->id('id_anggota');
             $table->string('nama_anggota', 100);
-            $table->string('kelas', 12);
+            // $table->foreignId('kelas_id')->constrained(
+            //     table: 'kelas',
+            //     indexName: 'anggota_kelas_id'
+            // );
+            $table->unsignedBigInteger('kelas_id');
+            $table->foreign('kelas_id')->references('kelas_id')->on('data_kelas');
             $table->date('tanggal_masuk');
             $table->string('keterangan');
             $table->timestamps();
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('anggotas');
+        Schema::dropIfExists('anggota');
     }
 };

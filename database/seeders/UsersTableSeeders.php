@@ -18,9 +18,10 @@ class UsersTableSeeders extends Seeder
         DB::table('users')->insert([
             'nama' => 'Bima Rizki',
             'username' => 'bimabima',
-            'email' => 'bimabima@gmail.com',
+            // 'email' => 'bimabima@gmail.com',
             'password' => Hash::make('bima'),
-            'remember_token' => Str::random(10)
+            'remember_token' => Str::random(10),
+            'created_at' => now()
         ]);
     }
 }
