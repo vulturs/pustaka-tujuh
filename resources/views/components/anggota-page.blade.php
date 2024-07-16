@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-   <x-anggota>
+   <x-anggota :$anggota>
     @forelse ($anggota as $anggotas)
     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td class="w-4 p-4">
@@ -40,5 +40,6 @@
             <td class="text-center text-mute" colspan="4">Data user tidak tersedia</td>
         </tr>
     @endforelse
+
    </x-anggota>
 </x-layout>

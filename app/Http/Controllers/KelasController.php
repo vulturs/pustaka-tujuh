@@ -13,10 +13,17 @@ class KelasController extends Controller
      */
     public function index()
     {
+       
+        $kelas = Clases::first();
+
+        if(request('search')){
+            $kelas->where('kelas','like','%'.request('search').'%');
+        }
+
         return view('components.kelas.kelas-page', [
             'title' => "Data Kelas",
             // 'anggota' => $anggota
-            'kelas' => Clases::all()
+            'kelas' => $kelas->paginate(5)
         ]);
     }
 
