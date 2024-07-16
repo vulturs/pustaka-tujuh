@@ -11,6 +11,9 @@ class Anggota extends Model
 {
     use HasFactory;
 
+    protected $table = 'anggota';
+    protected $primaryKey = 'id_anggota';
+
     protected $fillable = [
         'nama_anggota',
         'kelas_id',
@@ -20,7 +23,8 @@ class Anggota extends Model
 
     public function clases(): BelongsTo
     {
-        return $this->belongsTo(Clases::class);
+
+        return $this->belongsTo(Kelas::class);
     }
 
     public function scopeFilter(Builder $query): void

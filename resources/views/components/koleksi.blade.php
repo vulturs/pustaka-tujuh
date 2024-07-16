@@ -23,8 +23,8 @@
         <a href="#"
             class="rounded-lg relative w-40 h-10 cursor-pointer flex items-center border border-green-500 bg-green-500 group hover:bg-green-500 active:bg-green-500 active:border-green-500">
             <span
-                class="text-gray-200 font-medium ml-8 transform group-hover:translate-x-20 transition-all duration-300">
-                Pengguna</span>
+                class="text-gray-200 font-medium ml-10 transform group-hover:translate-x-20 transition-all duration-300">
+                Koleksi</span>
             <span
                 class="absolute right-0 h-full w-10 rounded-lg bg-green-500 flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300">
                 <span class="material-symbols-rounded text-white">
@@ -46,16 +46,34 @@
                     </div>
                 </th>
                 <th scope="col" class="px-0 text-center py-3">
-                    ID
+                    Kode Buku Induk
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    Kode DDC
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Username
+                    Tahun
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
-                    Created At
+                    Bahasa
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Kategori
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Eksemplar
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jilid
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    ID Perolehan
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Waktu Pendataan
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Action

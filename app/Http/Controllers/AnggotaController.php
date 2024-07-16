@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clases;
+use App\Models\Kelas;
 use App\Models\Anggota;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -15,6 +15,7 @@ class AnggotaController extends Controller
      */
     public function index()
     {
+
         return view('components.anggota-page', [
             'title' => "Data Anggotas",
             // 'anggota' => $anggota
@@ -28,10 +29,10 @@ class AnggotaController extends Controller
     public function create()
     {
         //$anggota = Anggota::all(); // Mendapatkan semua data anggota
-        $title = 'Data Anggota';   // Mendefinisikan title
+        // $title = 'Data Anggota';   // Mendefinisikan title
         //return view('components.anggota.create_anggota_page', compact('anggota', 'title'));
         //dd($anggota);
-        return view('components.anggota.create_anggota_page',  ['title' => "Tambah Anggota", 'kelas' => Clases::all()]);
+        return view('components.anggota.create-anggota-page',  ['title' => "Tambah Anggota", 'kelas' => Kelas::all()]);
     }
 
     /**
@@ -40,13 +41,13 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_anggota' => 'required|string|max:255',
+            'nama_anggota' => 'required|string|max:100',
             'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'required|string',
         ]);
 
-        $validated['excerpt'] = Str::limit($request->body,200);
+        $validated['excerpt'] = Str::limit($request->body, 200);
 
         Anggota::create($validated);
         return redirect()->route('anggota')->with('success', 'Data anggota berhasil ditambahkan');
@@ -67,19 +68,22 @@ class AnggotaController extends Controller
     {
         $anggota = Anggota::find($id);
 
-        if (is_null($anggota)) {
-            return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
-        }
+        // if (is_null($anggota)) {
+        //     return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
+        // }
 
         return view('components.anggota.edit-anggota-page', [
-            'title' => "Data Anggota",
+            'title' => "Edit Data Anggota",
+            'anggota' => $anggota,
+            'kelas' => Kelas::all(),
         ]);
+        // dd($anggota->nama_anggota);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $anggota = Anggota::find($id);
 
@@ -87,14 +91,15 @@ class AnggotaController extends Controller
             return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
         }
 
-        $request->validate([
-            'nama_anggota' => 'required|string|max:255',
-            'kelas' => 'required|string|max:255',
+        $validateData = $request->validate([
+            'nama_anggota' => 'required|string|max:100',
+            'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
-            'keterangan' => 'nullable|string|max:255',
+            'keterangan' => 'nullable|string',
         ]);
 
-        $anggota->update($request->all());
+        // $anggota->update($validateData);
+        Anggota::where('id_anggota', $anggota->id)->update($validateData);
 
         return redirect()->route('anggota')->with('success', 'Anggota berhasil diperbarui.');
     }

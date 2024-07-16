@@ -1,35 +1,27 @@
 <?php
 
-use App\Http\Controllers\Anggota2Controller;
-use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KelasController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\KoleksiController;
 
 // Route::get('/', function () {
 //     return view('home', ['title' => 'Dashboard']);});
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
+Route::get('/login', [Login::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [Login::class, 'authenticate'])->middleware('guest');
+Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
-//Kelas CRUD
-Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
-Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('kelas.create');
-Route::post('/tambah-kelas', [KelasController::class, 'store'])->name('kelas.store');
-Route::delete('/kelas/{kelas_id}', [KelasController::class, 'destroy'])->name('kelas.delete');
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/koleksi', [KoleksiController::class, 'show'])->name('koleksi');
 
-
-//Anggota CRUD
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota');
-Route::get('/tambah-anggota', [AnggotaController::class, 'create'])->name('anggota.create');
-Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->name('anggota.store');
-Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('anggota.destroy');
-Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('anggota.edit');
-
-Route::get('/users', function () {
-    return view('/components/users-page', ['title' => 'Data Pengguna']);
-})->name('users');
-
- //route::get('/anggota', [AnggotaController::class, 'index']);
-
- //Route::resource('/anggota', Anggota2Controller::class);
+Route::get('/tambah-anggota', [AnggotaController::class, 'create'])->name('tambah-anggota');
+Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('edit-anggota');
+Route::put('/anggota/{id}/update', [AnggotaController::class, 'update'])->name('update-anggota');
+Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('delete-anggota');
+Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->name('store-anggota');

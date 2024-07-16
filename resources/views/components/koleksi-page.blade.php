@@ -1,7 +1,8 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <x-users>
-        @foreach ($users as $user)
+
+    <x-koleksi>
+        @foreach ($koleksi as $collect)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -12,16 +13,34 @@
                 </td>
                 <th scope="row"
                     class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $user->id_user }}
+                    {{ $collect->kode_buku_induk }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $user->nama }}
+                    {{ $collect->kode_ddc }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $user->username }}
+                    {{ $collect->tahun }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->bahasa }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->kategori }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->jml_eks }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->jml_jld }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->id_perolehan }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->harga }}
                 </td>
                 <td class="px-6 text-center py-4">
-                    {{ $user->created_at->format('d M Y') }}
+                    {{ $collect->created_at->format('d M Y') }}
                 </td>
                 <td class="text-center rounded-md shadow-sm" role="group">
                     <a href=""
@@ -36,5 +55,5 @@
             </tr>
             <!-- Other table rows omitted for brevity -->
         @endforeach
-    </x-users>
+    </x-koleksi>
 </x-layout>
