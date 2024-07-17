@@ -22,6 +22,7 @@ class AnggotaFactory extends Factory
             'kelas_id' => Kelas::factory(),
             'tanggal_masuk' => now(),
             'keterangan' => fake()->sentence(15),
+            'created_by' => 1
         ];
     }
 }

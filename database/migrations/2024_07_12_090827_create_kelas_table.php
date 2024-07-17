@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('data_kelas', function (Blueprint $table) {
             $table->id('kelas_id');
             $table->String('kelas');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

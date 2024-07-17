@@ -22,6 +22,8 @@ return new class extends Migration
             $table->foreign('kelas_id')->references('kelas_id')->on('data_kelas');
             $table->date('tanggal_masuk');
             $table->string('keterangan');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

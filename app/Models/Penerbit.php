@@ -9,4 +9,11 @@ class Penerbit extends Model
 {
     use HasFactory;
     protected $table = 'penerbit';
+    protected $primaryKey = 'id_penerbit';
+
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'created_by'
+    ];
 }

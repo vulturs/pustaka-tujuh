@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,21 @@ class Login extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            // $user = User::where('username', $credentials['username'])->get();
             $request->session()->regenerate();
 
+            $remember = $request->remember;
+            if (isset($remember) && !empty($remember)) {
+                setcookie('username', $credentials['username'], time() + 3600);
+                setcookie('password', $credentials['password'], time() + 3600);
+            } else {
+                setcookie('username', '');
+                setcookie('password', '');
+            }
             return redirect()->intended('/')->with([
                 'success' => 'Login berhasil! Selamat datang ' . auth()->user()->nama . '!',
             ]);
-            // return dd('Sukses');
+            // return dd(auth()->user()->id_user);
         }
 
         return back()->with([

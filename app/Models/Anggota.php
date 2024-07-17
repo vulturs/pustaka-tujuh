@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Anggota extends Model
 {
@@ -23,5 +24,14 @@ class Anggota extends Model
     public function clases(): BelongsTo
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function show()
+    {
+        return $this
+            ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
+            ->join('users', 'anggota.created_by', '=', 'users.id_user')
+            ->select('*')
+            ->get();
     }
 }

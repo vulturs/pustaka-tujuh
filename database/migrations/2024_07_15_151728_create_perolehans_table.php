@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('no_telp', 13);
             $table->string('provinsi', 20);
             $table->string('kota_kab', 25);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

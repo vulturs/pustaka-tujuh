@@ -23,9 +23,12 @@ return new class extends Migration
             $table->integer('dimensi');
             $table->string('edisi', 20);
             $table->unsignedBigInteger('kode_ddc');
+            $table->foreign('kode_ddc')->references('kode_ddc')->on('klasifikasi');
             $table->string('callNumber', 10);
             $table->string('ISBN', 20);
             $table->string('catatan', 200);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

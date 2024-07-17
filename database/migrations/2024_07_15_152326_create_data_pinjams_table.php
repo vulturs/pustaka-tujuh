@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('kode_buku_induk')->references('kode_buku_induk')->on('buku_induk');
             $table->date('tanggal_peminjaman');
             $table->date('tanggal_pengembalian');
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

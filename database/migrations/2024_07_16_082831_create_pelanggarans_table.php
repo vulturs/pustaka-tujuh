@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id_pelanggaran');
             $table->string('jenis_pelanggaran', 10);
             $table->string('keterangan', 15);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

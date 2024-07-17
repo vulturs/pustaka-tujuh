@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('kode_ddc');
             $table->string('klasifikasi', 50);
             $table->string('keterangan', 200);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

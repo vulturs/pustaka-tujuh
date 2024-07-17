@@ -15,10 +15,11 @@ class AnggotaController extends Controller
      */
     public function index()
     {
+        $anggota = new Anggota();
         return view('components.anggota.anggota-page', [
             'title' => "Data Anggota",
             // 'anggota' => $anggota
-            'anggota' => Anggota::all()
+            'anggota' => $anggota->show()
         ]);
     }
 
@@ -90,15 +91,15 @@ class AnggotaController extends Controller
             return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
         }
 
-        $validateData = $request->validate([
+        $valid = $request->validate([
             'nama_anggota' => 'required|string|max:100',
-            'kelas' => 'required|string',
+            'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'nullable|string',
         ]);
 
-        // $anggota->update($validateData);
-        Anggota::where('id_anggota', $anggota->id)->update($validateData);
+        // $anggota->update($valid);
+        Anggota::where('id_anggota', $anggota->id_anggota)->update($valid);
 
         return redirect()->route('anggota')->with('success', 'Anggota berhasil diperbarui.');
     }

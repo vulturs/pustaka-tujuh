@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Auth;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Kelas>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Penerbit>
  */
-class KelasFactory extends Factory
+class PenerbitFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,9 @@ class KelasFactory extends Factory
     public function definition(): array
     {
         return [
-            'kelas' => fake()->word(2),
-            'created_by' => 1
+            'nama' => fake()->name(),
+            'alamat' => fake()->sentence(30),
+            'created_by' => 1,
         ];
     }
 }

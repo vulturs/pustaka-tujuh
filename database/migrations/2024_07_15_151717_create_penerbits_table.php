@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id_penerbit');
             $table->string('nama', 100);
             $table->string('alamat', 100);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }
