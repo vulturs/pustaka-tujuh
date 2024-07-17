@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penerbit', function (Blueprint $table) {
-            $table->id('id_penerbit');
-            $table->string('nama', 100);
-            $table->string('alamat', 180);
+        Schema::create('pelanggaran', function (Blueprint $table) {
+            $table->id('id_pelanggaran');
+            $table->string('jenis_pelanggaran', 10);
+            $table->string('keterangan', 15);
+            $table->unsignedBigInteger('created_by');
+            $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penerbit');
+        Schema::dropIfExists('pelanggarans');
     }
 };

@@ -45,8 +45,8 @@
                             collections_bookmark
                         </span>
                         <span class="flex-1 ms-3 whitespace-nowrap">Koleksi</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                        {{-- <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
                     </a>
                 </li>
                 <li>
@@ -56,15 +56,37 @@
                             share_windows
                         </span>
                         <span class="flex-1 ms-3 whitespace-nowrap">Peminjaman</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                        {{-- <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
+                    </a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700 group mx-2 px-4 py-3">
+                        <span class="material-symbols-rounded">
+                            text_select_jump_to_beginning
+                        </span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Pengembalian</span>
+                        {{-- <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
+                    </a>
+                </li>
+                <li>
+                    <a href="/penerbit"
+                        class="flex items-center p-2 text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700 group mx-2 px-4 py-3">
+                        <span class="material-symbols-rounded">
+                            text_select_jump_to_beginning
+                        </span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Penerbit</span>
+                        {{-- <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
                     </a>
                 </li>
                 <li>
                     <a href="/anggota"
-                        class="{{ request()->is('anggota') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('anggota', 'tambah-anggota') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
-                            manage_accounts
+                            assignment_ind
                         </span>
                         <span class="flex-1 ms-3 whitespace-nowrap">Anggota</span>
                     </a>
@@ -75,8 +97,41 @@
                         <span class="material-symbols-rounded">
                             manage_accounts
                         </span>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Pengguna</span>
                     </a>
+                </li>
+                <li>
+                    <button type="button"
+                        class="{{ request()->is('kode-ddc|kelas') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group"
+                        aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <span class="material-symbols-rounded">
+                            folder_managed
+                        </span>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Administrasi</span>
+                        <span class="material-symbols-rounded ms-12">
+                            arrow_drop_down
+                        </span>
+                    </button>
+                    <ul id="dropdown-example" class="hidden ms-4 py-2 space-y-2">
+                        <li>
+                            <a href="/klasifikasi"
+                                class="{{ request()->is('klasifikasi') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                <span class="material-symbols-rounded">
+                                    barcode
+                                </span>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Kode DDC</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/kelas"
+                                class="{{ request()->is('kelas') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                <span class="material-symbols-rounded">
+                                    folder_supervised
+                                </span>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Data Kelas</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 {{-- <li>
                     <a href="#"

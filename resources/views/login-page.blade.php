@@ -9,7 +9,7 @@
         <div class="w-full absolute top-56">
             <div class="w-fit mx-auto">
                 <div id="alert-2"
-                    class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    class="bg-red-100 dark:bg-red-900 border-l-4 border-red-500 dark:border-red-700 text-red-900 dark:text-red-100 p-2 py-3 rounded-lg flex items-center transition duration-300 ease-in-out hover:bg-red-200 dark:hover:bg-red-800"
                     role="alert">
                     <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor" viewBox="0 0 20 20">
@@ -45,15 +45,28 @@
             <form action="/login" method="post">
                 @csrf
                 <div class="user-box mb-4">
-                    <input type="text" name="username" value="{{ old('username') }}" required>
+                    <input type="text" name="username"
+                        @if (isset($_COOKIE['username'])) value="{{ $_COOKIE['username'] }}" 
+                        @else value="{{ old('username') }}" @endif
+                        required>
                     {{-- <input type="email" name="email" value="{{ old('email') }}" required> --}}
                     <label>Username</label>
                 </div>
-                <div class="user-box mb-4">
-                    <input type="password" name="password" required>
+                <div class="user-box mb-5">
+                    <input type="password" name="password"
+                        @if (isset($_COOKIE['password'])) value="{{ $_COOKIE['password'] }}" @endif required>
                     <label>Password</label>
                 </div>
-                <button class="w-full button2 py-3 my-4 font-medium" type="submit" value="Log In" name="login">
+                <label class="container-check flex items-center">
+                    <input type="checkbox" name="remember" @if (isset($_COOKIE['username'])) checked @endif>
+                    <svg viewBox="0 0 64 64" height="1em" width="1em">
+                        <path
+                            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                            pathLength="575.0541381835938" class="path"></path>
+                    </svg>
+                    <span class="ps-2">Remember Me</span>
+                </label>
+                <button class="w-full button2 py-3 my-4 mt-5 font-medium" type="submit" value="Log In" name="login">
                     Log In</button>
             </form>
         </div>

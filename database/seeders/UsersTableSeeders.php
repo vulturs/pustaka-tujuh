@@ -15,12 +15,15 @@ class UsersTableSeeders extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'nama' => 'Bima Rizki',
-            'username' => 'bimabima',
-            'email' => 'bimabima@gmail.com',
-            'password' => Hash::make('bima'),
-            'remember_token' => Str::random(10)
-        ]);
+        DB::table('users')->insert(
+            [
+                'nama' => 'Bima Rizki',
+                'username' => 'bimabima',
+                // 'email' => 'bimabima@gmail.com',
+                'password' => Hash::make('bima'),
+                'remember_token' => Str::random(10),
+                'created_at' => now()
+            ]
+        );
     }
 }

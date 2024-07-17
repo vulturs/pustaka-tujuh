@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Kelas;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,9 +19,10 @@ class AnggotaFactory extends Factory
     {
         return [
             'nama_anggota' => fake()->name(),
-            'kelas' => 'X Rekayasa Perangkat Lunak',
+            'kelas_id' => Kelas::factory(),
             'tanggal_masuk' => now(),
             'keterangan' => fake()->sentence(15),
+            'created_by' => 1
         ];
     }
 }
