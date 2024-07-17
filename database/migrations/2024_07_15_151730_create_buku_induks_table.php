@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('buku_induk', function (Blueprint $table) {
             $table->id('kode_buku_induk');
-            $table->id('no_barcode');
+            $table->string('no_barcode');
             $table->string('pengarang', 70);
             $table->string('judul_buku', 70);
             // $table->foreignId('kode_ddc')->constrained(
             //     table: 'klasifikasis',
             //     indexName: 'buku_induks_kode_ddc'
             // );
-            $table->unsignedBigInteger('kode_ddc');
-            $table->foreign('kode_ddc')->references('kode_ddc')->on('klasifikasi');
+            $table->unsignedBigInteger('id_klasifikasi');
+            $table->foreign('id_klasifikasi')->references('id_klasifikasi')->on('klasifikasi');
             $table->year('tahun');
             $table->string('bahasa', 10);
             $table->unsignedBigInteger('id_penerbit');

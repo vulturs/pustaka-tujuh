@@ -50,13 +50,19 @@ Breadcrumbs::for('koleksi', function (BreadcrumbTrail $trail) {
 });
 
 // Home > Anggota
-Breadcrumbs::for('anggota', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
-    $trail->push('Anggota', route('anggota'));
-});
+// Breadcrumbs::for('anggota', function (BreadcrumbTrail $trail) {
+//     $trail->parent('home');
+//     $trail->push('Anggota', route('anggota'));
+// });
 
 // Home > Blog > [Category]
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('blog');
     $trail->push($category->title, route('category', $category));
+});
+
+// Home > Blog > [Category]
+Breadcrumbs::for('klasifikasi', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Klasifikasi', route('klasifikasi'));
 });

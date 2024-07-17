@@ -33,7 +33,7 @@
                 <span style="top:35px; font-size:.7rem;">Tanggal Masuk</span>
             </label>
             <label>
-                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('nama_anggota') }}</textarea>
+                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan') }}</textarea>
                 <span>Keterangan</span>
             </label>
 

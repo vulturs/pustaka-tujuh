@@ -103,8 +103,8 @@
                     </button>
                     <ul id="dropdown-example" class="hidden ms-4 py-2 space-y-2">
                         <li>
-                            <a href="#"
-                                class="{{ request()->is('kode-ddc') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                            <a href="/klasifikasi"
+                                class="{{ request()->is('klasifikasi') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
                                     barcode
                                 </span>
@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="/kelas"
                                 class="{{ request()->is('kelas') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
                                     folder_supervised
