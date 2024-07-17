@@ -15,12 +15,11 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $anggota = new Anggota();
+        // $anggota = new Anggota();
         return view('components.anggota.anggota-page', [
             'title' => "Data Anggotas",
-            // 'anggota' => $anggota
-            'anggota' => Anggota::filter()->orderBy('id_anggota')->paginate(5)
-            'anggota' => $anggota->show()
+            'anggota' => Anggota::filter()->orderBy('id_anggota')->paginate(10)
+            // 'anggota' => $anggota->show()
         ]);
     }
 

@@ -12,13 +12,13 @@ class KelasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-       
         return view('components.kelas.kelas-page', [
             'title' => "Data Kelas",
             // 'anggota' => $anggota
-            'kelas' => Kelas::filter()->orderBy('kelas_id')->paginate(5)
+            'kelas' => Kelas::filter()->orderBy('kelas_id')->paginate(5),
+            'search' => $request->search
         ]);
     }
 
@@ -39,9 +39,10 @@ class KelasController extends Controller
     {
         $validated = $request->validate([
             'kelas' => 'required',
+            'created_by' => 'required',
         ]);
 
-        $validated['excerpt'] = Str::limit($request->body,200);
+        $validated['excerpt'] = Str::limit($request->body, 200);
 
         Kelas::create($validated);
         return redirect()->route('kelas')->with('success', 'Data kelas berhasil ditambahkan');

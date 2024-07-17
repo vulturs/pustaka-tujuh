@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,15 +29,22 @@ class Anggota extends Model
 
     public function scopeFilter(Builder $query): void
     {
-        $query->where('nama_anggota', 'like', '%' . request('search') . '%');
-    }
-
-    public function show()
-    {
-        return $this
-            ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
+        $query->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
             ->join('users', 'anggota.created_by', '=', 'users.id_user')
             ->select('*')
-            ->get();
+            ->where('nama_anggota', 'like', '%' . request('search') . '%')
+            ->orWhere('data_kelas.kelas', 'like', '%' . request('search') . '%')
+            ->orWhere('users.nama', 'like', '%' . request('search') . '%');
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }
+
+    // public function show()
+    // {
+    //     return $this
+    //         ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
+    //         ->join('users', 'anggota.created_by', '=', 'users.id_user')
+    //         ->select('*')
+    //         ->where('nama_anggota', 'like', '%' . request('search') . '%')
+    //         ->get();
+    // }
 }

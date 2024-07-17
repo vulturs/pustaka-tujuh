@@ -12,11 +12,11 @@ class Kelas extends Model
     use HasFactory;
 
     protected $table = 'data_kelas';
-
     protected $primaryKey = 'kelas_id';
 
     protected $fillable = [
         'kelas',
+        'created_by',
     ];
 
     public function anggot(): HasMany
@@ -26,6 +26,10 @@ class Kelas extends Model
 
     public function scopeFilter(Builder $query): void
     {
-        $query->where('kelas','like','%'.request('search').'%');
+        $query->join('users', 'data_kelas.created_by', '=', 'users.id_user')
+            ->select('*')
+            ->where('kelas', 'like', '%' . request('search') . '%')
+            ->orWhere('users.nama', 'like', '%' . request('search') . '%');
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }
 }
