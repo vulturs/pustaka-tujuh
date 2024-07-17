@@ -16,10 +16,10 @@ class AnggotaController extends Controller
     public function index()
     {
 
-        return view('components.anggota-page', [
+        return view('components.anggota.anggota-page', [
             'title' => "Data Anggotas",
             // 'anggota' => $anggota
-            'anggota' => Anggota::filter()->orderBy('id')->paginate(5)
+            'anggota' => Anggota::filter()->orderBy('id_anggota')->paginate(5)
         ]);
     }
 
@@ -99,7 +99,7 @@ class AnggotaController extends Controller
         ]);
 
         // $anggota->update($validateData);
-        Anggota::where('id_anggota', $anggota->id)->update($validateData);
+        Anggota::where('id_anggota', $anggota->id_anggota)->update($validateData);
 
         return redirect()->route('anggota')->with('success', 'Anggota berhasil diperbarui.');
     }
