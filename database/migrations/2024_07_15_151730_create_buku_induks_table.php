@@ -20,8 +20,8 @@ return new class extends Migration
             //     table: 'klasifikasis',
             //     indexName: 'buku_induks_kode_ddc'
             // );
-            $table->unsignedBigInteger('kode_ddc');
-            $table->foreign('kode_ddc')->references('kode_ddc')->on('klasifikasi');
+            $table->unsignedBigInteger('id_klasifikasi');
+            $table->foreign('id_klasifikasi')->references('id_klasifikasi')->on('klasifikasi');
             $table->year('tahun');
             $table->string('bahasa', 10);
             $table->unsignedBigInteger('id_penerbit');

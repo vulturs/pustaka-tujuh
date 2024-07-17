@@ -10,9 +10,9 @@ export default {
         extend: {},
     },
     plugins: [
-        require("flowbite/plugin")({
-            charts: true,
-        }),
+        // require("flowbite/plugin")({
+        //     charts: true,
+        // }),
     ],
     darkMode: "selector",
 };

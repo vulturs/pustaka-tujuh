@@ -17,8 +17,9 @@ class AnggotaController extends Controller
     {
         $anggota = new Anggota();
         return view('components.anggota.anggota-page', [
-            'title' => "Data Anggota",
+            'title' => "Data Anggotas",
             // 'anggota' => $anggota
+            'anggota' => Anggota::filter()->orderBy('id_anggota')->paginate(5)
             'anggota' => $anggota->show()
         ]);
     }

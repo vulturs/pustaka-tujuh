@@ -22,8 +22,7 @@ return new class extends Migration
             $table->integer('jumlah_hal');
             $table->integer('dimensi');
             $table->string('edisi', 20);
-            $table->unsignedBigInteger('kode_ddc');
-            $table->foreign('kode_ddc')->references('kode_ddc')->on('klasifikasi');
+            $table->unsignedBigInteger('id_klasifikasi');
             $table->string('callNumber', 10);
             $table->string('ISBN', 20);
             $table->string('catatan', 200);

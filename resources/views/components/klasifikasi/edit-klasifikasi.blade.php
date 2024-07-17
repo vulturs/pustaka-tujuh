@@ -1,7 +1,9 @@
+
+
 <div class="w-full mb-4 mt-2">
     {{-- @if (session()->hash('error')) --}}
-    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Anggota</h2>
-    {{ Breadcrumbs::render('anggota') }}
+    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Klasifikasi (KODE DDC)</h2>
+    {{ Breadcrumbs::render('klasifikasi') }}
     {{-- {{session('error') }} --}}
 </div>
 {{-- @endif --}}
@@ -9,37 +11,33 @@
     <div
         class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
         <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
-            Tambah Data Anggota
+            Edit Data Klasifikasi
         </h3>
     </div>
     <div class="flex flex-col gap-4 p-6">
-        <form class="form" method="post" action="{{ route('store-anggota') }}">
+        <form class="form" method="post" action="/klasifikasi/{{ $klasifikasi->id_klasifikasi }}/update">
+            @method('put')
             @csrf
             <label>
-                <input required placeholder="" type="text" class="input" name="nama_anggota"
-                    value="{{ old('nama_anggota') }}">
-                <span>Nama Lengkap</span>
-            </label>
-
-
-            <label>
-                {{ $slot }}
-                {{-- <span>contact number</span> --}}
+                <input required placeholder="" type="text" class="input" name="kode_ddc"
+                    value="{{ old('kode_ddc', $klasifikasi->kode_ddc) }}">
+                <span>Kode DDC</span>
             </label>
 
             <label>
-                <input required name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" placeholder="" type="date"
-                    class="input">
-                <span style="top:35px; font-size:.7rem;">Tanggal Masuk</span>
+                <input required placeholder="" type="text" class="input" name="klasifikasi"
+                    value="{{ old('klasifikasi', $klasifikasi->klasifikasi) }}">
+                <span>Klasifikasi</span>
             </label>
+
             <label>
-                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan') }}</textarea>
+                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan', $klasifikasi->keterangan) }}</textarea>
                 <span>Keterangan</span>
             </label>
 
             <div class="flex gap-3 w-full mt-3">
                 <a class="fancy w-full p-3 border-2 border-red-600 before:bg-red-600 hover:bg-red-600"
-                    href="{{ route('anggota') }}">
+                    href="{{ route('klasifikasi') }}">
                     <span class="top-key"></span>
                     <span class="text text-red-600">Batal</span>
                     <span class="bottom-key-1"></span>

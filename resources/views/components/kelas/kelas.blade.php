@@ -1,12 +1,13 @@
+<div>
+    
 <div class="w-full mb-4 mt-2">
-    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Anggota</h2>
-    {{ Breadcrumbs::render('anggota') }}
-</div>
-
+    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Kelas</h2>
+    {{ Breadcrumbs::render('kelas') }}
+ </div>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
     <div class="flex items-center justify-between mb-5">
-        <form action="/anggota" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
+        <form action="/kelas" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
             <label for="default-search"
                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative flex items-center">
@@ -25,11 +26,11 @@
             </div>
         </form>
         <div class="text-right mb-3">
-            <a href="{{ route('tambah-anggota') }}"
+            <a href="{{ route('tambah-kelas') }}"
                 class="rounded-lg relative w-40 h-10 cursor-pointer flex items-center border border-green-500 bg-green-500 group hover:bg-green-500 active:bg-green-500 active:border-green-500">
                 <span
                     class="text-gray-200 font-medium ml-8 transform group-hover:translate-x-20 transition-all duration-300">
-                    Anggota</span>
+                    Kelas</span>
                 <span
                     class="absolute right-0 h-full w-10 rounded-lg bg-green-500 flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300">
                     <span class="material-symbols-rounded text-white">
@@ -50,22 +51,10 @@
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    ID Anggota
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Anggota
+                    ID Kelas
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Kelas
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Tanggal Masuk
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Keterangan
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Pendataan Oleh
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Action
@@ -76,7 +65,43 @@
             {{ $slot }}
         </tbody>
     </table>
-    {{ $anggota->links() }}
+    {{-- {{ $kelas->links() }} --}}
+    <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+        <span
+            class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
+            <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span
+                class="font-semibold text-gray-900 dark:text-white">1000</span></span>
+        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+            </li>
+            <li>
+                <a href="#" aria-current="page"
+                    class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </div>
 
