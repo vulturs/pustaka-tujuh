@@ -92,6 +92,15 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/kunjungan"
+                        class="{{ request()->is('pengunjung', 'tambah-pengunjung') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        <span class="material-symbols-rounded">
+                            assignment_ind
+                        </span>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Pengunjung</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/users"
                         class="{{ request()->is('users') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
@@ -114,6 +123,15 @@
                     </button>
                     <ul id="dropdown-example" class="hidden ms-4 py-2 space-y-2">
                         <li>
+                            <a href="/perolehan"
+                                class="{{ request()->is('perolehan') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                <span class="material-symbols-rounded">
+                                    folder_supervised
+                                </span>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Sumber Perelohan</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="/klasifikasi"
                                 class="{{ request()->is('klasifikasi') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
@@ -129,6 +147,15 @@
                                     folder_supervised
                                 </span>
                                 <span class="flex-1 ms-3 whitespace-nowrap">Data Kelas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/pelanggaran"
+                                class="{{ request()->is('pelanggaran') ? 'active-nav hover:bg-lime-100' : 'text-gray-900 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                <span class="material-symbols-rounded">
+                                    barcode
+                                </span>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Jenis Pelanggaran</span>
                             </a>
                         </li>
                     </ul>
