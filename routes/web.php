@@ -9,9 +9,14 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KlasifikasiController;
 use App\Http\Controllers\KoleksiController;
+use App\Http\Controllers\KunjunganController;
+use App\Http\Controllers\PelanggaranController;
 use App\Models\Klasifikasi;
 use App\View\Components\klasifikasi\klasifikasiPage;
 use App\Http\Controllers\PenerbitController;
+use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\PerolahanController;
+use App\Http\Controllers\PerolehanController;
 
 // Route::get('/', function () {
 //     return view('home', ['title' => 'Dashboard']);});
@@ -32,6 +37,14 @@ Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('edit
 Route::put('/anggota/{id}/update', [AnggotaController::class, 'update'])->name('update-anggota')->middleware('auth');
 Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('delete-anggota')->middleware('auth');
 
+//CRUD JENIS PENGUNJUNG
+Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan')->middleware('auth');
+Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan')->middleware('auth');
+Route::post('/tambah-kunjungan', [KunjunganController::class, 'store'])->name('store-kunjungan')->middleware('auth');
+Route::get('/kunjungan/{id}/edit', [KunjunganController::class, 'edit'])->name('edit-kunjungan')->middleware('auth');
+Route::put('/kunjungan/{id}/update', [KunjunganController::class, 'update'])->name('update-kunjungan')->middleware('auth');
+Route::delete('/kunjungan/{id}', [KunjunganController::class, 'destroy'])->name('delete-kunjungan')->middleware('auth');
+
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit')->middleware('auth');
 Route::get('/penerbit/add', [PenerbitController::class, 'create'])->name('tambah-penerbit')->middleware('auth');
 Route::post('/penerbit/add', [PenerbitController::class, 'store'])->name('store-penerbit')->middleware('auth');
@@ -46,6 +59,14 @@ Route::put('/kelas/{id}/update', [KelasController::class, 'update'])->name('upda
 Route::delete('/kelas/{kelas_id}', [KelasController::class, 'destroy'])->name('delete-kelas');
 Route::post('/tambah-kelas', [KelasController::class, 'store'])->name('store-kelas');
 
+//CRUD SUMBER PEROLEHAN
+Route::get('/perolehan', [PerolehanController::class, 'index'])->name('perolehan')->middleware('auth');
+Route::get('/tambah-perolehan', [PerolehanController::class, 'create'])->name('tambah-perolehan')->middleware('auth');
+Route::post('/tambah-perolehan', [PerolehanController::class, 'store'])->name('store-perolehan')->middleware('auth');
+Route::get('/perolehan/{id}/edit', [PerolehanController::class, 'edit'])->name('edit-perolehan')->middleware('auth');
+Route::put('/perolehan/{id}/update', [PerolehanController::class, 'update'])->name('update-perolehan')->middleware('auth');
+Route::delete('/perolehan/{id}', [PerolehanController::class, 'destroy'])->name('delete-perolehan')->middleware('auth');
+
 //CRUD KLASIFIKASI
 Route::get('/klasifikasi', [KlasifikasiController::class, 'index'])->name('klasifikasi');
 Route::get('/tambah-klasifikasi', [KlasifikasiController::class, 'create'])->name('tambah-klasifikasi');
@@ -53,3 +74,11 @@ Route::get('/klasifikasi/{id}/edit', [KlasifikasiController::class, 'edit'])->na
 Route::put('/klasifikasi/{id}/update', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
 Route::delete('/klasifikasi/{id_kelas}', [Klasifikasi::class, 'destroy'])->name('delete-klasifikasi');
 Route::post('/tambah-klasifikasi', [KlasifikasiController::class, 'store'])->name('store-klasifikasi');
+
+//CRUD JENIS PELANGGARAN
+Route::get('/pelanggaran', [PelanggaranController::class, 'index'])->name('pelanggaran')->middleware('auth');
+Route::get('/tambah-pelanggaran', [PelanggaranController::class, 'create'])->name('tambah-pelanggaran')->middleware('auth');
+Route::post('/tambah-pelanggaran', [PelanggaranController::class, 'store'])->name('store-pelanggaran')->middleware('auth');
+Route::get('/pelanggaran/{id}/edit', [PelanggaranController::class, 'edit'])->name('edit-pelanggaran')->middleware('auth');
+Route::put('/pelanggaran/{id}/update', [PelanggaranController::class, 'update'])->name('update-pelanggaran')->middleware('auth');
+Route::delete('/pelanggaran/{id}', [PelanggaranController::class, 'destroy'])->name('delete-pelanggaran')->middleware('auth');
