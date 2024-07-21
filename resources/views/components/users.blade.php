@@ -20,7 +20,7 @@
                     class="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
             </div>
         </form>
-        <a href="#"
+        <a href="{{ route('tambah-users') }}"
             class="rounded-lg relative w-40 h-10 cursor-pointer flex items-center border border-green-500 bg-green-500 group hover:bg-green-500 active:bg-green-500 active:border-green-500">
             <span
                 class="text-gray-200 font-medium ml-8 transform group-hover:translate-x-20 transition-all duration-300">
@@ -105,3 +105,27 @@
     </nav>
 </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    //message with sweetalert
+    @if (session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "BERHASIL",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "GAGAL!",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>
