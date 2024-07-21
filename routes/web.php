@@ -27,9 +27,23 @@ Route::get('/login', [Login::class, 'index'])->name('login')->middleware('guest'
 Route::post('/login', [Login::class, 'authenticate'])->middleware('guest');
 Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
+//CRUD USERS
 Route::get('/users', [UserController::class, 'index'])->name('users')->middleware('auth');
-Route::get('/koleksi', [KoleksiController::class, 'show'])->name('koleksi')->middleware('auth');
+Route::get('/tambah-users', [UserController::class, 'create'])->name('tambah-users')->middleware('auth');
+Route::post('/tambah-users', [UserController::class, 'store'])->name('store-users')->middleware('auth');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit-users')->middleware('auth');
+Route::put('/users/{id}/update', [UserController::class, 'update'])->name('update-users')->middleware('auth');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('delete-users')->middleware('auth');
 
+//CRUD KOLEKSI
+Route::get('/koleksi', [KoleksiController::class, 'index'])->name('koleksi')->middleware('auth');
+Route::get('/tambah-koleksi', [KoleksiController::class, 'create'])->name('tambah-koleksi')->middleware('auth');
+Route::post('/tambah-koleksi', [KoleksiController::class, 'store'])->name('store-koleksi')->middleware('auth');
+Route::get('/koleksi/{id}/edit', [KoleksiController::class, 'edit'])->name('edit-koleksi')->middleware('auth');
+Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('update-koleksi')->middleware('auth');
+Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
+
+//CRUD ANGGOTA
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota')->middleware('auth');
 Route::get('/tambah-anggota', [AnggotaController::class, 'create'])->name('tambah-anggota')->middleware('auth');
 Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->name('store-anggota')->middleware('auth');
@@ -45,6 +59,7 @@ Route::get('/kunjungan/{id}/edit', [KunjunganController::class, 'edit'])->name('
 Route::put('/kunjungan/{id}/update', [KunjunganController::class, 'update'])->name('update-kunjungan')->middleware('auth');
 Route::delete('/kunjungan/{id}', [KunjunganController::class, 'destroy'])->name('delete-kunjungan')->middleware('auth');
 
+//CRUD PENERBIT
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit')->middleware('auth');
 Route::get('/penerbit/add', [PenerbitController::class, 'create'])->name('tambah-penerbit')->middleware('auth');
 Route::post('/penerbit/add', [PenerbitController::class, 'store'])->name('store-penerbit')->middleware('auth');
@@ -52,6 +67,7 @@ Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('ed
 Route::put('/penerbit/{id}/update', [PenerbitController::class, 'update'])->name('update-penerbit')->middleware('auth');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete-penerbit')->middleware('auth');
 
+//CRUD KELAS
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
 Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
 Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('edit-kelas');
