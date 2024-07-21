@@ -36,7 +36,7 @@
             </select>
             <span style="top: 25px">Penerbit</span>
         </label>
-        @error('id_klasifikas')
+        @error('id_penerbit')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
         @endslot
@@ -56,7 +56,7 @@
             </select>
             <span style="top: 25px">Perolehan</span>
         </label>
-        @error('id_klasifikas')
+        @error('id_perolehan')
             <span class="text-red-500">{{ $message }}</span>
         @enderror
         @endslot

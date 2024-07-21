@@ -25,7 +25,7 @@
                     {{ $collect->judul_buku }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $collect->id_klasifikasi }}
+                    {{ $collect->kode_ddc }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $collect->tahun }}
@@ -46,7 +46,7 @@
                     {{ $collect->jml_jld }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $collect->id_perolehan }}
+                    {{ $collect->nama_sumber }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $collect->harga }}
@@ -55,20 +55,27 @@
                     {{ $collect->tipe_harga }}
                 </td>
                 <td class="px-6 py-4">
+                    {{ $collect->ketersediaan }}
+                </td>
+                <td class="px-6 py-4">
                     {{ $collect->nama }}
                 </td>
                 <td class="px-6 text-center py-4">
                     {{ $collect->created_at->format('d M Y') }}
                 </td>
-                <td class="text-center rounded-md shadow-sm" role="group">
-                    <a href=""
-                        class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-s-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900">
-                        Edit
-                    </a>
-                    <a href=""
-                        class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-e-lg text-sm px-5 py-2.5 text-center mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        Delete
-                    </a>
+                <td class="px-6 flex py-4 justify-center">
+                    <a href="" button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                    <!-- Form untuk penghapusan -->
+                    <form action="{{ route('delete-koleksi', $collect->kode_buku_induk) }}" method="POST"
+                        style="display:inline;"
+                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                    </form>
+                    {{-- <button type="button" onclick="return confirm('Apakah Anda Yakin untuk menghapus?')" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button> --}}
                 </td>
             </tr>
             <!-- Other table rows omitted for brevity -->

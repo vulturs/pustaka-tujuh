@@ -38,8 +38,8 @@
             </label>
 
             <label>
-                <input required name="tahun" value="{{ old('tahun') }}" placeholder="" type="year"
-                    class="input">
+                <input required name="tahun" value="{{ old('tahun') }}" placeholder="" type="number" min="1900"
+                    max="{{ date('Y') }}" class="input">
                 <span style="top:35px; font-size:.7rem;">Tahun</span>
             </label>
 
@@ -80,6 +80,13 @@
                     value="{{ old('tpe_harga') }}">
                 <span>Harga per/</span>
             </label>
+
+            <label>
+                <input required placeholder="" type="text" class="input" name="ketersediaan"
+                    value="{{ old('ketersediaan') }}">
+                <span>Ketersediaan</span>
+            </label>
+
 
             <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
             
