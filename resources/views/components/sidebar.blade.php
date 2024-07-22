@@ -83,7 +83,7 @@
                 </li>
                 <li>
                     <a href="/kunjungan"
-                        class="{{ request()->is('pengunjung', 'tambah-pengunjung') ? 'active-nav font-medium hover:bg-lime-100' : 'text-gray-500 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('kunjungan', 'tambah-kunjungan') ? 'active-nav font-medium hover:bg-lime-100' : 'text-gray-500 rounded-full dark:text-white hover:bg-lime-100 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             assignment_ind
                         </span>

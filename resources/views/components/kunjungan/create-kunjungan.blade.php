@@ -11,22 +11,17 @@
         <div class="flex flex-col gap-4 p-6">
             {{-- <form class="form" action="/tambah-kunjungan"> --}}
             {{-- <label> --}}
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Pilih Nama Angggota</button>
+            <div class="">
+                <button onclick="myFunction()" id="dropbtn"
+                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    Pilih Nama Angggota</button>
                 <div id="myDropdown" class="dropdown-content">
                     <input type="text" placeholder="Masukkan Nama" id="myInput" onkeyup="filterFunction()">
                     @foreach ($anggotaAll as $all)
-                        {{-- <option value="{{ $all->id_anggota }}">{{ $all->nama_anggota }}</option> --}}
-                        <a href="#" id="klik"
-                            onclick = "function(){document.getElementById('nama_anggota').value =
-                            'abc'};">{{ $all->nama_anggota }}</a>
+                        <a href="#$all->id_anggota" id="cont" data-id-anggota="{{ $all->id_anggota }}"
+                            data-nama-anggota="{{ $all->nama_anggota }}" data-kelas="{{ $all->kelas }}"
+                            onclick="fillInputs(this);">{{ $all->nama_anggota }}</a>
                     @endforeach
-                    {{-- <span id="klik">Base</span>
-                        <span id="klik">Blog</span>
-                        <span id="klik">Contact</span>
-                        <span id="klik">Custom</span>
-                        <span id="klik">Support</span>
-                        <span id="klik">Tools</span> --}}
                 </div>
             </div>
 
@@ -34,27 +29,26 @@
             </form>
             <form class="form" method="post" action="{{ route('store-kunjungan') }}">
                 @csrf
-                @if ('search' != '')
-                    <label>
-                        <input required placeholder="" type="text" id="nama_anggota" class="input"
-                            name="nama_anggota" value="" disabled>
-                        {{-- <span>Nama Anggota</span> --}}
-                    </label>
-
-                    <label>
-                        <input required placeholder="" type="text" class="input" name="kelas"
-                            value="{{ old('kelas', $anggota->kelas) }}" disabled>
-                        {{-- <span>Kelas</span> --}}
-                    </label>
-                @endif
+                <div class="flex mb-3 w-full">
+                    <div class="">
+                        <span class="text-slate-500">Nama Anggota : </span><br>
+                        <input required class="font-medium text-lg" placeholder="" type="text" id="nama_anggota"
+                            name="nama_anggota" disabled>
+                    </div>
+                    <div class="w-full">
+                        <span class="text-slate-500">Kelas : </span><br>
+                        <input required class="font-medium text-lg w-full" placeholder="" type="text" id="kelas"
+                            name="kelas" disabled>
+                    </div>
+                </div>
 
                 <label>
                     <textarea required="" name="tujuan_kunjungan" rows="2" placeholder="" class="input01">{{ old('kunjungan') }}</textarea>
-                    <span>Kunjungan</span>
+                    <span>Tujuan Kunjungan</span>
                 </label>
 
                 <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
-                <input type="hidden" name="id_anggota" value="{{ $anggota->id_anggota }}">
+                <input type="hidden" id="id_anggota" name="id_anggota">
 
                 <div class="flex gap-3 w-full mt-3">
                     <a class="fancy w-full p-3 border-2 border-red-600 before:bg-red-600 hover:bg-red-600"
@@ -76,18 +70,35 @@
             </form>
 
         </div>
-        {{-- <div class="p-6 pt-0"> --}}
-        {{-- <button data-ripple-light="true" type="button"
-            class="block w-full select-none rounded-lg bg-gradient-to-tr from-cyan-600 to-cyan-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-cyan-500/20 transition-all hover:shadow-lg hover:shadow-cyan-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-            Sign In
-        </button> --}}
-        {{-- </div> --}}
     </div>
 </div>
 <script>
     // document.getElementById('klik').onclick = function() {
     //     document.getElementById('nama_anggota').value = 'John Doe';
     // };
+    function fillInputs(element) {
+        var idAnggota = element.getAttribute('data-id-anggota');
+        var namaAnggota = element.getAttribute('data-nama-anggota');
+        var kelas = element.getAttribute('data-kelas');
+
+        document.getElementById('id_anggota').value = idAnggota;
+        document.getElementById('nama_anggota').value = namaAnggota;
+        document.getElementById('kelas').value = kelas;
+
+        document.getElementById("myDropdown").classList.remove("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('#dropbtn') && !event.target.matches('#myInput')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 
     function myFunction() {
         document.getElementById("myDropdown").classList.toggle("show");
