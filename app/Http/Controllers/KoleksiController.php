@@ -20,11 +20,6 @@ class KoleksiController extends Controller
         ]);
     }
 
-    public function show()
-    {
-        
-    }
-
     public function create()
     {
         return view('components.koleksi.create-koleksi-page', [
@@ -59,6 +54,64 @@ class KoleksiController extends Controller
         BukuInduk::create($validated);
 
         return redirect()->route('koleksi')->with('success', 'Data buku induk berhasil ditambahkan');
+    }
+
+    public function show()
+    {
+        
+    }
+
+
+    public function edit($id)
+    {
+        $koleksi = BukuInduk::find($id);
+
+        // if (is_null($anggota)) {
+        //     return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
+        // }
+
+        return view('components.koleksi.edit-koleksi-page', [
+            'title' => "Edit Data Buku Induk",
+            'koleksi' => $koleksi,
+            'klasifikasi' => Klasifikasi::all(),
+            'penerbit' => Penerbit::all(),
+            'perolehan' => Perolehan::all()
+        ]);
+        // dd($anggota->nama_anggota);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $koleksi = BukuInduk::find($id);
+
+        if (is_null($koleksi)) {
+            return redirect()->route('koleksi')->with('error', 'Buku Induk tidak ditemukan.');
+        }
+
+        $valid = $request->validate([
+            'no_barcode' => 'required|string|max:100',
+            'pengarang' => 'required|string',
+            'judul_buku' => 'required|string',
+            'id_klasifikasi' => 'required',
+            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
+            'bahasa' => 'required|string',
+            'id_penerbit' => 'required',
+            'id_perolehan' => 'required',
+            'jml_eks' => 'required|integer',
+            'jml_jld' => 'required|integer',
+            'harga' => 'required|numeric',
+            'tipe_harga' => 'required|string',
+            'ketersediaan' => 'required|string',
+            'created_by' => 'required|integer',
+        ]);
+
+        // $anggota->update($valid);
+        BukuInduk::where('kode_buku_induk', $koleksi->kode_buku_induk)->update($valid);
+
+        return redirect()->route('koleksi')->with('success', 'Data buku induk berhasil diperbarui.');
     }
 
     public function destroy($id)
