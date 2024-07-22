@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <x-penerbit.edit-penerbit :$penerbit>
+    <x-penerbit.edit-penerbit :$penerbit :$title>
         {{-- <label>
             <select id="kelas_id" name="kelas_id" value="{{ old('kelas_id') }}" autocomplete="kelas_id" class="input"
                 required>

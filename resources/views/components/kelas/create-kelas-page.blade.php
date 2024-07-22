@@ -1,4 +1,5 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <x-kelas.create-kelas></x-kelas.create-kelas>
+    @component('components.kelas.create-kelas', ['title' => $title])
+    @endcomponent
 </x-layout>

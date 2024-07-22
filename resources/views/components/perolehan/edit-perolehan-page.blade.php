@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    @component('components.perolehan.edit-perolehan', ['perolehan' => $perolehan])
-    {{-- <x-perolehan.edit-perolehan :$perolehan> --}}
+    @component('components.perolehan.edit-perolehan', ['perolehan' => $perolehan, 'title' => $title])
+        {{-- <x-perolehan.edit-perolehan :$perolehan> --}}
         {{-- @slot('select') --}}
         {{-- <select id="kelas_id" name="kelas_id" autocomplete="kelas_id" class="input" required>
             <option>-- Pilih Kelas --</option>
@@ -22,6 +22,6 @@
             <span class="text-red-500">{{ $message }}</span>
         @enderror --}}
         {{-- @endslot --}}
-    {{-- </x-perolehan.edit-perolehan> --}}
+        {{-- </x-perolehan.edit-perolehan> --}}
     @endcomponent
 </x-layout>

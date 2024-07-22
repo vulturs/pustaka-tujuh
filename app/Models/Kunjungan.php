@@ -14,10 +14,9 @@ class Kunjungan extends Model
     protected $primaryKey = 'id_anggota';
 
     protected $fillable = [
-        'nama_anggota',
-        'kelas_id',
-        'tanggal_masuk',
-        'keterangan',
+        'id_anggota',
+        'tujuan_kunjungan',
+        'created_by'
     ];
 
     public function scopeFilter(Builder $query): void

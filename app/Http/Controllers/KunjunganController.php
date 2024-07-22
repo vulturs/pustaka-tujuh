@@ -27,9 +27,12 @@ class KunjunganController extends Controller
      */
     public function create()
     {
+        $anggota = new Anggota();
         return view('components.kunjungan.create-kunjungan-page',  [
-            'title' => "Tambah Data Kunjungan", 
-            'anggota' => Anggota::filter()->orderBy('id_kunjungan')]);
+            'title' => "Tambah Data Kunjungan",
+            'anggota' => $anggota->choose(),
+            'anggotaAll' => $anggota->allAnggota(),
+        ]);
     }
 
     /**
@@ -39,7 +42,7 @@ class KunjunganController extends Controller
     {
         $validated = $request->validate([
             'id_anggota' => 'required',
-            'tujuan_kunjungan' => 'required|date',
+            'tujuan_kunjungan' => 'required|string',
             'created_by' => 'required',
         ]);
 
@@ -52,9 +55,15 @@ class KunjunganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        // $anggota = $this->agt->choose();
+        // $anggota = new Anggota;
+        // return view('components.kunjungan.create-kunjungan-page',  [
+        //     'title' => "Tambah Data Kunjungan",
+        //     'anggota' => $anggota->choose()
+        // ]);
+        // dd($agt->choose()->kelas);
     }
 
     /**
