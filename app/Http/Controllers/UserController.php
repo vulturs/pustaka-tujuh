@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -23,7 +24,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('components.users.create-users-page',  [
+            'title' => "Tambah Pengguna", 
+        ]);
     }
 
     /**
@@ -31,7 +34,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|string|max:100',
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $validated['excerpt'] = Str::limit($request->body, 200);
+
+        User::create($validated);
+        return redirect()->route('users')->with('success', 'Data pengguna berhasil ditambahkan');
     }
 
     /**
@@ -47,7 +59,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $users = User::find($id);
+
+
+        return view('components.users.edit-users-page', [
+            'title' => "Edit Data Sumber Perolehan",
+            'users' => $users,
+        ]);
     }
 
     /**
@@ -55,7 +73,20 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $users = User::find($id);
+
+        if (is_null($users)) {
+            return redirect()->route('user')->with('error', 'Pengguna tidak ditemukan.');
+        }
+
+        $valid = $request->validate([
+            'nama' => 'required|string|max:100',
+            'username' => 'required|string',
+        ]);
+
+        User::where('id_user', $users->id_user)->update($valid);
+
+        return redirect()->route('users')->with('success', 'Pengguna berhasil diperbarui.');
     }
 
     /**
@@ -63,6 +94,13 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $users = User::find($id);
+
+        if (is_null($users)) {
+            return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
+        }
+
+        $users->delete();
+        return redirect()->route('users')->with('success', 'Pengguna berhasil dihapus');
     }
 }
