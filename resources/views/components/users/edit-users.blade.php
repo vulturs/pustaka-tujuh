@@ -1,4 +1,4 @@
-<x-topbar></x-topbar>
+<x-topbar :$title></x-topbar>
 {{-- @endif --}}
 <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
     <div

@@ -1,4 +1,4 @@
-<x-topbar></x-topbar>
+<x-topbar :$title></x-topbar>
 
 <div class="relative overflow-x-auto shadow-cust sm:rounded-lg p-4 bg-white dark:bg-gray-900">
     <div class="flex items-center justify-between mb-5">

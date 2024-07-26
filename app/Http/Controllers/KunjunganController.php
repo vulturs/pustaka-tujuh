@@ -30,7 +30,7 @@ class KunjunganController extends Controller
         $anggota = new Anggota();
         return view('components.kunjungan.create-kunjungan-page',  [
             'title' => "Tambah Data Kunjungan",
-            'anggota' => $anggota->choose(),
+            // 'anggota' => $anggota->choose(),
             'anggotaAll' => $anggota->allAnggota(),
         ]);
     }

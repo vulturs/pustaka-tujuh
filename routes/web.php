@@ -53,7 +53,7 @@ Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('del
 
 //CRUD JENIS PENGUNJUNG
 Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan')->middleware('auth');
-Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan')->middleware('auth');
+Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan');
 Route::post('/tambah-kunjungan', [KunjunganController::class, 'store'])->name('store-kunjungan')->middleware('auth');
 // Route::get('/cari-kunjungan', [KunjunganController::class, 'show'])->name('show-kunjungan')->middleware('auth');
 Route::get('/kunjungan/{id}/edit', [KunjunganController::class, 'edit'])->name('edit-kunjungan')->middleware('auth');

@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="css/select2.min.css"> --}}
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body class="font-body">
@@ -23,16 +24,16 @@
     {{-- <div class="bg-dash absolute w-full h-50">
     </div> --}}
     <x-sidebar></x-sidebar>
-    <div class="ps-2 sm:ml-64">
-        <div class=" ml-6 rounded-lg">
+    <div class="px-4 sm:ml-64">
+        <div class="rounded-lg">
             {{ $slot }}
         </div>
     </div>
 
-    <script src="{{ asset('js/flowbite.min.js') }}"></script>
-    <script src="{{ asset('js/apexcharts.js') }}"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/jquery.min.js"></script>
 </body>
+<script src="{{ asset('js/flowbite.min.js') }}"></script>
+{{-- <script src="{{ asset('js/apexcharts.js') }}"></script> --}}
+{{-- <script src="js/apexcharts.js"></script> --}}
+<script src="js/jquery.min.js"></script>
 
 </html>
