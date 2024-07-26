@@ -19,6 +19,7 @@ class Klasifikasi extends Model
         'kode_ddc',
         'klasifikasi',
         'keterangan',
+        'created_by',
     ];
 
     public function klasifikasi(): HasMany
@@ -28,6 +29,8 @@ class Klasifikasi extends Model
 
     public function scopeFilter(Builder $query): void
     {
-        $query->where('kode_ddc','like','%'.request('search').'%');
+        $query->join('users', 'klasifikasi.created_by', '=', 'users.id_user')
+        ->select('*')
+        ->where('kode_ddc','like','%'.request('search').'%');
     }
 }

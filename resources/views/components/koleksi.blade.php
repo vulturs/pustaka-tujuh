@@ -49,6 +49,15 @@
                     Kode Buku Induk
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    No Barcode
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pengarang
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Judul Buku
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Kode DDC
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -57,8 +66,11 @@
                 <th scope="col" class="px-6 text-center py-3">
                     Bahasa
                 </th>
-                <th scope="col" class="px-6 text-center py-3">
+                {{-- <th scope="col" class="px-6 text-center py-3">
                     Kategori
+                </th> --}}
+                <th scope="col" class="px-6 py-3">
+                    Penerbit
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Eksemplar
@@ -71,6 +83,12 @@
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jenis Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    pendataan Oleh
                 </th>
                 <th scope="col" class="px-6 text-center py-3">
                     Waktu Pendataan

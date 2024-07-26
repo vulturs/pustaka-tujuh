@@ -39,6 +39,7 @@ class KlasifikasiController extends Controller
             'kode_ddc' => 'required',
             'klasifikasi' => 'required|string',
             'keterangan' => 'required|string',
+            'created_by' => 'required',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
@@ -87,6 +88,7 @@ class KlasifikasiController extends Controller
             'kode_ddc' => 'required',
             'klasifikasi' => 'required|string',
             'keterangan' => 'required|string',
+            'created_by' => 'required',
         ]);
 
         // $anggota->update($validateData);

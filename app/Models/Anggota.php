@@ -19,6 +19,8 @@ class Anggota extends Model
         'kelas_id',
         'tanggal_masuk',
         'keterangan',
+        'created_by',
+        
     ];
 
     public function clases(): BelongsTo

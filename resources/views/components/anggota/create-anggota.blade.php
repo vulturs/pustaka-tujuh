@@ -37,6 +37,8 @@
                 <span>Keterangan</span>
             </label>
 
+            <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
+            
             <div class="flex gap-3 w-full mt-3">
                 <a class="fancy w-full p-3 border-2 border-red-600 before:bg-red-600 hover:bg-red-600"
                     href="{{ route('anggota') }}">

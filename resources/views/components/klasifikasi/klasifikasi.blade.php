@@ -62,6 +62,9 @@
                     <th scope="col" class="px-6 py-3">
                         Keterangan
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        Pendataan Oleh
+                    </th>
                     <th scope="col" class="px-6 text-center py-3">
                         Action
                     </th>
