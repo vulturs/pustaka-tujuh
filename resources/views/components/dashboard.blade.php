@@ -140,7 +140,8 @@
             <div class="flex justify-between">
                 <div>
                     <h3 class="text-xl font-semibold mb-2">Data Kunjungan</h3>
-                    <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">10</h5>
+                    <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">
+                        {{ $kun }}</h5>
                     <p class="text-base font-normal text-gray-500 dark:text-gray-400">Minggu ini</p>
                 </div>
                 <div
@@ -155,7 +156,7 @@
             </div>
 
             {{-- Charts --}}
-            {{-- <div id="chart"></div> --}}
+            <div id="chart"></div>
 
             <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
                 <div class="flex justify-between items-center pt-5">
@@ -407,8 +408,59 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 
 <script>
+    var pengunjung = <?= json_encode($total_kunjungan) ?>;
+    var bulan = <?= json_encode($bulan) ?>;
+
+    var options = {
+        chart: {
+            height: 300,
+            type: "area"
+        },
+        dataLabels: {
+            enabled: false
+        },
+        series: [{
+            name: "Pengunjung",
+            data: pengunjung
+        }],
+        fill: {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.9,
+                stops: [0, 90, 100]
+            }
+        },
+        xaxis: {
+            type: 'categories',
+            categories: bulan, // Menggunakan kategori yang telah diformat dari controller
+            labels: {
+                formatter: function(value) {
+                    return value; // Menampilkan nilai kategori yang telah diformat
+                },
+            }
+        },
+        yaxis: {
+            tickAmount: Math.max(...pengunjung) - Math.min(...
+                pengunjung), // Menentukan jumlah tick berdasarkan range data
+            min: Math.min(...pengunjung), // Nilai minimum y-axis
+            max: Math.max(...pengunjung), // Nilai maksimum y-axis
+            labels: {
+                formatter: function(value) {
+                    return Math.round(value); // Menghilangkan nilai desimal
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+
     //message with sweetalert
     @if (session('success'))
         Swal.fire({

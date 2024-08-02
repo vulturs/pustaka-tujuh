@@ -1,8 +1,18 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <x-dashboard kunjungan="{{ $kunjungan }}" title="{{ $title }}" users="{{ $users }}"
-        anggota="{{ $anggota }}" koleksi="{{ $koleksi }}">
-        {{-- {{ $users }} --}}
-    </x-dashboard>
+    {{-- <x-dashboard total_kunjungan="{{ $total_kunjungan }}" bulan="{{ $bulan }}" title="{{ $title }}"
+        users="{{ $users }}" anggota="{{ $anggota }}" koleksi="{{ $koleksi }}">
+
+    </x-dashboard> --}}
+    @component('components.dashboard', [
+        'total_kunjungan' => $total_kunjungan,
+        'kun' => $kun,
+        'bulan' => $bulan,
+        'title' => $title,
+        'users' => $users,
+        'anggota' => $anggota,
+        'koleksi' => $koleksi,
+    ])
+    @endcomponent
 </x-layout>

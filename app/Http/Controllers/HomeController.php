@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Anggota;
 use App\Models\BukuInduk;
 use App\Models\Kunjungan;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,11 +16,27 @@ class HomeController extends Controller
             return redirect()->route('tambah-kunjungan');
         };
 
+        // $total_kunjungan = Kunjungan::select(DB::raw("COUNT(id_anggota) as id_anggota"))
+        //     ->GroupBy(DB::raw("Day(created_at)"))->pluck('id_anggota');
+        $total_kunjungan = Kunjungan::select(DB::raw("COUNT(*) as count"))
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y')"))
+            ->pluck('count');
+
+        $kun = Kunjungan::count();
+
+        // dd($total_kunjungan);
+
+        $bulan = Kunjungan::select(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as created_at"))
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y')"))
+            ->pluck('created_at');
+
+        // dd($bulan);
+
         $users = User::count();
         $anggota = Anggota::count();
         $koleksi = BukuInduk::count();
-        $kunjungan = Kunjungan::all();
+        // $kunjungan = Kunjungan::all();
         $title = "Dashboard";
-        return view('home', compact('users', 'anggota', 'koleksi', 'kunjungan', 'title'));
+        return view('home', compact('users', 'anggota', 'koleksi', 'total_kunjungan', 'kun', 'bulan', 'title'));
     }
 }
