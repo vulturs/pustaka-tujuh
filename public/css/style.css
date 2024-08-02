@@ -99,7 +99,7 @@
 .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: ;
+    /* color: ; */
     font-size: 12px;
 }
 
@@ -732,8 +732,9 @@
 }
 
 /* Dropdown Button */
-.dropbtn {
-    background-color: #04aa6d;
+#dropbtnBuku,
+#dropbtn {
+    background-color: #4caf50;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -742,46 +743,27 @@
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover,
-.dropbtn:focus {
+#dropbtnBuku:hover,
+#dropbtnBuku:focus,
+#dropbtn:hover,
+#dropbtn:focus {
     background-color: #3e8e41;
 }
 
-/* The search field */
-#myInput {
-    box-sizing: border-box;
-    background-image: url("searchicon.png");
-    background-position: 14px 12px;
-    background-repeat: no-repeat;
-    font-size: 14px;
-    padding: 14px 20px 12px 20px;
-    border: none;
-    border-bottom: 1px solid #ddd;
-}
-
-/* The search field when it gets focus/clicked on */
-#myInput:focus {
-    outline: 3px solid #ddd;
-}
-
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.dropdown-content,
+.dropdown-content-buku {
     display: none;
     position: absolute;
-    background-color: #f6f6f6;
+    background-color: #f9f9f9;
     min-width: 230px;
-    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content a,
+.dropdown-content-buku a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -789,11 +771,12 @@
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
+.dropdown-content a:hover,
+.dropdown-content-buku a:hover {
     background-color: #f1f1f1;
 }
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu */
 .show {
     display: block;
 }

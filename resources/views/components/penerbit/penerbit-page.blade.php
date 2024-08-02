@@ -15,7 +15,7 @@
                     {{ $pnb->id_penerbit }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $pnb->nama }}
+                    {{ $pnb->nama_penerbit }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $pnb->alamat }}

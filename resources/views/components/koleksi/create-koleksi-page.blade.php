@@ -27,7 +27,7 @@
                 required>
                 <option>-- Pilih Penerbit --</option>
                 @forelse ($penerbit as $terbit)
-                    <option value="{{ $terbit->id_penerbit }}">{{ $terbit->nama }}</option>
+                    <option value="{{ $terbit->id_penerbit }}">{{ $terbit->nama_penerbit }}</option>
                 @empty
                     <option value="1" {{ old('id_penerbit') == 'penerbit' ? 'selected' : '' }}>
                         Penerbit

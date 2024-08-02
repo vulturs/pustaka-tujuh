@@ -1,7 +1,9 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <x-koleksi.koleksi :$title>
+    @component('components/koleksi/koleksi', ['title' => $title])
+        
+    {{-- <x-koleksi.koleksi :$title> --}}
         @foreach ($koleksi as $collect)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -37,7 +39,7 @@
                     {{ $collect->kategori }}
                 </td> --}}
                 <td class="px-6 py-4">
-                    {{ $collect->id_penerbit }}
+                    {{ $collect->nama_penerbit }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $collect->jml_eks }}
@@ -80,5 +82,6 @@
             </tr>
             <!-- Other table rows omitted for brevity -->
         @endforeach
-    </x-koleksi.koleksi>
+    {{-- </x-koleksi.koleksi> --}}
+    @endcomponent
 </x-layout>

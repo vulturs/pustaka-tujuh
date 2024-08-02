@@ -13,8 +13,8 @@
                 @method('put')
                 @csrf
                 <label>
-                    <input required placeholder="" type="text" class="input" name="nama"
-                        value="{{ old('nama', $penerbit->nama) }}">
+                    <input required placeholder="" type="text" class="input" name="nama_penerbit"
+                        value="{{ old('nama_penerbit', $penerbit->nama_penerbit) }}">
                     <span>Nama Penerbit</span>
                 </label>
 

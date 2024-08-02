@@ -12,7 +12,7 @@ class Penerbit extends Model
     protected $primaryKey = 'id_penerbit';
 
     protected $fillable = [
-        'nama',
+        'nama_penerbit',
         'alamat',
         'created_by'
     ];

@@ -11,6 +11,7 @@ use App\Http\Controllers\KlasifikasiController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\PeminjamanController;
 use App\Models\Klasifikasi;
 use App\View\Components\klasifikasi\klasifikasiPage;
 use App\Http\Controllers\PenerbitController;
@@ -98,3 +99,11 @@ Route::post('/administrasi/tambah-pelanggaran', [PelanggaranController::class, '
 Route::get('/administrasi/pelanggaran/{id}/edit', [PelanggaranController::class, 'edit'])->name('edit-pelanggaran')->middleware('auth');
 Route::put('/administrasi/pelanggaran/{id}/update', [PelanggaranController::class, 'update'])->name('update-pelanggaran')->middleware('auth');
 Route::delete('/administrasi/pelanggaran/{id}', [PelanggaranController::class, 'destroy'])->name('delete-pelanggaran')->middleware('auth');
+
+//CRUD PEMINJAMAN
+Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman')->middleware('auth');
+Route::get('/tambah-peminjaman', [PeminjamanController::class, 'create'])->name('tambah-peminjaman')->middleware('auth');
+Route::post('/tambah-peminjamn', [PeminjamanController::class, 'store'])->name('store-peminjaman')->middleware('auth');
+// Route::get('/koleksi/{id}/edit', [KoleksiController::class, 'edit'])->name('edit-koleksi')->middleware('auth');
+// Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('update-koleksi')->middleware('auth');
+// Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
