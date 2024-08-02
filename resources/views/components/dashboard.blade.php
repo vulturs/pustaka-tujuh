@@ -136,7 +136,7 @@
 
     {{-- Grafik --}}
     <div class="grid grid-cols-3 gap-5 mb-4">
-        <div class="w-full col-span-2 row-span-2 bg-white rounded-2xl shadow-lg dark:bg-gray-800 p-4 mb-4 md:p-6">
+        <div class="w-full col-span-2 bg-white rounded-2xl shadow-lg dark:bg-gray-800 p-4 mb-4 md:p-6">
             <div class="flex justify-between">
                 <div>
                     <h3 class="text-xl font-semibold mb-2">Data Kunjungan</h3>
