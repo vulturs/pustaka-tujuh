@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <x-users>
+    @component('components.users', ['title' => $title])
         @foreach ($users as $user)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -10,8 +10,7 @@
                         <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
-                <th scope="row"
-                    class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $user->id_user }}
                 </th>
                 <td class="px-6 py-4">
@@ -40,5 +39,5 @@
             </tr>
             <!-- Other table rows omitted for brevity -->
         @endforeach
-    </x-users>
+    @endcomponent
 </x-layout>

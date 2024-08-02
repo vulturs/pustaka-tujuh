@@ -1,4 +1,4 @@
-<x-topbar></x-topbar>
+<x-topbar :$title></x-topbar>
 {{-- @endif --}}
 
 <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
@@ -17,12 +17,14 @@
             </label>
 
             <label>
-                <input required placeholder="" type="text" class="input" name="username" value="{{ old('username') }}">
+                <input required placeholder="" type="text" class="input" name="username"
+                    value="{{ old('username') }}">
                 <span>Username</span>
             </label>
 
             <label>
-                <input required placeholder="" type="text" class="input" name="password" value="{{ old('password') }}">
+                <input required placeholder="" type="text" class="input" name="password"
+                    value="{{ old('password') }}">
                 <span>Password</span>
             </label>
 

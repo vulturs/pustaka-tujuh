@@ -1,5 +1,5 @@
-<div class="flex w-full justify-between mb-4 mt-2">
-    <div>
+<div class="flex w-full z-40 bg-white justify-between items-center p-4 px-3 pe-5">
+    {{-- <div>
         @if (request()->is('/'))
             <h2 class="text-3xl font-semibold mx-3 pb-0">Dashboard</h2>
             {{ Breadcrumbs::render('dashboard') }}
@@ -7,9 +7,12 @@
             <h2 class="text-3xl font-semibold mx-3 pb-0">Koleksi</h2>
             {{ Breadcrumbs::render('koleksi') }}
         @elseif (request()->is('users'))
-            <h2 class="text-3xl font-semibold mx-3 pb-0">Daftar Pengguna</h2>
-            {{ Breadcrumbs::render('users') }}
+        {{ Breadcrumbs::render('users') }}
         @endif
+    </div> --}}
+    <div>
+        <h2 class="text-3xl font-medium pb-1">{{ $title }}</h2>
+        <x-breadcrumbs></x-breadcrumbs>
     </div>
     <div class="my-2">
         <div>
@@ -24,7 +27,7 @@
                 @endauth
             </button>
         </div>
-        <div class="z-50 hidden shadow-xl my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+        <div class="z-50 hidden shadow-xl my-4 text-base list-none bg-white divide-y divide-gray-100 rounded dark:bg-gray-700 dark:divide-gray-600"
             id="dropdown-user">
             <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900 dark:text-white" role="none">

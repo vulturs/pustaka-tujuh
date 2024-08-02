@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Anggota;
 use App\Models\BukuInduk;
-use Illuminate\Http\Request;
+use App\Models\Kunjungan;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // return view('user.profile', [
-        //     'user' => User::findOrFail($id)
-        // ]);
-        return view('home', [
-            'title' => 'Dashboard',
-            'users' => User::count(),
-            'anggota' => Anggota::count(),
-            'koleksi' => BukuInduk::count()
-        ]);
+        if (!isset(auth()->user()->id_user)) {
+            return redirect()->route('tambah-kunjungan');
+        };
+
+        $users = User::count();
+        $anggota = Anggota::count();
+        $koleksi = BukuInduk::count();
+        $kunjungan = Kunjungan::all();
+        $title = "Dashboard";
+        return view('home', compact('users', 'anggota', 'koleksi', 'kunjungan', 'title'));
     }
 }

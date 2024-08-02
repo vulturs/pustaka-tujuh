@@ -53,8 +53,9 @@ Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('del
 
 //CRUD JENIS PENGUNJUNG
 Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan')->middleware('auth');
-Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan')->middleware('auth');
+Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan');
 Route::post('/tambah-kunjungan', [KunjunganController::class, 'store'])->name('store-kunjungan')->middleware('auth');
+// Route::get('/cari-kunjungan', [KunjunganController::class, 'show'])->name('show-kunjungan')->middleware('auth');
 Route::get('/kunjungan/{id}/edit', [KunjunganController::class, 'edit'])->name('edit-kunjungan')->middleware('auth');
 Route::put('/kunjungan/{id}/update', [KunjunganController::class, 'update'])->name('update-kunjungan')->middleware('auth');
 Route::delete('/kunjungan/{id}', [KunjunganController::class, 'destroy'])->name('delete-kunjungan')->middleware('auth');
@@ -67,34 +68,33 @@ Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('ed
 Route::put('/penerbit/{id}/update', [PenerbitController::class, 'update'])->name('update-penerbit')->middleware('auth');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete-penerbit')->middleware('auth');
 
-//CRUD KELAS
-Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
-Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
-Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('edit-kelas');
-Route::put('/kelas/{id}/update', [KelasController::class, 'update'])->name('update-kelas');
-Route::delete('/kelas/{kelas_id}', [KelasController::class, 'destroy'])->name('delete-kelas');
-Route::post('/tambah-kelas', [KelasController::class, 'store'])->name('store-kelas');
+Route::get('/administrasi/kelas', [KelasController::class, 'index'])->name('kelas');
+Route::get('/administrasi/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
+Route::get('/administrasi/kelas/{id}/edit', [KelasController::class, 'edit'])->name('edit-kelas');
+Route::put('/administrasi/kelas/{id}/update', [KelasController::class, 'update'])->name('update-kelas');
+Route::delete('/administrasi/kelas/{kelas_id}', [KelasController::class, 'destroy'])->name('delete-kelas');
+Route::post('/administrasi/tambah-kelas', [KelasController::class, 'store'])->name('store-kelas');
 
 //CRUD SUMBER PEROLEHAN
-Route::get('/perolehan', [PerolehanController::class, 'index'])->name('perolehan')->middleware('auth');
-Route::get('/tambah-perolehan', [PerolehanController::class, 'create'])->name('tambah-perolehan')->middleware('auth');
-Route::post('/tambah-perolehan', [PerolehanController::class, 'store'])->name('store-perolehan')->middleware('auth');
-Route::get('/perolehan/{id}/edit', [PerolehanController::class, 'edit'])->name('edit-perolehan')->middleware('auth');
-Route::put('/perolehan/{id}/update', [PerolehanController::class, 'update'])->name('update-perolehan')->middleware('auth');
-Route::delete('/perolehan/{id}', [PerolehanController::class, 'destroy'])->name('delete-perolehan')->middleware('auth');
+Route::get('/administrasi/perolehan', [PerolehanController::class, 'index'])->name('perolehan')->middleware('auth');
+Route::get('/administrasi/tambah-perolehan', [PerolehanController::class, 'create'])->name('tambah-perolehan')->middleware('auth');
+Route::post('/administrasi/tambah-perolehan', [PerolehanController::class, 'store'])->name('store-perolehan')->middleware('auth');
+Route::get('/administrasi/perolehan/{id}/edit', [PerolehanController::class, 'edit'])->name('edit-perolehan')->middleware('auth');
+Route::put('/administrasi/perolehan/{id}/update', [PerolehanController::class, 'update'])->name('update-perolehan')->middleware('auth');
+Route::delete('/administrasi/perolehan/{id}', [PerolehanController::class, 'destroy'])->name('delete-perolehan')->middleware('auth');
 
 //CRUD KLASIFIKASI
-Route::get('/klasifikasi', [KlasifikasiController::class, 'index'])->name('klasifikasi');
-Route::get('/tambah-klasifikasi', [KlasifikasiController::class, 'create'])->name('tambah-klasifikasi');
-Route::get('/klasifikasi/{id}/edit', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
-Route::put('/klasifikasi/{id}/update', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
-Route::delete('/klasifikasi/{id_kelas}', [Klasifikasi::class, 'destroy'])->name('delete-klasifikasi');
-Route::post('/tambah-klasifikasi', [KlasifikasiController::class, 'store'])->name('store-klasifikasi');
+Route::get('/administrasi/klasifikasi', [KlasifikasiController::class, 'index'])->name('klasifikasi');
+Route::get('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'create'])->name('tambah-klasifikasi');
+Route::get('/administrasi/klasifikasi/{id}/edit', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
+Route::put('/administrasi/klasifikasi/{id}/update', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
+Route::delete('/administrasi/klasifikasi/{id_kelas}', [Klasifikasi::class, 'destroy'])->name('delete-klasifikasi');
+Route::post('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'store'])->name('store-klasifikasi');
 
 //CRUD JENIS PELANGGARAN
-Route::get('/pelanggaran', [PelanggaranController::class, 'index'])->name('pelanggaran')->middleware('auth');
-Route::get('/tambah-pelanggaran', [PelanggaranController::class, 'create'])->name('tambah-pelanggaran')->middleware('auth');
-Route::post('/tambah-pelanggaran', [PelanggaranController::class, 'store'])->name('store-pelanggaran')->middleware('auth');
-Route::get('/pelanggaran/{id}/edit', [PelanggaranController::class, 'edit'])->name('edit-pelanggaran')->middleware('auth');
-Route::put('/pelanggaran/{id}/update', [PelanggaranController::class, 'update'])->name('update-pelanggaran')->middleware('auth');
-Route::delete('/pelanggaran/{id}', [PelanggaranController::class, 'destroy'])->name('delete-pelanggaran')->middleware('auth');
+Route::get('/administrasi/pelanggaran', [PelanggaranController::class, 'index'])->name('pelanggaran')->middleware('auth');
+Route::get('/administrasi/tambah-pelanggaran', [PelanggaranController::class, 'create'])->name('tambah-pelanggaran')->middleware('auth');
+Route::post('/administrasi/tambah-pelanggaran', [PelanggaranController::class, 'store'])->name('store-pelanggaran')->middleware('auth');
+Route::get('/administrasi/pelanggaran/{id}/edit', [PelanggaranController::class, 'edit'])->name('edit-pelanggaran')->middleware('auth');
+Route::put('/administrasi/pelanggaran/{id}/update', [PelanggaranController::class, 'update'])->name('update-pelanggaran')->middleware('auth');
+Route::delete('/administrasi/pelanggaran/{id}', [PelanggaranController::class, 'destroy'])->name('delete-pelanggaran')->middleware('auth');

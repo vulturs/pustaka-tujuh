@@ -20,7 +20,6 @@ class Anggota extends Model
         'tanggal_masuk',
         'keterangan',
         'created_by',
-        
     ];
 
     public function clases(): BelongsTo
@@ -40,13 +39,22 @@ class Anggota extends Model
         // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }
 
-    // public function show()
-    // {
-    //     return $this
-    //         ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
-    //         ->join('users', 'anggota.created_by', '=', 'users.id_user')
-    //         ->select('*')
-    //         ->where('nama_anggota', 'like', '%' . request('search') . '%')
-    //         ->get();
-    // }
+    public function choose()
+    {
+        return $this->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
+            ->join('users', 'anggota.created_by', '=', 'users.id_user')
+            ->select('*')
+            ->where('nama_anggota', 'like', '%' . request('search') . '%')
+            ->get()->first();
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
+    }
+    public function allAnggota()
+    {
+        return $this->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
+            ->join('users', 'anggota.created_by', '=', 'users.id_user')
+            ->select('*')
+            // ->where('nama_anggota', 'like', '%' . request('search') . '%')
+            ->get();
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
+    }
 }

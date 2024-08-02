@@ -1,12 +1,4 @@
-
-
-<div class="w-full mb-4 mt-2">
-    {{-- @if (session()->hash('error')) --}}
-    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Klasifikasi (KODE DDC)</h2>
-    {{ Breadcrumbs::render('klasifikasi') }}
-    {{-- {{session('error') }} --}}
-</div>
-{{-- @endif --}}
+<x-topbar :$title></x-topbar>
 <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">

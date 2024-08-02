@@ -1,36 +1,33 @@
-<div class="w-full mb-4 mt-2">
-    {{-- @if (session()->hash('error')) --}}
-    <h2 class="text-3xl font-semibold mx-3 pb-0">Data Klasifikasi (KODE DDC)</h2>
-    {{ Breadcrumbs::render('klasifikasi') }}
-    {{-- {{session('error') }} --}}
-</div>
+<x-topbar :$title></x-topbar>
 {{-- @endif --}}
-<div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
-    <div
-        class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
-        <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
-            Tambah Data Klasifikasi (Kode DDC)
-        </h3>
-    </div>
-    <div class="flex flex-col gap-4 p-6">
-        <form class="form" method="post" action="{{ route('store-klasifikasi') }}">
-            @csrf
-            <label>
-                <input required placeholder="" type="text" class="input" name="kode_ddc"
-                    value="{{ old('kode_ddc') }}">
-                <span>Kode DDC</span>
-            </label>
 
-            <label>
-                <input required placeholder="" type="text" class="input" name="klasifikasi"
-                    value="{{ old('klasifikasi') }}">
-                <span>Klasifikasi</span>
-            </label>
+<div class="p-5 me-4 bg-slate-200 rounded-2xl mb-4">
+    <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
+        <div
+            class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
+            <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
+                Tambah Data Klasifikasi (Kode DDC)
+            </h3>
+        </div>
+        <div class="flex flex-col gap-4 p-6">
+            <form class="form" method="post" action="{{ route('store-klasifikasi') }}">
+                @csrf
+                <label>
+                    <input required placeholder="" type="text" class="input" name="kode_ddc"
+                        value="{{ old('kode_ddc') }}">
+                    <span>Kode DDC</span>
+                </label>
 
-            <label>
-                <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan') }}</textarea>
-                <span>Keterangan</span>
-            </label>
+                <label>
+                    <input required placeholder="" type="text" class="input" name="klasifikasi"
+                        value="{{ old('klasifikasi') }}">
+                    <span>Klasifikasi</span>
+                </label>
+
+                <label>
+                    <textarea required="" name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan') }}</textarea>
+                    <span>Keterangan</span>
+                </label>
 
             <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
             
@@ -50,14 +47,15 @@
                     <span class="bottom-key-2"></span>
                 </button>
 
-            </div>
-        </form>
+                </div>
+            </form>
 
-    </div>
-    <div class="p-6 pt-0">
-        {{-- <button data-ripple-light="true" type="button"
+        </div>
+        <div class="p-6 pt-0">
+            {{-- <button data-ripple-light="true" type="button"
             class="block w-full select-none rounded-lg bg-gradient-to-tr from-cyan-600 to-cyan-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-cyan-500/20 transition-all hover:shadow-lg hover:shadow-cyan-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
             Sign In
         </button> --}}
+        </div>
     </div>
 </div>

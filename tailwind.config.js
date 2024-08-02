@@ -7,7 +7,11 @@ export default {
         "./node_modules/flowbite/**/*.js",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                body: ["Poppins"],
+            },
+        },
     },
     plugins: [
         // require("flowbite/plugin")({

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    @component('components.kelas.kelas', ['search' => $search, 'kelas' => $kelas])
+    @component('components.kelas.kelas', ['search' => $search, 'kelas' => $kelas, 'title' => $title])
         {{-- <x-kelas.kelas :$search> --}}
         @forelse ($kelas as $clases)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

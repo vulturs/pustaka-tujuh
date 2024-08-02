@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <x-anggota.create-anggota>
+    <x-anggota.create-anggota :$title>
         <label>
             <select id="kelas_id" name="kelas_id" value="{{ old('kelas_id') }}" autocomplete="kelas_id" class="input"
                 required>
