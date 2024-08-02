@@ -15,7 +15,7 @@
                     {{ $pnb->id_penerbit }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $pnb->nama }}
+                    {{ $pnb->nama_penerbit }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $pnb->alamat }}
@@ -40,7 +40,7 @@
             </tr>
         @empty
             <tr>
-                <td class="text-center text-mute" colspan="4">Data user tidak tersedia</td>
+                <td class="text-center text-mute" colspan="4">Data penerbit tidak tersedia</td>
             </tr>
         @endforelse
     </x-penerbit.penerbit>

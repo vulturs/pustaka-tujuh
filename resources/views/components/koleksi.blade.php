@@ -44,47 +44,65 @@
                         <div class="flex items-center">
                             {{-- <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-all-search" class="sr-only">checkbox</label> --}}
-                        </div>
-                    </th>
-                    <th scope="col" class="px-0 text-center py-3">
-                        Kode Buku Induk
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Kode DDC
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Tahun
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Bahasa
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Kategori
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Eksemplar
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Jilid
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        ID Perolehan
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Harga
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Waktu Pendataan
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ $slot }}
-            </tbody>
-        </table>
+                    </div>
+                </th>
+                <th scope="col" class="px-0 text-center py-3">
+                    Kode Buku Induk
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    No Barcode
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pengarang
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Judul Buku
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Kode DDC
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tahun
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Bahasa
+                </th>
+                {{-- <th scope="col" class="px-6 text-center py-3">
+                    Kategori
+                </th> --}}
+                <th scope="col" class="px-6 py-3">
+                    Penerbit
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Eksemplar
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jilid
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    ID Perolehan
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Jenis Harga
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    pendataan Oleh
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Waktu Pendataan
+                </th>
+                <th scope="col" class="px-6 text-center py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ $slot }}
+        </tbody>
+    </table>
 
         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
             aria-label="Table navigation">

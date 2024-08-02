@@ -45,7 +45,7 @@ class AnggotaController extends Controller
             'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'required|string',
-            'created_by' => 'required|string',
+            'created_by' => 'required',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
@@ -97,6 +97,7 @@ class AnggotaController extends Controller
             'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'nullable|string',
+            'created_by' => 'required'
         ]);
 
         // $anggota->update($valid);

@@ -39,9 +39,32 @@ class BukuInduk extends Model
             ->select('*')
             ->where('judul_buku', 'like', '%' . request('search') . '%')
             ->orWhere('klasifikasi.kode_ddc', 'like', '%' . request('search') . '%')
-            ->orWhere('penerbit.nama', 'like', '%' . request('search') . '%')
+            ->orWhere('penerbit.nama_penerbit', 'like', '%' . request('search') . '%')
             ->orWhere('perolehan.nama_sumber', 'like', '%' . request('search') . '%')
             ->orWhere('users.nama', 'like', '%' . request('search') . '%');
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
+    }
+
+    public function choose()
+    {
+        return $this->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
+            ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
+            ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
+            ->select('*')
+            ->where('judul_buku', 'like', '%' . request('search') . '%')
+            ->get()->first();
+        // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
+    }
+    public function allKoleksi()
+    {
+        return $this->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
+            ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
+            ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
+            ->select('*')
+            // ->where('nama_anggota', 'like', '%' . request('search') . '%')
+            ->get();
         // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }
 

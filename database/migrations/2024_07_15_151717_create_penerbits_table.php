@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penerbit', function (Blueprint $table) {
             $table->id('id_penerbit');
-            $table->string('nama', 100);
+            $table->string('nama_penerbit', 100);
             $table->string('alamat', 100);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id_user')->on('users');

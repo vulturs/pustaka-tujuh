@@ -12,8 +12,8 @@
             <form class="form" method="post" action="{{ route('store-penerbit') }}">
                 @csrf
                 <label>
-                    <input required placeholder="" type="text" class="input" name="nama"
-                        value="{{ old('nama') }}">
+                    <input required placeholder="" type="text" class="input" name="nama_penerbit"
+                        value="{{ old('nama_penerbit') }}">
                     <span>Nama Penerbit</span>
                 </label>
 

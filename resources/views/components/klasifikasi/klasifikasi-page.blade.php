@@ -23,6 +23,9 @@
                 <td class="px-6 py-4">
                     {{ $klasi->keterangan }}
                 </td>
+                <td class="px-6 py-4">
+                    {{ $klasi->nama }}
+                </td>
                 <td class="px-6 flex py-4 justify-center">
                     <a href="{{ route('edit-klasifikasi', $klasi->id_klasifikasi) }}" button type="button"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
@@ -39,7 +42,7 @@
             </tr>
         @empty
             <tr>
-                <td class="text-center text-mute" colspan="4">Data user tidak tersedia</td>
+                <td class="text-center text-mute" colspan="10">Data klasifikasi (Kode DDC) tidak tersedia</td>
             </tr>
         @endforelse
     @endcomponent

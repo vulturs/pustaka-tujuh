@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/peminjaman"
                         class="{{ request()->is('data-pinjam') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             share_windows

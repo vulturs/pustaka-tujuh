@@ -27,7 +27,7 @@ class PenerbitController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_penerbit' => 'required|string|max:100',
             'alamat' => 'required',
             'created_by' => 'required',
         ]);
@@ -65,7 +65,7 @@ class PenerbitController extends Controller
         }
 
         $valid = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_penerbit' => 'required|string|max:100',
             'alamat' => 'required',
             'created_by' => 'required'
         ]);
