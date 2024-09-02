@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <x-koleksi>
+    <x-koleksi :$title>
         @foreach ($koleksi as $collect)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -16,6 +16,15 @@
                     {{ $collect->kode_buku_induk }}
                 </th>
                 <td class="px-6 py-4">
+                    {{ $collect->no_barcode }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->pengarang }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->judul_buku }}
+                </td>
+                <td class="px-6 py-4">
                     {{ $collect->kode_ddc }}
                 </td>
                 <td class="px-6 py-4">
@@ -24,8 +33,11 @@
                 <td class="px-6 py-4">
                     {{ $collect->bahasa }}
                 </td>
-                <td class="px-6 py-4">
+                {{-- <td class="px-6 py-4">
                     {{ $collect->kategori }}
+                </td> --}}
+                <td class="px-6 py-4">
+                    {{ $collect->id_penerbit }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $collect->jml_eks }}
@@ -38,6 +50,9 @@
                 </td>
                 <td class="px-6 py-4">
                     {{ $collect->harga }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $collect->nama }}
                 </td>
                 <td class="px-6 text-center py-4">
                     {{ $collect->created_at->format('d M Y') }}

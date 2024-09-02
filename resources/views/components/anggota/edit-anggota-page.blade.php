@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     {{-- @component('components.anggota.edit-anggota', ['anggota' => $anggota]) --}}
-    <x-anggota.edit-anggota :$anggota>
+    <x-anggota.edit-anggota :$anggota :$title>
         {{-- @slot('select') --}}
         <select id="kelas_id" name="kelas_id" autocomplete="kelas_id" class="input" required>
             <option>-- Pilih Kelas --</option>

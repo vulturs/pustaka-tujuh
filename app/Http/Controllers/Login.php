@@ -27,8 +27,8 @@ class Login extends Controller
 
             $remember = $request->remember;
             if (isset($remember) && !empty($remember)) {
-                setcookie('username', $credentials['username'], time() + 3600);
-                setcookie('password', $credentials['password'], time() + 3600);
+                setcookie('username', $credentials['username'], time() + 4320);
+                setcookie('password', $credentials['password'], time() + 4320);
             } else {
                 setcookie('username', '');
                 setcookie('password', '');

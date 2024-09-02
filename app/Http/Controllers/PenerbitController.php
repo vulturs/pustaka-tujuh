@@ -12,13 +12,13 @@ class PenerbitController extends Controller
     {
         return view('components.penerbit.penerbit-page', [
             'title' => "Data Penerbit",
-            'penerbit' => Penerbit::all()
+            'penerbit' => Penerbit::filter()->orderBy('id_penerbit')->paginate(10)
         ]);
     }
 
     public function create()
     {
-        return view('components.penerbit.create-penerbit-page',  ['title' => "Tambah Anggota"]);
+        return view('components.penerbit.create-penerbit-page',  ['title' => "Tambah Data Penerbit"]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PenerbitController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_penerbit' => 'required|string|max:100',
             'alamat' => 'required',
             'created_by' => 'required',
         ]);
@@ -65,7 +65,7 @@ class PenerbitController extends Controller
         }
 
         $valid = $request->validate([
-            'nama' => 'required|string|max:100',
+            'nama_penerbit' => 'required|string|max:100',
             'alamat' => 'required',
             'created_by' => 'required'
         ]);

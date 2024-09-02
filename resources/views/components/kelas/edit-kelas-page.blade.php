@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    @component('components.kelas.edit-kelas', ['kelas' => $kelas])
-    {{-- <x-kelas.edit-kelas :$kelas> --}}
+    @component('components.kelas.edit-kelas', ['kelas' => $kelas, 'title' => $title])
+        {{-- <x-kelas.edit-kelas :$kelas> --}}
         {{-- @slot('select') --}}
         {{-- <select id="kelas_id" name="kelas_id" autocomplete="kelas_id" class="input" required>
             <option>-- Pilih Kelas --</option>
@@ -22,6 +22,6 @@
             <span class="text-red-500">{{ $message }}</span>
         @enderror --}}
         {{-- @endslot --}}
-    {{-- </x-kelas.edit-kelas> --}}
+        {{-- </x-kelas.edit-kelas> --}}
     @endcomponent
 </x-layout>

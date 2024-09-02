@@ -17,7 +17,7 @@ class AnggotaController extends Controller
     {
         // $anggota = new Anggota();
         return view('components.anggota.anggota-page', [
-            'title' => "Data Anggotas",
+            'title' => "Data Anggota",
             'anggota' => Anggota::filter()->orderBy('id_anggota')->paginate(10)
             // 'anggota' => $anggota->show()
         ]);
@@ -45,6 +45,7 @@ class AnggotaController extends Controller
             'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'required|string',
+            'created_by' => 'required',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
@@ -96,6 +97,7 @@ class AnggotaController extends Controller
             'kelas_id' => 'required',
             'tanggal_masuk' => 'required|date',
             'keterangan' => 'nullable|string',
+            'created_by' => 'required'
         ]);
 
         // $anggota->update($valid);
