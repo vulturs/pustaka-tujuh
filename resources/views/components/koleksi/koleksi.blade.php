@@ -22,7 +22,7 @@
                 </div>
             </form>
             <a href="{{ route('tambah-koleksi') }}"
-                class="overflow-hidden relative flex p-2 px-4 bg-slate-800 text-white border-none rounded-md font-medium cursor-pointer relative z-10 group">
+                class="overflow-hidden flex p-2 px-4 bg-slate-800 text-white border-none rounded-md font-medium cursor-pointer relative z-10 group">
                 Koleksi Baru <span class="material-symbols-rounded ps-2 text-sm text-white">
                     add
                 </span>
