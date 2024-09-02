@@ -33,7 +33,7 @@
     <div class="grid row-span-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-5">
 
         <div class="card-cust work">
-            <div class="card-cust2-purple rounded-xl bg-deep-purple-600" style=":after:background:#4527A0;">
+            <div class="card-cust2-purple rounded-xl bg-deep-purple-600 shadow-fit" style=":after:background:#4527A0;">
                 <div class="p-5">
                     <div class="flex w-full justify-between">
                         <div class="bg-deep-purple-800 w-fit rounded-xl my-2 mb-3 ms-1 p-3 py-2 pt-3">
@@ -56,7 +56,7 @@
         </div>
 
         <div class="card-cust work">
-            <div class="card-cust2 rounded-xl bg-blue-500 before:bg-blue-600 after:bg-blue-700">
+            <div class="card-cust2 rounded-xl shadow-fit bg-blue-500 before:bg-blue-600 after:bg-blue-700">
                 <div class="p-5">
                     <div class="flex w-full justify-between">
                         <div class="bg-blue-700 w-fit rounded-xl my-2 mb-3 ms-1 p-3 py-2 pt-3">
@@ -103,7 +103,7 @@
             </div>
 
             <div class="card-cust work">
-                <div class="card-cust2 rounded-xl border-2 bg-white before:bg-blue-100 after:bg-blue-200">
+                <div class="card-cust2 rounded-xl shadow-fit bg-white before:bg-blue-100 after:bg-blue-200">
                     <div class="p-1 px-3">
                         <div class="flex w-full items-center justify-between">
                             <div class="flex items-center">
@@ -135,11 +135,10 @@
 
     </div>
 
-    <div class="grid grid-cols-3 gap-5 mb-4">
+    <div class="grid grid-cols-3 gap-5">
 
         {{-- Grafik --}}
-        <div
-            class="w-full col-span-2 border border-slate-200 shadow-medium bg-white rounded-2xl shadow-lg dark:bg-gray-800 p-4 mb-4 md:p-6">
+        <div class="w-full col-span-2 shadow-fit bg-white rounded-2xl dark:bg-gray-800 p-4 mb-4 md:p-6">
             <h3 class="text-xl font-semibold mb-2">Data Kunjungan</h3>
             <div class="flex">
                 <h5 id="kun-value" class="leading-none text-3xl font-bold text-gray-900 dark:text-white pe-2">
@@ -153,7 +152,7 @@
             <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
                 <div class="flex justify-between items-center pt-5">
                     <!-- Button -->
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="lastDaysdropdown"
+                    <button id="dropdownPengunjung" data-dropdown-toggle="lastDaysdropdownPengunjung"
                         data-dropdown-placement="bottom"
                         class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
                         type="button">
@@ -165,24 +164,23 @@
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="lastDaysdropdown"
+                    <div id="lastDaysdropdownPengunjung"
                         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownDefaultButton">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownPengunjung">
                             <li>
-                                <a href="#" onclick="filterData('7-days', '1 Minggu Lalu')"
+                                <button onclick="filterData('7-days', '1 Minggu Lalu')"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    1 Minggu Lalu</a>
+                                    1 Minggu Lalu</button>
                             </li>
                             <li>
-                                <a href="#" onclick="filterData('30-days', '1 Bulan Lalu')"
+                                <button onclick="filterData('30-days', '1 Bulan Lalu')"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    1 Bulan Lalu</a>
+                                    1 Bulan Lalu</button>
                             </li>
                             <li>
-                                <a href="#" onclick="filterData('180-days', '6 Bulan Lalu')"
+                                <button onclick="filterData('180-days', '6 Bulan Lalu')"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    6 Bulan Lalu</a>
+                                    6 Bulan Lalu</button>
                             </li>
                         </ul>
                     </div>
@@ -200,10 +198,10 @@
         </div>
         {{-- End Grafik --}}
 
-        {{-- Peminjaman --}}
+        {{-- Pengunjung --}}
 
         <div class="mb-4">
-            <div class="e-card playing rounded-xl shadow-medium">
+            <div class="e-card playing rounded-xl drop-shadow-md">
                 <div class="image"></div>
 
                 <div class="wave"></div>
@@ -303,288 +301,478 @@
                 </div>
             </div>
         </div>
-        {{-- End Peminjaman --}}
-
-        {{-- <div class="card-cust2">
-            <div class="title-card-cust2">
-                <span class="text-2xl font-medium ps-3 py-2">Data Peminjaman</span>
-                <p class="ps-4">Vivamus nisi purus</p>
-            </div>
-            <div class="icons-card-cust2">
-                <a class="btn-card-cust2 font-medium p-3" href="#">
-                    Lihat Data
-                    <span class="material-symbols-rounded">
-                        double_arrow
-                    </span>
-                </a>
-            </div>
-        </div> --}}
-
-        {{-- pengembalian --}}
-
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            {{-- <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-        </div>
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 1v16M1 9h16" />
-                </svg>
-            </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-        </div> --}}
-        </div>
-
+        {{-- End Pengunjung --}}
     </div>
 
+    <div class="grid grid-cols-3 gap-4 mb-4">
+        {{-- Grafik --}}
+        <div
+            class="w-full col-span-1 border border-slate-200 drop-shadow-lg bg-gradient-to-tl from-slate-800 to-purple-900 rounded-2xl shadow-lg dark:bg-gray-800 p-4 mb-4 md:p-6">
+            <h3 class="text-xl text-white font-semibold mb-2">Data Peminjaman</h3>
+            {{-- <div class="flex">
+                <h5 id="pinjam-value" class="leading-none text-3xl font-bold text-gray-900 dark:text-white pe-2">
+                    {{ $pinjamCount }}</h5>
+                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Peminjam</p>
+            </div> --}}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
+            {{-- Charts --}}
+            {{-- <div class="bg-purple-900 p-4 rounded-xl"> --}}
+            <div id="chart-peminjam"></div>
 
-    <script>
-        var pengunjungAsli = <?= json_encode($total_kunjungan) ?>;
-        var bulanAsli = <?= json_encode($bulan) ?>;
+            {{-- </div> --}}
 
-        function formatTanggal(tanggal) {
-            var dateObj = new Date(tanggal);
-            var options = {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-            };
-            return dateObj.toLocaleDateString('id-ID', options);
-        }
+            <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+                <div class="flex justify-between items-center pt-5">
+                    <!-- Button -->
+                    <button id="dropdownPeminjaman" data-dropdown-toggle="lastDaysdropdownPeminjaman"
+                        data-dropdown-placement="bottom"
+                        class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                        type="button">
+                        1 Bulan Lalu
+                        <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="lastDaysdropdownPeminjaman"
+                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownPeminjaman">
+                            <li>
+                                <button onclick="filterDataPinjam('7-days-pinjam', '1 Minggu Lalu')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    1 Minggu Lalu</button>
+                            </li>
+                            <li>
+                                <button onclick="filterDataPinjam('30-days-pinjam', '1 Bulan Lalu')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    1 Bulan Lalu</button>
+                            </li>
+                            <li>
+                                <button onclick="filterDataPinjam('180-days-pinjam', '6 Bulan Lalu')"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    6 Bulan Lalu</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#"
+                        class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+                        Report
+                        <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 9 4-4-4-4" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{-- End Grafik --}}
+    </div>
 
-        var formattedBulan = bulanAsli.map(formatTanggal);
+</div>
 
-        var chart;
 
-        function filterData(period, label) {
-            var now = new Date();
-            var filteredPengunjung = [];
-            var filteredBulan = [];
-            var totalPengunjung = 0;
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 
-            if (period === '7-days') {
-                var sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= sevenDaysAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= sevenDaysAgo;
-                });
-            } else if (period === '30-days') {
-                var thirtyDaysAgo = new Date(now.setMonth(now.getMonth() - 1));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= thirtyDaysAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= thirtyDaysAgo;
-                });
-            } else if (period === '180-days') {
-                var sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= sixMonthsAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= sixMonthsAgo;
-                });
-            }
+<script>
+    //JS pengunjung
+    var seriesData = <?= json_encode($seriesData) ?>;
+    var categories = <?= json_encode($categories) ?>;
 
-            // Update total kunjungan
-            totalPengunjung = filteredPengunjung.reduce((a, b) => a + b, 0);
-            document.getElementById('kun-value').innerText = totalPengunjung;
+    // Definisikan warna untuk setiap jurusan
+    var colors = ['#673AB7', '#FF5722', '#4CAF50', '#FFC107', '#009688'];
 
-            // Update chart dengan data yang telah difilter
-            chart.updateOptions({
-                series: [{
-                    name: "Pengunjung",
-                    data: filteredPengunjung
-                }],
-                xaxis: {
-                    categories: filteredBulan.map(formatTanggal)
-                },
-                yaxis: {
-                    tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
-                    min: Math.min(...filteredPengunjung),
-                    max: Math.max(...filteredPengunjung),
-                }
+    function formatTanggal(tanggal) {
+        var dateObj = new Date(tanggal);
+        var options = {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        };
+        return dateObj.toLocaleDateString('id-ID', options);
+    }
+
+    var formattedBulan = categories.map(formatTanggal);
+
+    var chart;
+
+    function filterData(period, label) {
+        var now = new Date();
+        var filteredSeries = {};
+        var filteredBulan = [];
+
+        if (period === '7-days') {
+            var sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+            filteredBulan = categories.filter(function(date) {
+                return new Date(date) >= sevenDaysAgo;
             });
-
-            // Update label dropdown untuk menampilkan filter yang dipilih
-            document.getElementById('dropdownDefaultButton').innerHTML = label +
-                `<svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-        </svg>`;
-        }
-
-        function initChart() {
-            var thirtyDaysAgo = new Date();
-            thirtyDaysAgo.setMonth(thirtyDaysAgo.getMonth() - 1);
-
-            var filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                return new Date(bulanAsli[index]) >= thirtyDaysAgo;
-            });
-            var filteredBulan = bulanAsli.filter(function(date) {
+        } else if (period === '30-days') {
+            var thirtyDaysAgo = new Date(now.setMonth(now.getMonth() - 1));
+            filteredBulan = categories.filter(function(date) {
                 return new Date(date) >= thirtyDaysAgo;
             });
-
-            var options = {
-                chart: {
-                    height: 370,
-                    type: "bar"
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                colors: ['#b39ddb'],
-                series: [{
-                    name: "Pengunjung",
-                    data: filteredPengunjung
-                }],
-                fill: {
-                    type: "gradient",
-                    gradient: {
-                        shadeIntensity: 1,
-                        opacityFrom: 0.7,
-                        opacityTo: 0.9,
-                        stops: [0, 90, 100],
-                        colorStops: [{
-                                offset: 0,
-                                color: "#b39ddb",
-                                opacity: 1
-                            },
-                            {
-                                offset: 100,
-                                color: "#b39ddb",
-                                opacity: 0.4
-                            }
-                        ]
-                    }
-                },
-                xaxis: {
-                    type: 'categories',
-                    categories: filteredBulan.map(formatTanggal),
-                    labels: {
-                        formatter: function(value) {
-                            return value;
-                        },
-                    }
-                },
-                yaxis: {
-                    tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
-                    min: Math.min(...filteredPengunjung),
-                    max: Math.max(...filteredPengunjung),
-                    labels: {
-                        formatter: function(value) {
-                            return Math.round(value);
-                        }
-                    }
-                }
-            };
-
-            chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
+        } else if (period === '180-days') {
+            var sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
+            filteredBulan = categories.filter(function(date) {
+                return new Date(date) >= sixMonthsAgo;
+            });
         }
 
-        initChart();
+        // Filter data untuk setiap jurusan berdasarkan tanggal yang difilter
+        Object.keys(seriesData).forEach(function(jurusan) {
+            filteredSeries[jurusan] = seriesData[jurusan].slice(-filteredBulan.length);
+        });
+
+        // Hitung nilai maksimum dan minimum dari data yang difilter
+        var allData = Object.values(filteredSeries).flat();
+        var minValue = Math.min(...allData);
+        var maxValue = Math.max(...allData);
+
+        // Tentukan interval tick yang sesuai
+        var tickAmount = Math.ceil((maxValue - minValue) / 10); // Jumlah interval tick
+
+        // Pastikan `max` adalah kelipatan dari interval tick
+        var adjustedMax = Math.ceil(maxValue / tickAmount) * tickAmount;
+
+        // Update chart dengan data yang telah difilter
+        var chartSeries = Object.keys(filteredSeries).map(function(jurusan, index) {
+            return {
+                name: jurusan,
+                data: filteredSeries[jurusan],
+                color: colors[index % colors.length] // Pilih warna dari array
+            };
+        });
+
+        chart.updateOptions({
+            series: chartSeries,
+            xaxis: {
+                categories: filteredBulan.map(formatTanggal)
+            },
+            yaxis: {
+                min: Math.floor(minValue / tickAmount) * tickAmount,
+                max: adjustedMax,
+                tickAmount: (adjustedMax - Math.floor(minValue / tickAmount) * tickAmount) /
+                    tickAmount, // Jumlah tick
+                labels: {
+                    formatter: function(value) {
+                        return Math.round(value);
+                    }
+                }
+            }
+        });
+
+        // Update label dropdown untuk menampilkan filter yang dipilih
+        document.getElementById('dropdownPengunjung').innerHTML = label +
+            `<svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>`;
+    }
+
+    function initChart() {
+        var thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setMonth(thirtyDaysAgo.getMonth() - 1);
+
+        var filteredBulan = categories.filter(function(date) {
+            return new Date(date) >= thirtyDaysAgo;
+        });
+
+        // Filter data untuk setiap jurusan berdasarkan tanggal yang difilter
+        var filteredSeries = {};
+        Object.keys(seriesData).forEach(function(jurusan) {
+            filteredSeries[jurusan] = seriesData[jurusan].slice(-filteredBulan.length);
+        });
+
+        // Hitung nilai maksimum dan minimum dari data yang difilter
+        var allData = Object.values(filteredSeries).flat();
+        var minValue = Math.min(...allData);
+        var maxValue = Math.max(...allData);
+
+        // Tentukan interval tick yang sesuai
+        var tickAmount = Math.ceil((maxValue - minValue) / 10); // Jumlah interval tick
+
+        // Pastikan `max` adalah kelipatan dari interval tick
+        var adjustedMax = Math.ceil(maxValue / tickAmount) * tickAmount;
+
+        var chartSeries = Object.keys(filteredSeries).map(function(jurusan, index) {
+            return {
+                name: jurusan,
+                data: filteredSeries[jurusan],
+                color: colors[index % colors.length] // Pilih warna dari array
+            };
+        });
+
+        var options = {
+            chart: {
+                height: 280,
+                type: "bar",
+                events: {
+                    mounted: function(chartContext, config) {
+                        // Menambahkan efek glow menggunakan CSS
+                        let bars = document.querySelectorAll(
+                            '.apexcharts-bar-area .apexcharts-bar-series .apexcharts-bar');
+                        bars.forEach(function(bar) {
+                            bar.style.filter =
+                                "drop-shadow(0 0 10px rgba(103, 58, 183, 0.7))"; // Efek glow purple
+                        });
+                    }
+                }
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    columnWidth: '50%'
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: chartSeries,
+            xaxis: {
+                type: 'categories',
+                categories: filteredBulan.map(formatTanggal),
+                labels: {
+                    formatter: function(value) {
+                        return value;
+                    }
+                }
+            },
+            yaxis: {
+                min: Math.floor(minValue / tickAmount) * tickAmount,
+                max: adjustedMax,
+                tickAmount: (adjustedMax - Math.floor(minValue / tickAmount) * tickAmount) /
+                    tickAmount, // Jumlah tick
+                labels: {
+                    formatter: function(value) {
+                        return Math.round(value);
+                    }
+                }
+            }
+        };
+
+        chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    }
+
+    // Inisialisasi chart
+    initChart();
 
 
-        // var chart = new ApexCharts(document.querySelector("#chart"), options);
 
-        // chart.render();
 
-        //message with sweetalert
-        @if (session('success'))
-            Swal.fire({
-                icon: "success",
-                title: "BERHASIL",
-                text: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 2000
+
+
+
+
+    var pinjam = <?= json_encode($data_peminjaman) ?>;
+    var bulanPinjam = <?= json_encode($bulan_pinjam) ?>;
+
+    var formatBulanPinjam = bulanPinjam.map(formatTanggal);
+
+    var chartPinjam;
+
+    function filterDataPinjam(period, label) {
+        var now = new Date();
+        var filteredPeminjam = [];
+        var filteredBulan = [];
+        var totalPeminjam = 0;
+
+        if (period === '7-days-pinjam') {
+            var sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+            filteredPeminjam = pinjam.filter(function(_, index) {
+                return new Date(bulanPinjam[index]) >= sevenDaysAgo;
             });
-        @elseif (session('error'))
-            Swal.fire({
-                icon: "error",
-                title: "GAGAL!",
-                text: "{{ session('error') }}",
-                showConfirmButton: false,
-                timer: 2000
+            filteredBulan = bulanPinjam.filter(function(date) {
+                return new Date(date) >= sevenDaysAgo;
             });
-        @endif
-    </script>
+        } else if (period === '30-days-pinjam') {
+            var thirtyDaysAgo = new Date(now.setMonth(now.getMonth() - 1));
+            filteredPeminjam = pinjam.filter(function(_, index) {
+                return new Date(bulanPinjam[index]) >= thirtyDaysAgo;
+            });
+            filteredBulan = bulanPinjam.filter(function(date) {
+                return new Date(date) >= thirtyDaysAgo;
+            });
+        } else if (period === '180-days-pinjam') {
+            var sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
+            filteredPeminjam = pinjam.filter(function(_, index) {
+                return new Date(bulanPinjam[index]) >= sixMonthsAgo;
+            });
+            filteredBulan = bulanPinjam.filter(function(date) {
+                return new Date(date) >= sixMonthsAgo;
+            });
+        }
+
+        // Update total kunjungan
+        totalPeminjam = filteredPeminjam.reduce((a, b) => a + b, 0);
+        document.getElementById('pinjam-value').innerText = totalPeminjam;
+
+        // Update chart dengan data yang telah difilter
+        chartPinjam.updateOptions({
+            series: [{
+                name: "Pengunjung",
+                data: filteredPeminjam
+            }],
+            xaxis: {
+                categories: filteredBulan.map(formatTanggal)
+            },
+            yaxis: {
+                tickAmount: Math.max(...filteredPeminjam) - Math.min(...filteredPeminjam) +
+                    1, // Jumlah tick berdasarkan rentang data
+                min: 0,
+                max: Math.max(...filteredPeminjam),
+                labels: {
+                    style: {
+                        colors: '#FFFFFF' // Ubah warna label y-axis menjadi putih
+                    },
+                    formatter: function(value) {
+                        return Math.round(value);
+                    }
+                }
+            }
+        });
+
+        // Update label dropdown untuk menampilkan filter yang dipilih
+        document.getElementById('dropdownPeminjaman').innerHTML = label +
+            `<svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>`;
+    }
+
+    function initChartPeminjam() {
+        var thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setMonth(thirtyDaysAgo.getMonth() - 1);
+
+        var filteredPeminjam = pinjam.filter(function(_, index) {
+            return new Date(bulanPinjam[index]) >= thirtyDaysAgo;
+        });
+        var filteredBulan = bulanPinjam.filter(function(date) {
+            return new Date(date) >= thirtyDaysAgo;
+        });
+
+        var options = {
+            chart: {
+                height: 300,
+                type: "line", // Tipe chart menjadi line
+                zoom: {
+                    enabled: false
+                },
+                dropShadow: {
+                    enabled: true,
+                    top: 3,
+                    left: 2,
+                    blur: 5,
+                    opacity: 0.5,
+                    color: "#fff"
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            colors: ['#FFFFFF'], // Warna garis putih
+            series: [{
+                name: "Peminjam",
+                data: filteredPeminjam
+            }],
+            stroke: {
+                curve: 'smooth', // Kelengkungan garis
+                width: 4, // Lebar garis
+                colors: ['#FFFFFF'], // Warna garis putih
+            },
+            markers: {
+                size: 5,
+                colors: ['#673AB7'], // Warna marker putih
+                strokeWidth: 3,
+                strokeColors: '#fff',
+                hover: {
+                    sizeOffset: 2,
+                    dropShadow: {
+                        enabled: true,
+                        top: 3,
+                        left: 2,
+                        blur: 10,
+                        opacity: 1,
+                        color: "#fff"
+                    }
+                },
+                dropShadow: {
+                    enabled: true,
+                    top: 3,
+                    left: 2,
+                    blur: 5,
+                    opacity: 0.5,
+                    color: "#fff"
+                }
+            },
+            fill: {
+                type: "solid" // Ubah fill dari gradient menjadi solid
+            },
+            xaxis: {
+                type: 'categories',
+                categories: filteredBulan.map(formatTanggal),
+                labels: {
+                    style: {
+                        colors: '#FFFFFF' // Ubah warna label x-axis menjadi putih
+                    },
+                    formatter: function(value) {
+                        return value;
+                    },
+                }
+            },
+            yaxis: {
+                // tickAmount: Math.max(...filteredPeminjam) - Math.min(...filteredPeminjam),
+                min: 0, // Mulai dari 0
+                max: Math.max(...filteredPeminjam),
+                tickAmount: Math.max(...filteredPeminjam) - Math.min(...filteredPeminjam) + 1, // Jumlah tick
+                labels: {
+                    style: {
+                        colors: '#FFFFFF' // Ubah warna label y-axis menjadi putih
+                    },
+                    formatter: function(value) {
+                        return Math.round(value);
+                    }
+                }
+            },
+            grid: {
+                borderColor: "#673AB7",
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            }
+        };
+
+        chartPinjam = new ApexCharts(document.querySelector("#chart-peminjam"), options);
+        chartPinjam.render();
+    }
+
+    initChartPeminjam();
+
+    // var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    // chart.render();
+
+    //message with sweetalert
+    @if (session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "BERHASIL",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "GAGAL!",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>

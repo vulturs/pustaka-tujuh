@@ -12,13 +12,16 @@
                     </div>
 
                 </td>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">
                     {{ $clases->kelas_id }}
                 </th>
                 <td class="px-6 py-4">
                     {{ $clases->kelas }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 text-center">
+                    {{ $clases->jurusan }}
+                </td>
+                <td class="px-6 py-4 text-center">
                     {{ $clases->nama }}
                 </td>
                 <td class="px-6 flex py-4 justify-center">

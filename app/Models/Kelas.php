@@ -16,6 +16,7 @@ class Kelas extends Model
 
     protected $fillable = [
         'kelas',
+        'jurusan',
         'created_by',
     ];
 

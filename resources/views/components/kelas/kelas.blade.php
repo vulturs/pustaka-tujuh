@@ -52,16 +52,19 @@
                         <label for="checkbox-all-search" class="sr-only">checkbox</label> --}}
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         ID Kelas
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Kelas
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Jurusan
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
                         Pendataan Oleh
                     </th>
-                    <th scope="col" class="px-6 text-center py-3">
+                    <th scope="col" class="px-6 text-center py-3 text-center">
                         Action
                     </th>
                 </tr>

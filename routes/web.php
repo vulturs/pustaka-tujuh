@@ -73,6 +73,7 @@ Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('ed
 Route::put('/penerbit/{id}/update', [PenerbitController::class, 'update'])->name('update-penerbit')->middleware('auth');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete-penerbit')->middleware('auth');
 
+//CRUD KELAS
 Route::get('/administrasi/kelas', [KelasController::class, 'index'])->name('kelas');
 Route::get('/administrasi/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
 Route::get('/administrasi/kelas/{id}/edit', [KelasController::class, 'edit'])->name('edit-kelas');

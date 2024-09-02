@@ -15,7 +15,13 @@
                 <label>
                     <input required placeholder="" type="text" class="input" name="kelas"
                         value="{{ old('kelas') }}">
-                    <span>Kelas</span>
+                    <span>Nama Kelas</span>
+                </label>
+                <label>
+                    <input required placeholder="" type="text" class="input" name="jurusan"
+                        value="{{ old('jurusan') }}">
+                    <span>Jurusan (Masukan singkatan dari nama jurusan)</span>
+                    <span class="text-xs ms-1 text-red-500">*Contoh : RPL , TKR</span>
                 </label>
                 <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
 

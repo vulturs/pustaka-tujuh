@@ -17,7 +17,7 @@ class KelasController extends Controller
         return view('components.kelas.kelas-page', [
             'title' => "Data Kelas",
             // 'anggota' => $anggota
-            'kelas' => Kelas::filter()->orderBy('kelas_id')->paginate(5),
+            'kelas' => Kelas::filter()->orderBy('kelas_id')->paginate(10),
             'search' => $request->search
         ]);
     }
@@ -39,6 +39,7 @@ class KelasController extends Controller
     {
         $validated = $request->validate([
             'kelas' => 'required',
+            'jurusan' => 'required',
             'created_by' => 'required',
         ]);
 
@@ -86,6 +87,7 @@ class KelasController extends Controller
 
         $validateData = $request->validate([
             'kelas' => 'required|string|max:100',
+            'jurusan' => 'required|string|max:8',
         ]);
 
         // $anggota->update($validateData);

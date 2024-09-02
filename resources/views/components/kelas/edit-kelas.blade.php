@@ -10,13 +10,18 @@
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
-            <form class="form" method="post" action="/kelas/{{ $kelas->kelas_id }}/update">
+            <form class="form" method="post" action="{{ route('update-kelas', $kelas->kelas_id) }}">
                 @method('put')
                 @csrf
                 <label>
                     <input required placeholder="" type="text" class="input" name="kelas"
                         value="{{ old('kelas', $kelas->kelas) }}">
-                    <span>Kelas</span>
+                    <span>Nama Kelas</span>
+                </label>
+                <label>
+                    <input required placeholder="" type="text" class="input" name="jurusan"
+                        value="{{ old('jurusan', $kelas->jurusan) }}">
+                    <span>Jurusan</span>
                 </label>
 
                 <div class="flex gap-3 w-full mt-3">
