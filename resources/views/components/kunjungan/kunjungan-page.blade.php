@@ -16,7 +16,7 @@
                     {{ $kunjungans->id_kunjungan }}
                 </th>
                 <td class="px-6 py-4">
-                    {{ $kunjungans->created_at }}
+                    {{ \Carbon\Carbon::parse($kunjungans->kunjungan_created_at)->format('d M Y, H:i') }}
                 </td>
                 <td class="px-6 py-4">
                     {{ $kunjungans->nama_anggota }}
@@ -35,8 +35,8 @@
                     <a href="" button type="button"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
                     <!-- Form untuk penghapusan -->
-                    <form action="" method="POST" style="display:inline;"
-                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
+                    <form action="{{ route('delete-kunjungan', $kunjungans->id_kunjungan) }}" method="POST"
+                        style="display:inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit"

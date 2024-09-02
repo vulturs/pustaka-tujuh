@@ -61,7 +61,7 @@ class PelanggaranController extends Controller
 
 
         return view('components.pelanggaran.edit-pelanggaran-page', [
-            'title' => "Edit Data Jenis Pelanggaran Perolehan",
+            'title' => "Edit Data Jenis Pelanggaran",
             'pelanggaran' => $pelanggaran,
         ]);
     }

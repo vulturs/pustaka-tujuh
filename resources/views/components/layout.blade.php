@@ -14,7 +14,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
     {{-- <link rel="stylesheet" href="css/select2.min.css"> --}}
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href={{ asset('css/style.css') }}>
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
@@ -24,7 +24,7 @@
     {{-- <div class="bg-dash absolute w-full h-50">
     </div> --}}
     <x-sidebar></x-sidebar>
-    <div class="px-4 sm:ml-64">
+    <div class="mx-5 sm:ml-64">
         <div class="rounded-lg">
             {{ $slot }}
         </div>

@@ -24,7 +24,7 @@ class Kunjungan extends Model
         $query->join('anggota', 'kunjungan.id_anggota', '=', 'anggota.id_anggota')
             ->join('users', 'kunjungan.created_by', '=', 'users.id_user')
             ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
-            ->select('*')
+            ->select('kunjungan.*', 'kunjungan.created_at as kunjungan_created_at', 'anggota.*', 'users.*', 'data_kelas.*')
             ->where('anggota.nama_anggota', 'like', '%' . request('search') . '%')
             ->orWhere('data_kelas.kelas', 'like', '%' . request('search') . '%')
             ->orWhere('users.nama', 'like', '%' . request('search') . '%');

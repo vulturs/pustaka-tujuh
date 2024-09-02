@@ -21,13 +21,14 @@ class BukuInduk extends Model
         'bahasa',
         'id_penerbit',
         'id_perolehan',
-        'jml_eks',
-        'jml_jld',
+        'jumlah_total',
+        'satuan',
+        'stok_tersedia',
         'harga',
         'tipe_harga',
         'ketersediaan',
-        'created_by',
-        
+        'created_by'
+
     ];
 
     public function scopeFilter(Builder $query): void
@@ -67,5 +68,4 @@ class BukuInduk extends Model
             ->get();
         // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }
-
 }

@@ -12,6 +12,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+.shadow-medium {
+    /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 /* .card-glass-green {
     background: rgba(0, 255, 42, 0.34);
     border-radius: 16px;
@@ -23,7 +28,7 @@
 
 .active-nav {
     /* background-color: #a6d3f7; */
-    background-color: #bfdbfe;
+    background-color: #673ab7;
     /* color: #274e7a; */
     /* box-shadow: 0 0 10px 5px #daf7a3,
               0 0 20px 7px #d7f0a8; */
@@ -779,4 +784,104 @@
 /* Show the dropdown menu */
 .show {
     display: block;
+}
+
+/* From Uiverse.io by MikeAndrewDesigner */
+.e-card {
+    /* margin: 100px auto; */
+    background: transparent;
+    /* box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.3); */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* border-radius: 16px; */
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    width: 540px;
+    height: 700px;
+    opacity: 0.6;
+    left: 0;
+    top: 0;
+    margin-left: -50%;
+    margin-top: -70%;
+    background: linear-gradient(744deg, #af40ff, #5b42f3 60%, #00ddeb);
+}
+
+.icon {
+    width: 3em;
+    margin-top: -1em;
+    padding-bottom: 1em;
+}
+
+.infotop {
+    /* text-align: center; */
+    /* font-size: 20px; */
+    /* position: absolute; */
+    /* top: 5.6em; */
+    /* left: 0; */
+    /* right: 0; */
+    /* color: rgb(255, 255, 255); */
+    /* font-weight: 600; */
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 100;
+    /* position: relative;
+    top: 1em; */
+    /* text-transform: lowercase; */
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+    top: 100px;
+    left: 60px;
+}
+
+.playing .wave {
+    border-radius: 40%;
+    animation: wave 3000ms infinite linear;
+}
+
+.wave {
+    border-radius: 40%;
+    animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+    animation-duration: 4000ms;
+}
+
+.wave:nth-child(2) {
+    animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+    animation-duration: 5000ms;
+}
+
+.wave:nth-child(3) {
+    animation-duration: 45s;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.glass-table {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Anggota;
 use App\Models\Kunjungan;
-use Illuminate\Http\Request;
+use App\Exports\ExportFile;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KunjunganController extends Controller
 {
@@ -17,7 +20,7 @@ class KunjunganController extends Controller
         // $anggota = new Anggota();
         return view('components.kunjungan.kunjungan-page', [
             'title' => "Data Kunjungan",
-            'kunjungan' => Kunjungan::filter()->orderBy('id_kunjungan')->paginate(10)
+            'kunjungan' => Kunjungan::filter()->orderBy('kunjungan_created_at', 'desc')->paginate(10)
             // 'anggota' => $anggota->show()
         ]);
     }
@@ -55,15 +58,20 @@ class KunjunganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function print(Request $request)
     {
-        // $anggota = $this->agt->choose();
-        // $anggota = new Anggota;
-        // return view('components.kunjungan.create-kunjungan-page',  [
-        //     'title' => "Tambah Data Kunjungan",
-        //     'anggota' => $anggota->choose()
-        // ]);
-        // dd($agt->choose()->kelas);
+        $title = 'Data Kunjungan.pdf';
+        $data = Kunjungan::filter()->orderBy('kunjungan_created_at', 'desc')->get();
+        // dd($data);
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('components.kunjungan.print-kunjungan', compact('data', 'title'));
+            return $pdf->stream('Data Kunjungan.pdf');
+        }
+    }
+
+    public function excel()
+    {
+        return Excel::download(new ExportFile, 'Data Kunjungan ' . now()->format('d-m-Y') . '.xlsx');
     }
 
     /**

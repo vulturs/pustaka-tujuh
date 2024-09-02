@@ -22,31 +22,42 @@ class KoleksiController extends Controller
 
     public function create()
     {
-        return view('components.koleksi.create-koleksi-page', [
-            'title' => "Tambah Buku Induk", 
-            'klasifikasi' => Klasifikasi::all(),
-            'penerbit' => Penerbit::all(),
-            'perolehan' => Perolehan::all()
-        ]);
+        $title = "Tambah Buku Induk";
+        $klasifikasi = Klasifikasi::all();
+        $penerbit = Penerbit::all();
+        $perolehan = Perolehan::all();
+        return view('components.koleksi.create-koleksi-page', compact(
+            'title',
+            'klasifikasi',
+            'penerbit',
+            'perolehan'
+        ));
     }
 
     public function store(Request $request)
     {
+        // if ($request->jml_eks != 0) {
+        //     $stok = $request->jml_eks;
+        // } else {
+        //     $stok = $request->jml_eks;
+        // }
+
         $validated = $request->validate([
             'no_barcode' => 'required|string|max:100',
             'pengarang' => 'required|string',
             'judul_buku' => 'required|string',
             'id_klasifikasi' => 'required',
-            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
+            'tahun' => 'required|digits:4|numeric|min:1900|max:' . (date('Y')),
             'bahasa' => 'required|string',
             'id_penerbit' => 'required',
             'id_perolehan' => 'required',
-            'jml_eks' => 'required|integer',
-            'jml_jld' => 'required|integer',
+            'jumlah_total' => 'required|numeric',
+            'satuan' => 'required|string',
+            'stok_tersedia' => 'required',
             'harga' => 'required|numeric',
             'tipe_harga' => 'required|string',
             'ketersediaan' => 'required|string',
-            'created_by' => 'required|integer',
+            'created_by' => 'required|numeric',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
@@ -56,10 +67,7 @@ class KoleksiController extends Controller
         return redirect()->route('koleksi')->with('success', 'Data buku induk berhasil ditambahkan');
     }
 
-    public function show()
-    {
-        
-    }
+    public function show() {}
 
 
     public function edit($id)
@@ -96,16 +104,17 @@ class KoleksiController extends Controller
             'pengarang' => 'required|string',
             'judul_buku' => 'required|string',
             'id_klasifikasi' => 'required',
-            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y')),
+            'tahun' => 'required|digits:4|numeric|min:1900|max:' . (date('Y')),
             'bahasa' => 'required|string',
             'id_penerbit' => 'required',
             'id_perolehan' => 'required',
-            'jml_eks' => 'required|integer',
-            'jml_jld' => 'required|integer',
+            'jumlah_total' => 'required|numeric',
+            'satuan' => 'required|string',
+            'stok_tersedia' => 'required|numeric',
             'harga' => 'required|numeric',
             'tipe_harga' => 'required|string',
             'ketersediaan' => 'required|string',
-            'created_by' => 'required|integer',
+            'created_by' => 'required|numeric',
         ]);
 
         // $anggota->update($valid);

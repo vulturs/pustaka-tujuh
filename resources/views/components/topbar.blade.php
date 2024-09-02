@@ -1,4 +1,4 @@
-<div class="flex w-full z-40 bg-white justify-between items-center p-4 px-3 pe-5">
+<div class="flex w-full z-40 bg-white justify-between items-center py-3">
     {{-- <div>
         @if (request()->is('/'))
             <h2 class="text-3xl font-semibold mx-3 pb-0">Dashboard</h2>

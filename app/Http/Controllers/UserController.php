@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         return view('components/users-page', [
             'title' => 'Data Pengguna',
-            'users' => User::all()
+            'users' => User::filter()->orderBy('id_user')->paginate(10)
         ]);
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function create()
     {
         return view('components.users.create-users-page',  [
-            'title' => "Tambah Pengguna", 
+            'title' => "Tambah Pengguna",
         ]);
     }
 
@@ -63,7 +63,7 @@ class UserController extends Controller
 
 
         return view('components.users.edit-users-page', [
-            'title' => "Edit Data Sumber Perolehan",
+            'title' => "Edit Data Pengguna",
             'users' => $users,
         ]);
     }

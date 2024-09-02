@@ -1,23 +1,25 @@
 <?php
 
 use App\Models\Penerbit;
+use App\Models\Klasifikasi;
 use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\KelasController;
-use App\Http\Controllers\KlasifikasiController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KoleksiController;
-use App\Http\Controllers\KunjunganController;
-use App\Http\Controllers\PelanggaranController;
-use App\Http\Controllers\PeminjamanController;
-use App\Models\Klasifikasi;
-use App\View\Components\klasifikasi\klasifikasiPage;
 use App\Http\Controllers\PenerbitController;
-use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\PerolahanController;
 use App\Http\Controllers\PerolehanController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\KlasifikasiController;
+use App\Http\Controllers\PelanggaranController;
+use App\Http\Controllers\PengembalianController;
+use App\View\Components\klasifikasi\klasifikasiPage;
 
 // Route::get('/', function () {
 //     return view('home', ['title' => 'Dashboard']);});
@@ -52,7 +54,7 @@ Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('edit
 Route::put('/anggota/{id}/update', [AnggotaController::class, 'update'])->name('update-anggota')->middleware('auth');
 Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('delete-anggota')->middleware('auth');
 
-//CRUD JENIS PENGUNJUNG
+//CRUD KUNJUNGAN
 Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan')->middleware('auth');
 Route::get('/tambah-kunjungan', [KunjunganController::class, 'create'])->name('tambah-kunjungan');
 Route::post('/tambah-kunjungan', [KunjunganController::class, 'store'])->name('store-kunjungan')->middleware('auth');
@@ -60,6 +62,8 @@ Route::post('/tambah-kunjungan', [KunjunganController::class, 'store'])->name('s
 Route::get('/kunjungan/{id}/edit', [KunjunganController::class, 'edit'])->name('edit-kunjungan')->middleware('auth');
 Route::put('/kunjungan/{id}/update', [KunjunganController::class, 'update'])->name('update-kunjungan')->middleware('auth');
 Route::delete('/kunjungan/{id}', [KunjunganController::class, 'destroy'])->name('delete-kunjungan')->middleware('auth');
+Route::get('/kunjungan/print', [KunjunganController::class, 'print'])->name('kunjungan-print')->middleware('auth');
+Route::get('/kunjungan/to-excel', [KunjunganController::class, 'excel'])->name('kunjungan-to-excel')->middleware('auth');
 
 //CRUD PENERBIT
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit')->middleware('auth');
@@ -104,6 +108,25 @@ Route::delete('/administrasi/pelanggaran/{id}', [PelanggaranController::class, '
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman')->middleware('auth');
 Route::get('/tambah-peminjaman', [PeminjamanController::class, 'create'])->name('tambah-peminjaman')->middleware('auth');
 Route::post('/tambah-peminjamn', [PeminjamanController::class, 'store'])->name('store-peminjaman')->middleware('auth');
+Route::get('/proses-pengembalian/{id}', [PeminjamanController::class, 'proses_kembali'])->name('proses-pengembalian')->middleware('auth');
 // Route::get('/koleksi/{id}/edit', [KoleksiController::class, 'edit'])->name('edit-koleksi')->middleware('auth');
 // Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('update-koleksi')->middleware('auth');
 // Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
+
+//CRUD KATALOG
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog')->middleware('auth');
+Route::get('/katalog-detail/{id}', [KatalogController::class, 'detail'])->name('katalog-detail')->middleware('auth');
+Route::get('/print-katalog/{id}', [KatalogController::class, 'printPDF'])->name('print-katalog');
+Route::get('/katalog/add', [KatalogController::class, 'create'])->name('tambah-katalog')->middleware('auth');
+Route::post('/katalog/add', [KatalogController::class, 'store'])->name('store-katalog')->middleware('auth');
+Route::get('/katalog/{id}/edit', [KatalogController::class, 'edit'])->name('edit-katalog')->middleware('auth');
+Route::put('/katalog/{id}/update', [KatalogController::class, 'update'])->name('update-katalog')->middleware('auth');
+Route::delete('/katalog/{id}', [KatalogController::class, 'destroy'])->name('delete-katalog')->middleware('auth');
+
+//CRUD PENGEMBALIAN
+Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian')->middleware('auth');
+Route::get('/pengembalian/add', [PengembalianController::class, 'create'])->name('tambah-pengembalian')->middleware('auth');
+Route::post('/pengembalian/add', [PengembalianController::class, 'store'])->name('store-pengembalian')->middleware('auth');
+Route::get('/pengembalian/{id}/edit', [PengembalianController::class, 'edit'])->name('edit-pengembalian')->middleware('auth');
+Route::put('/pengembalian/{id}/update', [PengembalianController::class, 'update'])->name('update-pengembalian')->middleware('auth');
+Route::delete('/pengembalian/{id}', [PengembalianController::class, 'destroy'])->name('delete-pengembalian')->middleware('auth');

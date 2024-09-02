@@ -8,80 +8,91 @@
                 Tambah Data Peminjaman
             </h3>
         </div>
-        <div class="flex flex-col gap-4 p-6">
+        <div class="flex flex-col gap-2 p-6">
             {{-- <form class="form" action="/tambah-kunjungan"> --}}
             {{-- <label> --}}
-            <div class="">
-                <button onclick="myFunction()" id="dropbtn"
-                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    Pilih Nama Angggota</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Masukkan Nama" id="myInput" onkeyup="filterFunction()">
-                    @foreach ($anggotaAll as $all)
-                        <a href="#$all->id_anggota" id="cont" data-id-anggota="{{ $all->id_anggota }}"
-                            data-nama-anggota="{{ $all->nama_anggota }}" data-kelas="{{ $all->kelas }}"
-                            onclick="fillInputs(this);">{{ $all->nama_anggota }}</a>
-                    @endforeach
+            <div class="flex mb-3">
+                <div class="">
+                    <button onclick="myFunction()" id="dropbtn"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Pilih Nama Angggota</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input class="p-3 w-full" type="text" placeholder="Masukkan Nama" id="myInput"
+                            onkeyup="filterFunction()">
+                        @foreach ($anggotaAll as $all)
+                            <a href="#$all->id_anggota" id="cont" data-id-anggota="{{ $all->id_anggota }}"
+                                data-nama-anggota="{{ $all->nama_anggota }}" data-kelas="{{ $all->kelas }}"
+                                onclick="fillInputs(this);">{{ $all->nama_anggota }}</a>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-            <div class="">
-                <button onclick="myFunctionBuku()" id="dropbtnBuku"
-                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    Pilih Judul Buku</button>
-                <div id="myDropdownBuku" class="dropdown-content-buku">
-                    <input type="text" placeholder="Masukkan Judul Buku" id="myInput1" onkeyup="filterFunctionBuku()">
-                    @foreach ($koleksiAll as $kolAll)
-                        <a id="cont" data-kode-buku-induk="{{ $kolAll->kode_buku_induk }}"
-                            data-judul-buku="{{ $kolAll->judul_buku }}" data-pengarang="{{ $kolAll->pengarang }}" data-penerbit="{{ $kolAll->nama }}" data-klasifikasi="{{ $kolAll->kode_ddc }}"
-                            onclick="fillInputsBuku(this);">{{ $kolAll->judul_buku }}</a>
-                    @endforeach
+                <div class="">
+                    <button onclick="myFunctionBuku()" id="dropbtnBuku"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        Pilih Judul Buku</button>
+                    <div id="myDropdownBuku" class="dropdown-content-buku">
+                        <input class="p-3 w-full" type="text" placeholder="Masukkan Judul Buku" id="myInput1"
+                            onkeyup="filterFunctionBuku()">
+                        @foreach ($koleksiAll as $kolAll)
+                            <a id="cont" data-kode-buku-induk="{{ $kolAll->kode_buku_induk }}"
+                                data-judul-buku="{{ $kolAll->judul_buku }}" data-pengarang="{{ $kolAll->pengarang }}"
+                                data-penerbit="{{ $kolAll->nama_penerbit }}" data-klasifikasi="{{ $kolAll->kode_ddc }}"
+                                onclick="fillInputsBuku(this);">{{ $kolAll->judul_buku }}</a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
             {{-- </label> --}}
             </form>
-            <form class="form" method="post" action="{{ route('store-peminjaman') }}">
+            <form class="form mt-2 mb-2" style="gap: 0; padding-bottom:0;" method="post"
+                action="{{ route('store-peminjaman') }}">
                 @csrf
                 <div class="flex mb-3 w-full">
                     <div class="">
-                        <span class="text-slate-500">Nama Anggota : </span><br>
-                        <input required class="font-medium text-lg" placeholder="" type="text" id="nama_anggota"
+                        <span class="text-slate-500">Nama Anggota</span><br>
+                        <input required class="font-medium text-lg w-80" placeholder="" type="text" id="nama_anggota"
                             name="nama_anggota" disabled>
+                        <hr style="width: 95%">
                     </div>
                     <div class="w-full">
-                        <span class="text-slate-500">Kelas : </span><br>
+                        <span class="text-slate-500">Kelas</span><br>
                         <input required class="font-medium text-lg w-full" placeholder="" type="text" id="kelas"
                             name="kelas" disabled>
+                        <hr>
                     </div>
                 </div>
 
-    
                 {{-- </label> --}}
-                </form>
-                <form class="form" method="post" action="{{ route('store-peminjaman') }}">
-                    @csrf
-                    <div class="flex mb-3 w-full">
-                        <div class="">
-                            <span class="text-slate-500">Judul Buku : </span><br>
-                            <input required class="font-medium text-lg" placeholder="" type="text" id="judul_buku"
-                                name="judul_buku" disabled>
-                        </div>
-                        <div class="w-full">
-                            <span class="text-slate-500">Pengarang : </span><br>
-                            <input required class="font-medium text-lg w-full" placeholder="" type="text" id="pengarang"
-                                name="pengarang" disabled>
-                        </div>
-                        <div class="w-full">
-                            <span class="text-slate-500">Penerbit : </span><br>
-                            <input required class="font-medium text-lg w-full" placeholder="" type="text" id="penerbit"
-                                name="penerbit" disabled>
-                        </div>
-                        <div class="w-full">
-                            <span class="text-slate-500">Kode DDC : </span><br>
-                            <input required class="font-medium text-lg w-full" placeholder="" type="text" id="klasifikasi"
-                                name="klasifikasi" disabled>
-                        </div>
+            </form>
+            <form class="form" method="post" action="{{ route('store-peminjaman') }}">
+                @csrf
+                <div class="">
+                    <span class="text-slate-500 text-sm">Judul Buku</span><br>
+                    <input required class="font-medium border-b-purple-900 text-lg" placeholder="" type="text"
+                        id="judul_buku" name="judul_buku" disabled>
+                    <hr>
+                </div>
+                <div class="flex mb-5 w-full">
+                    <div class="w-full">
+                        <span class="text-slate-500 text-sm">Pengarang</span><br>
+                        <input required class="font-medium text-lg w-full" placeholder="" type="text" id="pengarang"
+                            name="pengarang" disabled>
+                        <hr style="width: 95%">
                     </div>
+                    <div class="w-full">
+                        <span class="text-slate-500 text-sm">Penerbit</span><br>
+                        <input required class="font-medium text-lg w-full" placeholder="" type="text" id="penerbit"
+                            name="penerbit" disabled>
+                        <hr style="width: 95%">
+                    </div>
+                    <div class="w-40">
+                        <span class="text-slate-500 text-sm">Kode DDC</span><br>
+                        <input required class="font-medium text-lg w-full" placeholder="" type="text"
+                            id="klasifikasi" name="klasifikasi" disabled>
+                        <hr>
+                    </div>
+                </div>
 
                 {{-- <label>
                     <textarea required="" name="tujuan_kunjungan" rows="2" placeholder="" class="input01">{{ old('kunjungan') }}</textarea>
@@ -89,19 +100,21 @@
                 </label> --}}
                 <div class="flex mb-3 w-full">
                     <div class="">
-                        <span class="text-slate-500">Tanggal Pinjam : </span><br>
-                        <input required class="font-medium text-lg" placeholder="" type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" readonly>
+                        <span class="text-slate-500 text-sm">Tanggal Pinjam</span><br>
+                        <input required class="font-medium text-lg" placeholder="" type="date"
+                            id="tanggal_peminjaman" name="tanggal_peminjaman" readonly>
                     </div>
                     <div class="w-full">
-                        <span class="text-slate-500">Batas Pengembalian : </span><br>
-                        <input required class="font-medium text-lg w-full" placeholder="" type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" readonly>
+                        <span class="text-slate-500 text-sm">Batas Pengembalian</span><br>
+                        <input required class="font-medium text-lg w-full" placeholder="" type="date"
+                            id="tanggal_pengembalian" name="tanggal_pengembalian" readonly>
                     </div>
                 </div>
-                
+
                 <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
                 <input type="hidden" id="id_anggota" name="id_anggota">
                 <input type="hidden" id="kode_buku_induk" name="kode_buku_induk">
-                
+
                 {{-- <input type="date" id="tanggal_peminjaman" name="tanggal_peminjaman" disabled>
                 <input type="date" id="tanggal_pengembalian" name="tanggal_pengembalian" disabled> --}}
 
@@ -126,24 +139,24 @@
     </div>
 </div>
 <script>
-      // Get the current date
-        let currentDate = new Date();
+    // Get the current date
+    let currentDate = new Date();
 
-        // Format the current date to YYYY-MM-DD
-        let formattedCurrentDate = currentDate.toISOString().slice(0, 10);
+    // Format the current date to YYYY-MM-DD
+    let formattedCurrentDate = currentDate.toISOString().slice(0, 10);
 
-        // Set the value of the input field to the current date
-        document.getElementById('tanggal_peminjaman').value = formattedCurrentDate;
+    // Set the value of the input field to the current date
+    document.getElementById('tanggal_peminjaman').value = formattedCurrentDate;
 
-        // Add 3 days to the current date
-        let returnDate = new Date(currentDate);
-        returnDate.setDate(returnDate.getDate() + 3);
+    // Add 3 days to the current date
+    let returnDate = new Date(currentDate);
+    returnDate.setDate(returnDate.getDate() + 3);
 
-        // Format the return date to YYYY-MM-DD
-        let formattedReturnDate = returnDate.toISOString().slice(0, 10);
+    // Format the return date to YYYY-MM-DD
+    let formattedReturnDate = returnDate.toISOString().slice(0, 10);
 
-        // Set the value of the input field to the return date
-        document.getElementById('tanggal_pengembalian').value = formattedReturnDate;
+    // Set the value of the input field to the return date
+    document.getElementById('tanggal_pengembalian').value = formattedReturnDate;
 
     // document.getElementById('klik').onclick = function() {
     //     document.getElementById('nama_anggota').value = 'John Doe';
@@ -187,7 +200,7 @@
                     openDropdown.classList.remove('show');
                 }
             }
-        }else if (!event.target.matches('#dropbtnBuku') && !event.target.matches('#myInput1')) {
+        } else if (!event.target.matches('#dropbtnBuku') && !event.target.matches('#myInput1')) {
             var dropdowns = document.getElementsByClassName("dropdown-content-buku");
             for (var i = 0; i < dropdowns.length; i++) {
                 var openDropdown = dropdowns[i];

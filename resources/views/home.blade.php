@@ -13,6 +13,9 @@
         'users' => $users,
         'anggota' => $anggota,
         'koleksi' => $koleksi,
+        'pinjam' => $pinjam,
+        'kunjung' => $kunjung,
+        'katalog' => $katalog,
     ])
     @endcomponent
 </x-layout>

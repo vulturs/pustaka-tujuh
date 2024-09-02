@@ -1,6 +1,6 @@
 <x-topbar :$title></x-topbar>
 
-<div class="p-5 me-4 bg-slate-200 rounded-2xl mb-4">
+<div class="rounded-2xl bg-slate-100 p-5 mb-4">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
             <form action="/anggota" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
@@ -23,15 +23,21 @@
             </form>
             <div class="text-right mb-3">
                 <a href="{{ route('tambah-perolehan') }}"
-                    class="rounded-lg relative w-40 h-10 cursor-pointer flex items-center border border-green-500 bg-green-500 group hover:bg-green-500 active:bg-green-500 active:border-green-500">
+                    class="overflow-hidden relative flex p-2 px-4 bg-slate-800 text-white border-none rounded-md font-medium cursor-pointer relative z-10 group">
+                    Perolehan Baru <span class="material-symbols-rounded ps-2 text-sm text-white">
+                        add
+                    </span>
                     <span
-                        class="text-gray-200 font-medium ml-8 transform group-hover:translate-x-20 transition-all duration-300">
-                        Perolehan</span>
+                        class="absolute w-36 h-32 -top-12 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-150 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
                     <span
-                        class="absolute right-0 h-full w-10 rounded-lg bg-green-500 flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300">
-                        <span class="material-symbols-rounded text-white">
+                        class="absolute w-36 h-32 -top-12 -left-2 bg-purple-400 rotate-12 transform scale-x-0 group-hover:scale-x-150 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
+                    <span
+                        class="absolute w-36 h-32 -top-12 -left-2 bg-purple-800 rotate-12 transform scale-x-0 group-hover:scale-x-150 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
+                    <span
+                        class="flex group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2 left-8 z-10">
+                        <span class="material-symbols-rounded pe-2 text-sm text-white">
                             add
-                        </span>
+                        </span> Perolehan
                     </span>
                 </a>
             </div>

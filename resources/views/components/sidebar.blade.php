@@ -12,16 +12,16 @@
     class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
 
-    <div class="block max-w-sm px-4 ps-5 h-full bg-white dark:bg-gray-800 dark:border-gray-700">
-        <div class="h-full py-4 overflow-x-hidden overflow-y-auto dark:bg-gray-800">
-            <a href="#" class="flex justify-center w-full items-center mb-5">
-                <img src="logo-perpus.png" class="w-32" alt="Flowbite Logo" />
+    <div class="block max-w-sm h-full bg-white dark:bg-gray-800 dark:border-gray-700">
+        <div class="h-full overflow-x-hidden overflow-y-auto dark:bg-gray-800">
+            <a href="#" class="flex my-1 ms-14 w-full items-center">
+                <img src={{ asset('logo-perpus.png') }} class="w-32" />
                 <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
             </a>
             <ul class="space-y-2">
                 <li>
                     <a href="/"
-                        class="{{ request()->is('/') ? 'active-nav text-blue-950 font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('/') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             dashboard
                         </span>
@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <a href="/koleksi"
-                        class="{{ request()->is('koleksi') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('koleksi', 'tambah-koleksi', 'koleksi/2/edit') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             collections_bookmark
                         </span>
@@ -40,8 +40,19 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/katalog"
+                        class="{{ request()->is('katalog', 'katalog/add') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
+                        <span class="material-symbols-rounded">
+                            featured_play_list
+                        </span>
+                        <span class="flex-1 ms-3 text-md whitespace-nowrap">Katalog</span>
+                        {{-- <span
+                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span> --}}
+                    </a>
+                </li>
+                <li>
                     <a href="/peminjaman"
-                        class="{{ request()->is('data-pinjam') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('peminjaman', 'tambah-peminjaman') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             share_windows
                         </span>
@@ -51,8 +62,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="{{ request()->is('pengembalian') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                    <a href="/pengembalian"
+                        class="{{ request()->is('pengembalian') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             text_select_jump_to_beginning
                         </span>
@@ -63,9 +74,9 @@
                 </li>
                 <li>
                     <a href="/penerbit"
-                        class="{{ request()->is('penerbit') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('penerbit', 'penerbit/add') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
-                            text_select_jump_to_beginning
+                            captive_portal
                         </span>
                         <span class="flex-1 ms-3 text-md whitespace-nowrap">Penerbit</span>
                         {{-- <span
@@ -74,7 +85,7 @@
                 </li>
                 <li>
                     <a href="/anggota"
-                        class="{{ request()->is('anggota', 'tambah-anggota') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('anggota', 'tambah-anggota') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             assignment_ind
                         </span>
@@ -83,16 +94,16 @@
                 </li>
                 <li>
                     <a href="/kunjungan"
-                        class="{{ request()->is('kunjungan', 'tambah-kunjungan') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('kunjungan', 'tambah-kunjungan') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
-                            assignment_ind
+                            person_raised_hand
                         </span>
                         <span class="flex-1 ms-3 text-md whitespace-nowrap">Pengunjung</span>
                     </a>
                 </li>
                 <li>
                     <a href="/users"
-                        class="{{ request()->is('users') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                        class="{{ request()->is('users') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">
                         <span class="material-symbols-rounded">
                             manage_accounts
                         </span>
@@ -101,7 +112,7 @@
                 </li>
                 <li>
                     <a type="button"
-                        class="{{ request()->is('administrasi/perolehan') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} cursor-pointer mx-2 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group"
+                        class="{{ request()->is('administrasi/perolehan', 'administrasi/klasifikasi', 'administrasi/kelas', 'administrasi/pelanggaran') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-rounded-e-full hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} cursor-pointer ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group"
                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                         <span class="material-symbols-rounded">
                             folder_managed
@@ -111,10 +122,10 @@
                             arrow_drop_down
                         </span>
                     </a>
-                    <ul id="dropdown-example" class="hidden ms-3 py-2 space-y-2">
+                    <ul id="dropdown-example" class="hidden ms-6 py-2 space-y-2">
                         <li>
                             <a href="/administrasi/perolehan"
-                                class="{{ request()->is('administrasi/perolehan') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                class="{{ request()->is('administrasi/perolehan') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
                                     folder_supervised
                                 </span>
@@ -123,7 +134,7 @@
                         </li>
                         <li>
                             <a href="/administrasi/klasifikasi"
-                                class="{{ request()->is('klasifikasi') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                class="{{ request()->is('administrasi/klasifikasi') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
                                     barcode
                                 </span>
@@ -132,7 +143,7 @@
                         </li>
                         <li>
                             <a href="/administrasi/kelas"
-                                class="{{ request()->is('kelas') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                class="{{ request()->is('administrasi/kelas') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
                                     folder_supervised
                                 </span>
@@ -141,9 +152,9 @@
                         </li>
                         <li>
                             <a href="/administrasi/pelanggaran"
-                                class="{{ request()->is('pelanggaran') ? 'active-nav font-medium hover:bg-blue-100 hover:text-blue-950' : 'text-blue-950 rounded-full dark:text-white hover:bg-blue-100 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 hover:text-gray-900 rounded-full dark:text-white dark:hover:bg-gray-700 group">
+                                class="{{ request()->is('administrasi/pelanggaran') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} mx-4 px-4 py-3 flex items-center p-2 rounded-full dark:text-white dark:hover:bg-gray-700 group">
                                 <span class="material-symbols-rounded">
-                                    barcode
+                                    warning
                                 </span>
                                 <span class="flex-1 ms-3 text-sm whitespace-nowrap">Jenis Pelanggaran</span>
                             </a>
