@@ -26,9 +26,19 @@ class HomeController extends Controller
 
         $kun = Kunjungan::count();
 
+        $data_peminjaman = DataPinjam::select(DB::raw("COUNT(*) as count"))
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y')"))
+            ->pluck('count');
+
+        $pinjamCount = DataPinjam::count();
+
         // dd($total_kunjungan);
 
         $bulan = Kunjungan::select(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as created_at"))
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y')"))
+            ->pluck('created_at');
+
+        $bulan_pinjam = DataPinjam::select(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y') as created_at"))
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%d-%M-%Y')"))
             ->pluck('created_at');
 
@@ -43,6 +53,20 @@ class HomeController extends Controller
         $pinjam = DataPinjam::filter()->orderBy('data_pinjam.created_at', 'desc')->limit(6)->get();
         $kunjung = Kunjungan::filter()->orderBy('kunjungan.created_at', 'desc')->limit(6)->get();
 
-        return view('home', compact('users', 'anggota', 'koleksi', 'total_kunjungan', 'kun', 'bulan', 'title', 'pinjam', 'kunjung', 'katalog'));
+        return view('home', compact(
+            'users',
+            'anggota',
+            'koleksi',
+            'total_kunjungan',
+            'kun',
+            'bulan',
+            'title',
+            'pinjam',
+            'kunjung',
+            'katalog',
+            'pinjamCount',
+            'data_peminjaman',
+            'bulan_pinjam',
+        ));
     }
 }

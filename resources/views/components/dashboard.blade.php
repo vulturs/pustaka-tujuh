@@ -200,7 +200,7 @@
         </div>
         {{-- End Grafik --}}
 
-        {{-- Peminjaman --}}
+        {{-- Pengunjung --}}
 
         <div class="mb-4">
             <div class="e-card playing rounded-xl shadow-medium">
@@ -303,288 +303,190 @@
                 </div>
             </div>
         </div>
-        {{-- End Peminjaman --}}
-
-        {{-- <div class="card-cust2">
-            <div class="title-card-cust2">
-                <span class="text-2xl font-medium ps-3 py-2">Data Peminjaman</span>
-                <p class="ps-4">Vivamus nisi purus</p>
-            </div>
-            <div class="icons-card-cust2">
-                <a class="btn-card-cust2 font-medium p-3" href="#">
-                    Lihat Data
-                    <span class="material-symbols-rounded">
-                        double_arrow
-                    </span>
-                </a>
-            </div>
-        </div> --}}
-
-        {{-- pengembalian --}}
+        {{-- End Pengunjung --}}
 
         <div class="grid grid-cols-2 gap-4 mb-4">
-            {{-- <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
+            {{-- Grafik --}}
+            
+            {{-- End Grafik --}}
         </div>
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 1v16M1 9h16" />
-                </svg>
-            </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-        </div> --}}
-        </div>
-
     </div>
 
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 
-    <script>
-        var pengunjungAsli = <?= json_encode($total_kunjungan) ?>;
-        var bulanAsli = <?= json_encode($bulan) ?>;
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 
-        function formatTanggal(tanggal) {
-            var dateObj = new Date(tanggal);
-            var options = {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-            };
-            return dateObj.toLocaleDateString('id-ID', options);
-        }
+<script>
+    var pengunjungAsli = <?= json_encode($total_kunjungan) ?>;
+    var bulanAsli = <?= json_encode($bulan) ?>;
 
-        var formattedBulan = bulanAsli.map(formatTanggal);
+    function formatTanggal(tanggal) {
+        var dateObj = new Date(tanggal);
+        var options = {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        };
+        return dateObj.toLocaleDateString('id-ID', options);
+    }
 
-        var chart;
+    var formattedBulan = bulanAsli.map(formatTanggal);
 
-        function filterData(period, label) {
-            var now = new Date();
-            var filteredPengunjung = [];
-            var filteredBulan = [];
-            var totalPengunjung = 0;
+    var chart;
 
-            if (period === '7-days') {
-                var sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= sevenDaysAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= sevenDaysAgo;
-                });
-            } else if (period === '30-days') {
-                var thirtyDaysAgo = new Date(now.setMonth(now.getMonth() - 1));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= thirtyDaysAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= thirtyDaysAgo;
-                });
-            } else if (period === '180-days') {
-                var sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
-                filteredPengunjung = pengunjungAsli.filter(function(_, index) {
-                    return new Date(bulanAsli[index]) >= sixMonthsAgo;
-                });
-                filteredBulan = bulanAsli.filter(function(date) {
-                    return new Date(date) >= sixMonthsAgo;
-                });
-            }
+    function filterData(period, label) {
+        var now = new Date();
+        var filteredPengunjung = [];
+        var filteredBulan = [];
+        var totalPengunjung = 0;
 
-            // Update total kunjungan
-            totalPengunjung = filteredPengunjung.reduce((a, b) => a + b, 0);
-            document.getElementById('kun-value').innerText = totalPengunjung;
-
-            // Update chart dengan data yang telah difilter
-            chart.updateOptions({
-                series: [{
-                    name: "Pengunjung",
-                    data: filteredPengunjung
-                }],
-                xaxis: {
-                    categories: filteredBulan.map(formatTanggal)
-                },
-                yaxis: {
-                    tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
-                    min: Math.min(...filteredPengunjung),
-                    max: Math.max(...filteredPengunjung),
-                }
+        if (period === '7-days') {
+            var sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+            filteredPengunjung = pengunjungAsli.filter(function(_, index) {
+                return new Date(bulanAsli[index]) >= sevenDaysAgo;
             });
-
-            // Update label dropdown untuk menampilkan filter yang dipilih
-            document.getElementById('dropdownDefaultButton').innerHTML = label +
-                `<svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-        </svg>`;
-        }
-
-        function initChart() {
-            var thirtyDaysAgo = new Date();
-            thirtyDaysAgo.setMonth(thirtyDaysAgo.getMonth() - 1);
-
-            var filteredPengunjung = pengunjungAsli.filter(function(_, index) {
+            filteredBulan = bulanAsli.filter(function(date) {
+                return new Date(date) >= sevenDaysAgo;
+            });
+        } else if (period === '30-days') {
+            var thirtyDaysAgo = new Date(now.setMonth(now.getMonth() - 1));
+            filteredPengunjung = pengunjungAsli.filter(function(_, index) {
                 return new Date(bulanAsli[index]) >= thirtyDaysAgo;
             });
-            var filteredBulan = bulanAsli.filter(function(date) {
+            filteredBulan = bulanAsli.filter(function(date) {
                 return new Date(date) >= thirtyDaysAgo;
             });
-
-            var options = {
-                chart: {
-                    height: 370,
-                    type: "bar"
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                colors: ['#b39ddb'],
-                series: [{
-                    name: "Pengunjung",
-                    data: filteredPengunjung
-                }],
-                fill: {
-                    type: "gradient",
-                    gradient: {
-                        shadeIntensity: 1,
-                        opacityFrom: 0.7,
-                        opacityTo: 0.9,
-                        stops: [0, 90, 100],
-                        colorStops: [{
-                                offset: 0,
-                                color: "#b39ddb",
-                                opacity: 1
-                            },
-                            {
-                                offset: 100,
-                                color: "#b39ddb",
-                                opacity: 0.4
-                            }
-                        ]
-                    }
-                },
-                xaxis: {
-                    type: 'categories',
-                    categories: filteredBulan.map(formatTanggal),
-                    labels: {
-                        formatter: function(value) {
-                            return value;
-                        },
-                    }
-                },
-                yaxis: {
-                    tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
-                    min: Math.min(...filteredPengunjung),
-                    max: Math.max(...filteredPengunjung),
-                    labels: {
-                        formatter: function(value) {
-                            return Math.round(value);
-                        }
-                    }
-                }
-            };
-
-            chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
+        } else if (period === '180-days') {
+            var sixMonthsAgo = new Date(now.setMonth(now.getMonth() - 6));
+            filteredPengunjung = pengunjungAsli.filter(function(_, index) {
+                return new Date(bulanAsli[index]) >= sixMonthsAgo;
+            });
+            filteredBulan = bulanAsli.filter(function(date) {
+                return new Date(date) >= sixMonthsAgo;
+            });
         }
 
-        initChart();
+        // Update total kunjungan
+        totalPengunjung = filteredPengunjung.reduce((a, b) => a + b, 0);
+        document.getElementById('kun-value').innerText = totalPengunjung;
 
+        // Update chart dengan data yang telah difilter
+        chart.updateOptions({
+            series: [{
+                name: "Pengunjung",
+                data: filteredPengunjung
+            }],
+            xaxis: {
+                categories: filteredBulan.map(formatTanggal)
+            },
+            yaxis: {
+                tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
+                min: Math.min(...filteredPengunjung),
+                max: Math.max(...filteredPengunjung),
+            }
+        });
 
-        // var chart = new ApexCharts(document.querySelector("#chart"), options);
+        // Update label dropdown untuk menampilkan filter yang dipilih
+        document.getElementById('dropdownDefaultButton').innerHTML = label +
+            `<svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>`;
+    }
 
-        // chart.render();
+    function initChart() {
+        var thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setMonth(thirtyDaysAgo.getMonth() - 1);
 
-        //message with sweetalert
-        @if (session('success'))
-            Swal.fire({
-                icon: "success",
-                title: "BERHASIL",
-                text: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        @elseif (session('error'))
-            Swal.fire({
-                icon: "error",
-                title: "GAGAL!",
-                text: "{{ session('error') }}",
-                showConfirmButton: false,
-                timer: 2000
-            });
-        @endif
-    </script>
+        var filteredPengunjung = pengunjungAsli.filter(function(_, index) {
+            return new Date(bulanAsli[index]) >= thirtyDaysAgo;
+        });
+        var filteredBulan = bulanAsli.filter(function(date) {
+            return new Date(date) >= thirtyDaysAgo;
+        });
+
+        var options = {
+            chart: {
+                height: 370,
+                type: "bar"
+            },
+            dataLabels: {
+                enabled: false
+            },
+            colors: ['#b39ddb'],
+            series: [{
+                name: "Pengunjung",
+                data: filteredPengunjung
+            }],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.9,
+                    stops: [0, 90, 100],
+                    colorStops: [{
+                            offset: 0,
+                            color: "#b39ddb",
+                            opacity: 1
+                        },
+                        {
+                            offset: 100,
+                            color: "#b39ddb",
+                            opacity: 0.4
+                        }
+                    ]
+                }
+            },
+            xaxis: {
+                type: 'categories',
+                categories: filteredBulan.map(formatTanggal),
+                labels: {
+                    formatter: function(value) {
+                        return value;
+                    },
+                }
+            },
+            yaxis: {
+                tickAmount: Math.max(...filteredPengunjung) - Math.min(...filteredPengunjung),
+                min: Math.min(...filteredPengunjung),
+                max: Math.max(...filteredPengunjung),
+                labels: {
+                    formatter: function(value) {
+                        return Math.round(value);
+                    }
+                }
+            }
+        };
+
+        chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    }
+
+    initChart();
+
+    // var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    // chart.render();
+
+    //message with sweetalert
+    @if (session('success'))
+        Swal.fire({
+            icon: "success",
+            title: "BERHASIL",
+            text: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            icon: "error",
+            title: "GAGAL!",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    @endif
+</script>

@@ -16,6 +16,9 @@
         'pinjam' => $pinjam,
         'kunjung' => $kunjung,
         'katalog' => $katalog,
+        'pinjamCount' => $pinjamCount,
+        'data_peminjaman' => $data_peminjaman,
+        'bulan_pinjam' => $bulan_pinjam,
     ])
     @endcomponent
 </x-layout>
