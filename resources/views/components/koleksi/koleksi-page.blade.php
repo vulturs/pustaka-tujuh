@@ -3,6 +3,11 @@
 
     @component('components/koleksi/koleksi', ['title' => $title, 'koleksi' => $koleksi])
         {{-- <x-koleksi.koleksi :$title> --}}
+            @if (empty($koleksi) || $koleksi->isEmpty())
+            <tr>
+                <td class="text-center text-muted" colspan="10">Data klasifikasi (Kode DDC) tidak tersedia</td>
+            </tr>
+        @else
         @foreach ($koleksi as $collect)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
@@ -112,6 +117,7 @@
             </tr>
             <!-- Other table rows omitted for brevity -->
         @endforeach
+        @endif
         {{-- </x-koleksi.koleksi> --}}
     @endcomponent
 </x-layout>
