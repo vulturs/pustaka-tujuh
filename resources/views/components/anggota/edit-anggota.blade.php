@@ -5,7 +5,7 @@
         <div
             class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
             <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
-                Tambah Data Anggota
+                Edit Data Anggota
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
