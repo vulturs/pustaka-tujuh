@@ -18,7 +18,7 @@ class KelasController extends Controller
             'title' => "Data Kelas",
             // 'anggota' => $anggota
             'kelas' => Kelas::filter()->orderBy('kelas_id')->paginate(5),
-            'search' => $request->search
+            // 'search' => $request->search
         ]);
     }
 
@@ -91,7 +91,7 @@ class KelasController extends Controller
         // $anggota->update($validateData);
         Kelas::where('kelas_id', $kelas->kelas_id)->update($validateData);
 
-        return redirect()->route('kelas')->with('success', 'Anggota berhasil diperbarui.');
+        return redirect()->route('kelas')->with('success', 'Kelas berhasil diperbarui.');
     }
 
     /**
