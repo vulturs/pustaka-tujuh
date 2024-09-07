@@ -3,7 +3,7 @@
 <div class="p-5 me-4 bg-slate-100 rounded-2xl mb-4">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
-            <form action="/pelanggaran" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
+            <form action="/administrasi/pelanggaran" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative flex items-center">
