@@ -1,4 +1,5 @@
 <x-topbar :$title></x-topbar>
+<div class="p-5 me-4 bg-slate-200 rounded-2xl mb-4">
 <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
     <div
         class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
