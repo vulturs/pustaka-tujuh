@@ -3,23 +3,23 @@
 <div class="p-5 me-4 bg-slate-100 rounded-2xl mb-4">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
-            <form action="/kelas" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
+            <form action="/administrasi/kelas" class="max-w-xs ml-0 mb-4 flex items-center justify-between">
                 <label for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-                <div class="relative flex items-center">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                    <div class="relative flex items-center">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="default-search"
+                            class="block w-full p-2 pl-10 pr-16 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Search..." name="search">
+                        <button type="submit"
+                            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                     </div>
-                    <input type="text" id="default-search"
-                        class="block w-full p-2 pl-10 pr-16 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search..." value="{{ $search }}" name="search">
-                    <button type="submit"
-                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-                </div>
             </form>
             <div class="text-right mb-3">
                 <a href="{{ route('tambah-kelas') }}"
