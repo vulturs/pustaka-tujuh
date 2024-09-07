@@ -87,13 +87,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    $(document).ready(function() {
-        fetch_customer_data();
+    // $(document).ready(function() {
+    //     fetch_customer_data();
 
-        function fetch_customer_data() {
-            alert("load data")
-        }
-    });
+    //     function fetch_customer_data() {
+    //         alert("load data")
+    //     }
+    // });
     //message with sweetalert
     @if (session('success'))
         Swal.fire({
