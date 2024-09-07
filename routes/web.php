@@ -73,6 +73,7 @@ Route::get('/penerbit/{id}/edit', [PenerbitController::class, 'edit'])->name('ed
 Route::put('/penerbit/{id}/update', [PenerbitController::class, 'update'])->name('update-penerbit')->middleware('auth');
 Route::delete('/penerbit/{id}', [PenerbitController::class, 'destroy'])->name('delete-penerbit')->middleware('auth');
 
+//CRUD KELAS
 Route::get('/administrasi/kelas', [KelasController::class, 'index'])->name('kelas');
 Route::get('/administrasi/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
 Route::get('/administrasi/kelas/{id}/edit', [KelasController::class, 'edit'])->name('edit-kelas');
@@ -93,7 +94,7 @@ Route::get('/administrasi/klasifikasi', [KlasifikasiController::class, 'index'])
 Route::get('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'create'])->name('tambah-klasifikasi');
 Route::get('/administrasi/klasifikasi/{id}/edit', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
 Route::put('/administrasi/klasifikasi/{id}/update', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
-Route::delete('/administrasi/klasifikasi/{id_kelas}', [Klasifikasi::class, 'destroy'])->name('delete-klasifikasi');
+Route::delete('/administrasi/klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
 Route::post('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'store'])->name('store-klasifikasi');
 
 //CRUD JENIS PELANGGARAN
