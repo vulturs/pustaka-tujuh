@@ -9,7 +9,7 @@
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
-            <form class="form" method="post" action="/perolehan/{{ $perolehan->id_perolehan }}/update">
+            <form class="form" method="post" action="{{ route('update-perolehan', $perolehan->id_perolehan) }}">
                 @method('put')
                 @csrf
                 <label>

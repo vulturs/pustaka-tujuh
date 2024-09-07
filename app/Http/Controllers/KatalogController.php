@@ -14,7 +14,7 @@ class KatalogController extends Controller
     {
         // $anggota = new Anggota();
         $title = 'Katalog';
-        $katalog = Katalog::filter()->orderBy('id_katalog')->paginate(10);
+        $katalog = Katalog::filter()->orderBy('id_katalog')->paginate(9);
         return view('components.katalogs.katalog-page', compact('title', 'katalog'));
     }
 

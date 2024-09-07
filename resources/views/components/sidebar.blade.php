@@ -18,7 +18,7 @@
                 <img src={{ asset('logo-perpus.png') }} class="w-32" />
                 <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
             </a>
-            <ul class="space-y-2">
+            <ul class="space-y-2 mt-5">
                 <li>
                     <a href="/"
                         class="{{ request()->is('/') ? 'active-nav text-white font-medium' : 'text-blue-950 rounded-e-full dark:text-white hover:bg-purple-200 hover:text-blue-950 dark:hover:bg-gray-700' }} ps-10 py-3 flex items-center p-2 rounded-e-full me-8 dark:text-white dark:hover:bg-gray-700 group">

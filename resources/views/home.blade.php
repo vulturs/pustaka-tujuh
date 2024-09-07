@@ -6,9 +6,7 @@
 
     </x-dashboard> --}}
     @component('components.dashboard', [
-        'total_kunjungan' => $total_kunjungan,
         'kun' => $kun,
-        'bulan' => $bulan,
         'title' => $title,
         'users' => $users,
         'anggota' => $anggota,
@@ -17,10 +15,15 @@
         'kunjung' => $kunjung,
         'katalog' => $katalog,
         'pinjamCount' => $pinjamCount,
-        'data_peminjaman' => $data_peminjaman,
-        'bulan_pinjam' => $bulan_pinjam,
+        'seriesDataPinjam' => $seriesDataPinjam,
+        'categoriesPinjam' => $categoriesPinjam,
         'seriesData' => $seriesData,
         'categories' => $categories,
+        'dataPinjamDdc' => $dataPinjamDdc,
+        'topBooks' => $topBooks,
+        'dataPinjamTop' => $dataPinjamTop,
+        'availableYears' => $availableYears,
+        'currentYear' => $currentYear,
     ])
     @endcomponent
 </x-layout>

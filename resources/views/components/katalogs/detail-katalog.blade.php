@@ -198,7 +198,7 @@
                     </tr>
                 </table>
             </div>
-            <a href="{{ route('print-katalog', $katalog->id_katalog) }}"
+            <a href="{{ route('print-katalog', $katalog->id_katalog) }}" target="_blank"
                 class="cursor-pointer relative top-3 bg-violet-500 rounded-b-md text-white font-medium transition duration-300 ease-in-out hover:bg-violet-700 hover:shadow-xl hover:shadow-violet-500 focus:ring-violet-300 focus:shadow-violet-400 px-5 py-2">
                 Cetak Katalog
             </a>

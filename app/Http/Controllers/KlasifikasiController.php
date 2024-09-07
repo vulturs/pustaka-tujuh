@@ -16,7 +16,7 @@ class KlasifikasiController extends Controller
         return view('components.klasifikasi.klasifikasi-page', [
             'title' => "Data Klasifikasi (Kode DDC)",
             // 'anggota' => $anggota
-            'klasifikasi' => Klasifikasi::filter()->orderBy('id_klasifikasi')->paginate(5)
+            'klasifikasi' => Klasifikasi::filter()->orderBy('kode_ddc')->paginate(10)
         ]);
     }
 
@@ -76,7 +76,7 @@ class KlasifikasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $klasifikasi = Klasifikasi::find($id);
 
@@ -84,15 +84,16 @@ class KlasifikasiController extends Controller
             return redirect()->route('klasifikasi')->with('error', 'Klasifikasi tidak ditemukan.');
         }
 
-        $validateData = $request->validate([
-            'kode_ddc' => 'required',
+        $valid = $request->validate([
+            'kode_ddc' => 'required|numeric',
             'klasifikasi' => 'required|string',
             'keterangan' => 'required|string',
-            'created_by' => 'required',
+            'created_by' => 'required'
         ]);
+        // dd($valid);
 
-        // $anggota->update($validateData);
-        Klasifikasi::where('id_klasifikasi', $klasifikasi->id_klasifikasi)->update($validateData);
+        // $anggota->update($valid);
+        Klasifikasi::where('id_klasifikasi', $klasifikasi->id_klasifikasi)->update($valid);
 
         return redirect()->route('klasifikasi')->with('success', 'Data Klasifikasi berhasil diperbarui.');
     }

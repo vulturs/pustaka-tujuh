@@ -39,6 +39,7 @@ class BukuInduk extends Model
             ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
             ->select('*')
             ->where('judul_buku', 'like', '%' . request('search') . '%')
+            ->orWhere('pengarang', 'like', '%' . request('search') . '%')
             ->orWhere('klasifikasi.kode_ddc', 'like', '%' . request('search') . '%')
             ->orWhere('penerbit.nama_penerbit', 'like', '%' . request('search') . '%')
             ->orWhere('perolehan.nama_sumber', 'like', '%' . request('search') . '%')

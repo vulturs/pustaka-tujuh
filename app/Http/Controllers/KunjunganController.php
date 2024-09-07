@@ -46,13 +46,13 @@ class KunjunganController extends Controller
         $validated = $request->validate([
             'id_anggota' => 'required',
             'tujuan_kunjungan' => 'required|string',
-            'created_by' => 'required',
+            'modified_by' => 'nullable',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         Kunjungan::create($validated);
-        return redirect()->route('kunjungan')->with('success', 'Data kunjungan berhasil ditambahkan');
+        return redirect()->route('login')->with('success', 'Data kunjungan berhasil ditambahkan');
     }
 
     /**

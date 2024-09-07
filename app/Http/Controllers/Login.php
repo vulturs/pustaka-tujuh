@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Anggota;
+use App\Models\Katalog;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class Login extends Controller
 {
     public function index()
     {
-        return view('login-page', ['title' => 'Login']);
+        $anggota = new Anggota();
+
+        return view('login-page', [
+            'title' => 'Pustaka Tujuh',
+            'anggotaAll' => $anggota->allAnggota(),
+        ]);
     }
 
     public function authenticate(Request $request): RedirectResponse
@@ -33,6 +40,7 @@ class Login extends Controller
                 setcookie('username', '');
                 setcookie('password', '');
             }
+
             return redirect()->intended('/')->with([
                 'success' => 'Login berhasil! Selamat datang ' . auth()->user()->nama . '!',
             ]);
@@ -43,6 +51,13 @@ class Login extends Controller
             'failed' => 'Login gagal! Mohon masukkan username dan password yang benar',
         ]);
         // return dd('Gagal');
+    }
+
+    public function cari()
+    {
+        $title = 'Katalog';
+        $katalog = Katalog::filter()->orderBy('id_katalog')->paginate(6);
+        return view('components.cari-katalog', compact('title', 'katalog'));
     }
 
     public function logout(Request $request)

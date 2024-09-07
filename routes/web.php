@@ -25,6 +25,8 @@ use App\View\Components\klasifikasi\klasifikasiPage;
 //     return view('home', ['title' => 'Dashboard']);});
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/data-peminjaman', [HomeController::class, 'getDataPeminjaman']);
+Route::get('/cari-katalog', [Login::class, 'cari'])->name('cari-katalog')->middleware('guest');
 
 Route::get('/login', [Login::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [Login::class, 'authenticate'])->middleware('guest');
