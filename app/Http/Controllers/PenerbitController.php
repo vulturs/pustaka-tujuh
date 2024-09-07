@@ -88,6 +88,6 @@ class PenerbitController extends Controller
         }
 
         $penerbit->delete();
-        return redirect()->route('penerbit')->with('success', 'Data anggota berhasil dihapus');
+        return redirect()->route('penerbit')->with('success', 'Data penerbit berhasil dihapus');
     }
 }
