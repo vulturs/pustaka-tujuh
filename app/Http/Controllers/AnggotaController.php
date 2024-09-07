@@ -51,7 +51,7 @@ class AnggotaController extends Controller
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         Anggota::create($validated);
-        return redirect()->route('anggota')->with('success', 'Data anggota berhasil ditambahkan');
+        return redirect()->route('anggota')->with('success', 'Data anggota berhasil ditambah');
     }
 
     /**
@@ -103,7 +103,7 @@ class AnggotaController extends Controller
         // $anggota->update($valid);
         Anggota::where('id_anggota', $anggota->id_anggota)->update($valid);
 
-        return redirect()->route('anggota')->with('success', 'Anggota berhasil diperbarui.');
+        return redirect()->route('anggota')->with('success', 'Data Anggota berhasil diperbarui.');
     }
 
     /**
