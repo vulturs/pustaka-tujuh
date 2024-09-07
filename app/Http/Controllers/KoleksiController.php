@@ -16,7 +16,7 @@ class KoleksiController extends Controller
     {
         return view('components.koleksi.koleksi-page', [
             'title' => 'Koleksi',
-            'koleksi' => BukuInduk::filter()->orderBy('kode_buku_induk')->paginate(10)
+            'koleksi' => BukuInduk::filter()->orderBy('kode_buku_induk')->paginate(5)
         ]);
     }
 
