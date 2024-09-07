@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    @component('components.kelas.kelas', ['search' => $search, 'kelas' => $kelas, 'title' => $title])
+    @component('components.kelas.kelas', ['kelas' => $kelas, 'title' => $title])
         {{-- <x-kelas.kelas :$search> --}}
         @forelse ($kelas as $clases)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -37,7 +37,7 @@
             </tr>
         @empty
             <tr>
-                <td class="text-center text-mute" colspan="4">Data user tidak tersedia</td>
+                <td class="text-center text-mute" colspan="4">Data kelas tidak tersedia</td>
             </tr>
         @endforelse
         {{-- </x-kelas.kelas> --}}
