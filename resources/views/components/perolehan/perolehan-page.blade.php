@@ -47,7 +47,7 @@
             </tr>
         @empty
             <tr>
-                <td class="text-center text-mute" colspan="4">Data user tidak tersedia</td>
+                <td class="text-center text-mute" colspan="4">Data perolehan tidak tersedia</td>
             </tr>
         @endforelse
         {{-- </x-perolehan.perolehan> --}}
