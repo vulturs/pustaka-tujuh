@@ -89,7 +89,7 @@ class PerolehanController extends Controller
 
         Perolehan::where('id_perolehan', $perolehan->id_perolehan)->update($valid);
 
-        return redirect()->route('perolehan')->with('success', 'Data seumber perolehan berhasil diperbarui.');
+        return redirect()->route('perolehan')->with('success', 'Data sumber perolehan berhasil diperbarui.');
     }
 
     /**
