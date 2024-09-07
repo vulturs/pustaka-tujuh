@@ -10,7 +10,7 @@
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
-            <form class="form" method="post" action="/kelas/{{ $kelas->kelas_id }}/update">
+            <form class="form" method="post" action="/administrasi/kelas/{{ $kelas->kelas_id }}/update">
                 @method('put')
                 @csrf
                 <label>
