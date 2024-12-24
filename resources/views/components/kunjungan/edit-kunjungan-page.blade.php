@@ -1,3 +1,11 @@
-<div>
-    <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
-</div>
+<x-layout>
+    <x-slot:title>{{ $title }}</x-slot:title>
+
+    @component('components.kunjungan.edit-kunjungan', [
+        'kunjungan' => $kunjungan,
+        'anggota' => $anggota,
+        'title' => $title,
+    ])
+    @endcomponent
+    
+</x-layout>

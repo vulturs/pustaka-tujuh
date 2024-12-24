@@ -74,28 +74,30 @@ class KunjunganController extends Controller
         return Excel::download(new ExportFile, 'Data Kunjungan ' . now()->format('d-m-Y') . '.xlsx');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        $kunjungan = Kunjungan::find($id);
+        $title = 'Edit Data Kunjungan';
+        $kunjungan = Kunjungan::filter()->where('id_kunjungan', $id)->firstOrFail();
+        $agt = new Anggota();
+        $anggota = $agt->allAnggota();
+
+        // dd($kunjungan);
 
         // if (is_null($anggota)) {
         //     return redirect()->route('anggota')->with('error', 'Anggota tidak ditemukan.');
         // }
 
-        return view('components.kunjungan.edit-kunjungan-page', [
-            'title' => "Edit Data Kunjungan",
-            'kunjungan' => $kunjungan,
-            'anggota' => Anggota::all(),
-        ]);
+        return view('components.kunjungan.edit-kunjungan-page', compact(
+            'title',
+            'kunjungan',
+            'anggota'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $kunjungan = Kunjungan::find($id);
 
@@ -103,10 +105,11 @@ class KunjunganController extends Controller
             return redirect()->route('kunjungan')->with('error', 'Data Kunjungan tidak ditemukan.');
         }
 
+        // dd($request);
         $valid = $request->validate([
             'id_anggota' => 'required',
-            'tujuan_kunjungan' => 'required|date',
-            'created_by' => 'required',
+            'tujuan_kunjungan' => 'required|string',
+            'modified_by' => 'required',
         ]);
 
         // $anggota->update($valid);

@@ -16,7 +16,7 @@ class DataPinjam extends Model
         'id_anggota',
         'kode_buku_induk',
         'tanggal_peminjaman',
-        'tanggal_pengembalian',
+        'batas_pengembalian',
         'created_by',
     ];
 
@@ -36,14 +36,18 @@ class DataPinjam extends Model
     public function scopeWithJoins($query): void
     {
         $query->join('anggota', 'data_pinjam.id_anggota', '=', 'anggota.id_anggota')
+            ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
             ->join('users', 'data_pinjam.created_by', '=', 'users.id_user')
             ->join('buku_induk', 'data_pinjam.kode_buku_induk', '=', 'buku_induk.kode_buku_induk')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
             ->select(
                 'data_pinjam.*',
+                'anggota.id_anggota',
                 'anggota.nama_anggota',
+                'data_kelas.kelas',
                 'users.nama as nama_user',
+                'buku_induk.kode_buku_induk',
                 'buku_induk.judul_buku',
                 'buku_induk.pengarang',
                 'penerbit.nama_penerbit',

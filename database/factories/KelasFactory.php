@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class KelasFactory extends Factory
     public function definition(): array
     {
         return [
-            'kelas' => fake()->word(2),
+            'kelas' => fake()->word(3),
+            'jurusan' => fake()->text(5),
             'created_by' => 1
         ];
     }

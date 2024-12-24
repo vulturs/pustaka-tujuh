@@ -3,7 +3,7 @@
 <div class="p-5 me-4 bg-slate-200 rounded-2xl mb-4">
     <div class="relative mt-8 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
         <div
-            class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
+            class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-violet-700 bg-clip-border text-white shadow-lg shadow-violet-500/40">
             <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
                 Tambah Data Kunjungan
             </h3>
@@ -12,15 +12,21 @@
             {{-- <form class="form" action="/tambah-kunjungan"> --}}
             {{-- <label> --}}
             <div class="">
-                <button onclick="myFunction()" id="dropbtn"
-                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    Pilih Nama Angggota</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Masukkan Nama" id="myInput" onkeyup="filterFunction()">
+                <button onclick="toggleDropdown()" id="dropbtn"
+                    class="focus:outline-none text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:ring-violet-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                    Pilih Anggota
+                </button>
+                <div id="myDropdown"
+                    class="dropdown-content h-72 overflow-y-auto hidden absolute mt-2 w-60 bg-white border border-gray-300 rounded-md shadow-lg z-10 dark:bg-gray-800 dark:border-gray-700">
+                    <input type="text" placeholder="Masukkan Nama" id="myInput" onkeyup="filterFunction()"
+                        class="w-full sticky top-0 px-4 py-2 border-b border-gray-300 dark:border-gray-700 focus:outline-none focus:border-green-500 dark:focus:border-green-500">
                     @foreach ($anggotaAll as $all)
                         <a href="#$all->id_anggota" id="cont" data-id-anggota="{{ $all->id_anggota }}"
                             data-nama-anggota="{{ $all->nama_anggota }}" data-kelas="{{ $all->kelas }}"
-                            onclick="fillInputs(this);">{{ $all->nama_anggota }}</a>
+                            onclick="fillInputs(this);"
+                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-700 cursor-pointer">
+                            {{ $all->nama_anggota }}
+                        </a>
                     @endforeach
                 </div>
             </div>
@@ -76,46 +82,52 @@
     // document.getElementById('klik').onclick = function() {
     //     document.getElementById('nama_anggota').value = 'John Doe';
     // };
-    function fillInputs(element) {
-        var idAnggota = element.getAttribute('data-id-anggota');
-        var namaAnggota = element.getAttribute('data-nama-anggota');
-        var kelas = element.getAttribute('data-kelas');
-
-        document.getElementById('id_anggota').value = idAnggota;
-        document.getElementById('nama_anggota').value = namaAnggota;
-        document.getElementById('kelas').value = kelas;
-
-        document.getElementById("myDropdown").classList.remove("show");
+    function toggleDropdown() {
+        const dropdown = document.getElementById('myDropdown');
+        dropdown.classList.toggle('hidden');
     }
 
-    window.onclick = function(event) {
-        if (!event.target.matches('#dropbtn') && !event.target.matches('#myInput')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
+    // Filter dropdown berdasarkan input
     function filterFunction() {
-        var input, filter, ul, li, a, i;
+        var input, filter, div, a, i;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         div = document.getElementById("myDropdown");
         a = div.getElementsByTagName("a");
+
         for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
+            var txtValue = a[i].textContent || a[i].innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 a[i].style.display = "";
             } else {
                 a[i].style.display = "none";
+            }
+        }
+    }
+
+    // Mengisi input form berdasarkan pilihan dropdown
+    function fillInputs(element) {
+        var idAnggota = element.getAttribute("data-id-anggota");
+        var namaAnggota = element.getAttribute("data-nama-anggota");
+        var kelas = element.getAttribute("data-kelas");
+
+        document.getElementById("id_anggota").value = idAnggota;
+        document.getElementById("nama_anggota").value = namaAnggota;
+        document.getElementById("kelas").value = kelas;
+
+        // Menyembunyikan dropdown setelah memilih
+        document.getElementById("myDropdown").classList.add("hidden");
+    }
+
+    // Tutup dropdown jika mengklik di luar area dropdown
+    window.onclick = function(event) {
+        if (!event.target.matches('#dropbtn') && !event.target.matches('#myInput')) {
+            const dropdowns = document.getElementsByClassName('dropdown-content');
+            for (let i = 0; i < dropdowns.length; i++) {
+                const openDropdown = dropdowns[i];
+                if (!openDropdown.classList.contains('hidden')) {
+                    openDropdown.classList.add('hidden');
+                }
             }
         }
     }

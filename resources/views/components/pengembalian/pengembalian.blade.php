@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('kunjungan-print') }}?export=pdf" target="_blank"
+                <a href="{{ route('pengembalian-print') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Print (PDF)
@@ -30,7 +30,7 @@
                         print
                     </span>
                 </a>
-                <a href="{{ route('kunjungan-to-excel') }}?export=pdf" target="_blank"
+                <a href="{{ route('kembali-to-excel') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Export to Excel (.xlsx)
@@ -49,20 +49,7 @@
                     </svg>
                 </a>
             </div>
-            {{-- <div class="text-right mb-3">
-                <a href="{{ route('tambah-peminjaman') }}"
-                    class="rounded-lg relative w-40 h-10 cursor-pointer flex items-center border border-green-500 bg-green-500 group hover:bg-green-500 active:bg-green-500 active:border-green-500">
-                    <span
-                        class="text-gray-200 font-medium ml-8 transform group-hover:translate-x-20 transition-all duration-300">
-                        Peminjaman</span>
-                    <span
-                        class="absolute right-0 h-full w-10 rounded-lg bg-green-500 flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300">
-                        <span class="material-symbols-rounded text-white">
-                            add
-                        </span>
-                    </span>
-                </a>
-            </div> --}}
+
         </div>
 
         <div class="mx-8">
@@ -99,6 +86,9 @@
                         <th scope="col" class="px-6 py-3">
                             Pendataan Oleh
                         </th>
+                        <th scope="col" colspan="2" class="px-6 text-center py-3">
+                            Action
+                        </th>
                         {{-- <th scope="col" class="px-6 text-center py-3">
                             Action
                         </th> --}}
@@ -131,22 +121,44 @@
                             <td class="px-6 py-4">
                                 {{ $kembali->tanggal_dikembalikan }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ $kembali->jenis_pelanggaran }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $kembali->denda }}
-                            </td>
+                            @if ($kembali->jenis_pelanggaran != null)
+                                <td class="px-6 py-4">
+                                    {{ $kembali->jenis_pelanggaran }}
+                                </td>
+                            @else
+                                <td class="px-6 py-4">
+                                    -
+                                </td>
+                            @endif
+                            @if ($kembali->denda != null)
+                                <td class="px-6 py-4">
+                                    {{ $kembali->denda }}
+                                </td>
+                            @else
+                                <td class="px-6 py-4">
+                                    -
+                                </td>
+                            @endif
                             <td class="px-6 py-4">
                                 {{ $kembali->nama }}
                             </td>
 
 
-                            {{-- <td>
-                                <a href="{{ route('proses-pengembalian', $kembali->id_pengembalian) }}"
-                                    class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                    Proses Pengembalian</a>
-                            </td> --}}
+                            <td class="text-center">
+                                <div class="flex">
+                                    <a href="{{ route('edit-pengembalian', $kembali->id_pengembalian) }}" button
+                                        type="button"
+                                        class="text-white text-xs bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                                    <form action="{{ route('delete-peminjaman', $kembali->id_pengembalian) }}"
+                                        method="POST" style="display:inline;"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     @empty
                         <tr>

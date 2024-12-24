@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_anggota');
             $table->foreign('id_anggota')->references('id_anggota')->on('anggota');
             $table->string('tujuan_kunjungan', 50);
-            $table->unsignedBigInteger('created_by');
-            $table->foreign('created_by')->references('id_user')->on('users');
+            $table->unsignedBigInteger('modified_by');
+            $table->foreign('modified_by')->references('id_user')->on('users');
             $table->timestamps();
         });
     }

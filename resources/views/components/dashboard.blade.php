@@ -185,7 +185,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#"
+                    {{-- <a href="#"
                         class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
                         Report
                         <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true"
@@ -193,7 +193,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                    </a>
+                    </a> --}}
                 </div>
 
             </div>
@@ -384,13 +384,13 @@
 
 
     </div>
-    <div class="grid lg:grid-cols-3 gap-5">
+
+    {{-- <div class="grid lg:grid-cols-3 gap-5">
         <div class="bg-white col-span-1  rounded-2xl p-5 drop-shadow-lg">
 
         </div>
         <div class="bg-white col-span-2 rounded-2xl p-5 drop-shadow-lg">
             <div class="items-center">
-                <!-- Dropdown untuk filter tahun -->
                 <label for="filterTahun" class="font-medium">Pilih Tahun :</label>
                 <select id="filterTahun" class="form-select">
                     @foreach (range(date('Y'), date('Y') - 10) as $tahun)
@@ -400,11 +400,10 @@
                 </select>
             </div>
 
-            <!-- Elemen untuk menampilkan grafik -->
             <div id="chart-ddc"></div>
         </div>
 
-    </div>
+    </div> --}}
 
 </div>
 
@@ -628,7 +627,7 @@
                 }
             },
             dataLabels: {
-                enabled: false
+                enabled: true
             },
             series: chartSeries,
             xaxis: {

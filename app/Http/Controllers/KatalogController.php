@@ -52,6 +52,45 @@ class KatalogController extends Controller
         return redirect()->route('katalog')->with('success', 'Data katalog berhasil ditambahkan');
     }
 
+    public function edit($id)
+    {
+        $buku = new BukuInduk();
+        $koleksi = $buku->allKoleksi();
+        $title = 'Edit Katalog';
+        $katalog = Katalog::withJoins()->where('katalog.id_katalog', $id)->firstOrFail();
+
+        return view('components.katalogs.edit-katalog', compact('title', 'katalog', 'koleksi'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $katalog = Katalog::find($id);
+
+        if (is_null($katalog)) {
+            return redirect()->route('katalog')->with('error', 'Data katalog tidak ditemukan.');
+        }
+
+        // dd($request);
+        $valid = $request->validate([
+            'kode_buku_induk' => 'required',
+            'penanggung_jawab' => 'required',
+            'kotaTerbit' => 'required',
+            'tahunTerbit' => 'required',
+            'jumlah_hal' => 'required',
+            'dimensi' => 'required',
+            'edisi' => 'required',
+            'callNumber' => 'required',
+            'ISBN' => 'required',
+            'catatan' => 'nullable',
+            'created_by' => 'required'
+        ]);
+
+        // $anggota->update($valid);
+        Katalog::where('id_katalog', $katalog->id_katalog)->update($valid);
+
+        return redirect()->route('katalog')->with('success', 'Data katalog berhasil diperbarui.');
+    }
+
     public function detail($id)
     {
         $title = 'Detail Katalog';
@@ -69,5 +108,17 @@ class KatalogController extends Controller
             ->setPaper([0, 0, 354.375, 212.625]); // Ukuran 12.5cm x 7.5cm
 
         return $pdf->stream('katalog.pdf');
+    }
+
+    public function destroy($id)
+    {
+        $katalog = Katalog::find($id);
+
+        if (is_null($katalog)) {
+            return redirect()->back()->with('error', 'Data Buku Induk tidak ditemukan.');
+        }
+
+        $katalog->delete();
+        return redirect()->route('katalog')->with('success', 'Buku Induk berhasil dihapus');
     }
 }

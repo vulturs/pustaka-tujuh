@@ -143,6 +143,20 @@
         .custom-container.active .custom-toggle-right {
             transform: translateX(200%);
         }
+
+        #myDropdown::-webkit-scrollbar {
+            width: 0;
+            /* Menghilangkan scrollbar */
+            height: 0;
+        }
+
+        /* Untuk Firefox */
+        #myDropdown {
+            scrollbar-width: none;
+            /* Menghilangkan scrollbar */
+            -ms-overflow-style: none;
+            /* Untuk Internet Explorer dan Edge */
+        }
     </style>
     <div class="h-screen w-full fixed overflow-x-hidden">
         <img class="h-screen w-full z-0 object-cover top-40" src="bg-login5.jpg" alt="">

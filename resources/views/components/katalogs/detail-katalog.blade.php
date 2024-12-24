@@ -133,8 +133,11 @@
                         <span class="font-semibold">{{ $katalog->catatan }}</span>
                     </div>
                 </div>
+                {{-- <div class="w-full"> --}}
+                <a href="/katalog"
+                    class="border-2 rounded-md transition-all ease-in-out duration-200 hover:bg-red-600 hover:text-white border-red-600 p-3 text-red-600 text-center font-semibold w-full">KEMBALI</a>
+                {{-- </div> --}}
             </div>
-
         </div>
 
 

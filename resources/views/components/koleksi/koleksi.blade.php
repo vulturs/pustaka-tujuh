@@ -1,3 +1,8 @@
+<style>
+    ::-webkit-scrollbar {
+        height: 10px;
+    }
+</style>
 <x-topbar :$title></x-topbar>
 <div class="rounded-2xl bg-slate-100 p-5 mb-4">
 
@@ -21,7 +26,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('kunjungan-print') }}?export=pdf" target="_blank"
+                <a href="{{ route('print-koleksi') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Print (PDF)
@@ -30,7 +35,7 @@
                         print
                     </span>
                 </a>
-                <a href="{{ route('kunjungan-to-excel') }}?export=pdf" target="_blank"
+                <a href="{{ route('koleksi-excel') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Export to Excel (.xlsx)
@@ -116,6 +121,9 @@
                         </th>
                         <th scope="col" class="px-6 text-center py-3">
                             Harga
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Cover
                         </th>
                         <th scope="col" class="px-6 text-center py-3">
                             Harga Per/

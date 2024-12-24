@@ -3,9 +3,9 @@
 <div class="p-5 me-4 bg-slate-200 rounded-2xl mb-4">
     <div class="relative mt-10 w-1/2 flex flex-col rounded-lg bg-white bg-clip-border text-gray-700 shadow-lg">
         <div
-            class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-cyan-500 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
+            class="relative mx-4 -mt-6 mb-4 grid h-16 place-items-center overflow-hidden rounded-md bg-violet-700 bg-clip-border text-white shadow-lg shadow-violet-500/40">
             <h3 class="block font-sans text-3xl font-medium leading-snug tracking-normal text-white antialiased">
-                Tambah Data Penerbit
+                Edit Data Penerbit
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
@@ -18,17 +18,6 @@
                     <span>Nama Penerbit</span>
                 </label>
 
-
-                {{-- <label>
-                {{ $slot }}
-                <span>contact number</span>
-            </label> --}}
-
-                {{-- <label>
-                <input required name="tanggal_masuk" value="{{ old('tanggal_masuk') }}" placeholder="" type="date"
-                    class="input">
-                <span style="top:35px; font-size:.7rem;">Tanggal Masuk</span>
-            </label> --}}
                 <label>
                     <textarea required="" name="alamat" rows="2" placeholder="" class="input01">{{ old('alamat', $penerbit->alamat) }}</textarea>
                     <span>Alamat</span>

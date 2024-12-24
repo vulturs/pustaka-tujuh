@@ -80,6 +80,9 @@
                         Harga
                     </th>
                     <th scope="col" class="px-6 text-center py-3">
+                        Cover
+                    </th>
+                    <th scope="col" class="px-6 text-center py-3">
                         Jenis Harga
                     </th>
                     <th scope="col" class="px-6 text-center py-3">

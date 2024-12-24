@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('kunjungan-print') }}?export=pdf" target="_blank"
+                    {{-- <a href="{{ route('kunjungan-print') }}?export=pdf" target="_blank"
                         class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 align-items-center px-5 rounded-md">
                         <span class="me-2">
                             Print (PDF)
@@ -47,7 +47,7 @@
                                 </g>
                             </g>
                         </svg>
-                    </a>
+                    </a> --}}
                 </div>
                 <div class="text-right mb-3">
                     <a href="{{ route('tambah-klasifikasi') }}"

@@ -6,9 +6,12 @@ use App\Models\Anggota;
 use App\Models\BukuInduk;
 use App\Models\DataPinjam;
 use App\Models\Pelanggaran;
-use App\View\Components\peminjaman\peminjaman;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\ExportFilePinjam;
+use Maatwebsite\Excel\Facades\Excel;
+use App\View\Components\peminjaman\peminjaman;
 
 class PeminjamanController extends Controller
 {
@@ -48,22 +51,14 @@ class PeminjamanController extends Controller
             'id_anggota' => 'required',
             'kode_buku_induk' => 'required',
             'tanggal_peminjaman' => 'required',
-            'tanggal_pengembalian' => 'required',
+            'batas_pengembalian' => 'required',
             'created_by'  => 'required',
         ]);
 
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         $buku = BukuInduk::select('stok_tersedia')->where('kode_buku_induk', $request->kode_buku_induk)->first();
-        // if ($buku->jml_eks != 0) {
-        //     $jumlah = $buku->jml_eks - 1;
-        //     $eks = ['jml_eks' => $jumlah];
-        //     BukuInduk::where('kode_buku_induk', $request->kode_buku_induk)->update($eks);
-        // } else {
-        //     $jumlah = $buku->jml_jld - 1;
-        //     $jld = ['jml_jld' => $jumlah];
-        //     BukuInduk::where('kode_buku_induk', $request->kode_buku_induk)->update($jld);
-        // }
+
         $jumlah = $buku->stok_tersedia - 1;
         $stok = ['stok_tersedia' => $jumlah];
         BukuInduk::where('kode_buku_induk', $request->kode_buku_induk)->update($stok);
@@ -89,22 +84,76 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Data Peminjaman';
+        $pinjam = DataPinjam::withJoins()->where('data_pinjam.id_peminjaman', $id)->firstOrFail();
+        $agt = new Anggota();
+        $bukuInduk = new BukuInduk();
+        $koleksiAll = $bukuInduk->allKoleksi();
+        $anggotaAll = $agt->allAnggota();
+
+        return view('components.peminjaman.edit-peminjaman', compact(
+            'pinjam',
+            'title',
+            'koleksiAll',
+            'anggotaAll'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $pinjam = DataPinjam::find($id);
+
+        if (is_null($pinjam)) {
+            return redirect()->route('peminjaman')->with('error', 'Buku Induk tidak ditemukan.');
+        }
+
+        // dd($request);
+        $validated = $request->validate([
+            'id_anggota' => 'required',
+            'kode_buku_induk' => 'required',
+            'tanggal_peminjaman' => 'required',
+            'tanggal_pengembalian' => 'required',
+            'created_by'  => 'required',
+        ]);
+
+        // $anggota->update($valid);
+        DataPinjam::where('id_peminjaman', $pinjam->id_peminjaman)->update($validated);
+
+        return redirect()->route('peminjaman')->with('success', 'Data peminjaman berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $peminjaman = DataPinjam::find($id);
+
+        if (is_null($peminjaman)) {
+            return redirect()->back()->with('error', 'Data Peminjaman tidak ditemukan.');
+        }
+
+        $peminjaman->delete();
+        return redirect()->route('peminjaman')->with('success', 'Data Peminjaman berhasil dihapus');
+    }
+
+    public function print(Request $request)
+    {
+        $title = 'Data Peminjaman.pdf';
+        $peminjaman = DataPinjam::filter()->orderBy('data_pinjam.created_at', 'desc')->get();
+        // dd($data);
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('components.peminjaman.print-peminjaman', compact('peminjaman', 'title'))
+                ->setPaper('a4', 'portrait');
+            return $pdf->stream('Data Peminjaman.pdf');
+        }
+    }
+
+    public function excel()
+    {
+        return Excel::download(new ExportFilePinjam, 'Data Peminjaman ' . now()->format('d-m-Y') . '.xlsx');
     }
 }

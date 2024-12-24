@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('perolehan', function (Blueprint $table) {
             $table->id('id_perolehan');
-            $table->string('nama_sumber', 100);
-            $table->string('no_telp', 13);
-            $table->string('provinsi', 20);
+            $table->string('nama_sumber', 70);
+            $table->string('no_telp', 21);
+            $table->string('provinsi', 28);
             $table->string('kota_kab', 25);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id_user')->on('users');

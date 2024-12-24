@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportFile;
 use App\Models\Kelas;
 use App\Models\Anggota;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\ExportFileAnggota;
 use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AnggotaController extends Controller
 {
@@ -51,7 +55,7 @@ class AnggotaController extends Controller
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         Anggota::create($validated);
-        return redirect()->route('anggota')->with('success', 'Data anggota berhasil ditambahkan');
+        return redirect()->route('anggota')->with('success', 'Data anggota berhasil ditambah');
     }
 
     /**
@@ -103,7 +107,24 @@ class AnggotaController extends Controller
         // $anggota->update($valid);
         Anggota::where('id_anggota', $anggota->id_anggota)->update($valid);
 
-        return redirect()->route('anggota')->with('success', 'Anggota berhasil diperbarui.');
+        return redirect()->route('anggota')->with('success', 'Data Anggota berhasil diperbarui.');
+    }
+
+    public function print(Request $request)
+    {
+        $title = 'Data Anggota.pdf';
+        $data = Anggota::filter()->orderBy('anggota.created_at', 'desc')->get();
+        // dd($data);
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('components.anggota.print-anggota', compact('data', 'title'))
+                ->setPaper('a4');
+            return $pdf->stream('Data Anggota.pdf');
+        }
+    }
+
+    public function excel()
+    {
+        return Excel::download(new ExportFileAnggota, 'Data Anggota ' . now()->format('d-m-Y') . '.xlsx');
     }
 
     /**

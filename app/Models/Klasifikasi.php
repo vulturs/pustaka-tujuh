@@ -31,6 +31,7 @@ class Klasifikasi extends Model
     {
         $query->join('users', 'klasifikasi.created_by', '=', 'users.id_user')
         ->select('*')
-        ->where('kode_ddc','like','%'.request('search').'%');
+        ->where('kode_ddc','like','%'.request('search').'%')
+        ->orwhere('klasifikasi','like','%'.request('search').'%');
     }
 }

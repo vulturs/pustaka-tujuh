@@ -11,9 +11,8 @@
                 @endif
                 <option value="{{ $kl->kelas_id }}">{{ $kl->kelas }}</option>
             @empty
-                <option value="1" {{ old('kelas_id') == 'Rekayasa Perangkat Lunak (RPL)' ? 'selected' : '' }}>
-                    Rekayasa Perangkat Lunak
-                    (RPL)
+                <option value="">
+                    Tidak ada kelas
                 </option>
             @endforelse
         </select>

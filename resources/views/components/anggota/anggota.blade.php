@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('kunjungan-print') }}?export=pdf" target="_blank"
+                <a href="{{ route('anggota-print') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Print (PDF)
@@ -30,7 +30,7 @@
                         print
                     </span>
                 </a>
-                <a href="{{ route('kunjungan-to-excel') }}?export=pdf" target="_blank"
+                <a href="{{ route('anggota-to-excel') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
                         Export to Excel (.xlsx)
@@ -109,13 +109,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    $(document).ready(function() {
-        fetch_customer_data();
+    // $(document).ready(function() {
+    //     fetch_customer_data();
 
-        function fetch_customer_data() {
-            alert("load data")
-        }
-    });
+    //     function fetch_customer_data() {
+    //         alert("load data")
+    //     }
+    // });
     //message with sweetalert
     @if (session('success'))
         Swal.fire({

@@ -27,6 +27,7 @@ class BukuInduk extends Model
         'harga',
         'tipe_harga',
         'ketersediaan',
+        'cover',
         'created_by'
 
     ];
@@ -37,7 +38,13 @@ class BukuInduk extends Model
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
             ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
-            ->select('*')
+            ->select(
+                'buku_induk.*',
+                'klasifikasi.kode_ddc',
+                'penerbit.nama_penerbit',
+                'perolehan.nama_sumber',
+                'users.nama',
+            )
             ->where('judul_buku', 'like', '%' . request('search') . '%')
             ->orWhere('pengarang', 'like', '%' . request('search') . '%')
             ->orWhere('klasifikasi.kode_ddc', 'like', '%' . request('search') . '%')

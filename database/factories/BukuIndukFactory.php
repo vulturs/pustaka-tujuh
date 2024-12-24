@@ -2,6 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Klasifikasi;
+use App\Models\Penerbit;
+use App\Models\Perolehan;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,15 +20,24 @@ class BukuIndukFactory extends Factory
      */
     public function definition(): array
     {
+        $total = fake()->randomNumber(2);
         return [
-            'kode_ddc' => fake()->numberBetween(100, 800),
+            'no_barcode' => fake()->numberBetween($a = 000000, $b = 999999),
+            'pengarang' =>  fake()->name(),
+            'judul_buku' =>  fake()->word(4),
+            'id_klasifikasi' =>  Klasifikasi::factory(),
             'tahun' => fake()->year(),
             'bahasa' => "Indonesia",
-            'kategori' => fake()->word(2),
-            'jml_eks' => fake()->randomNumber(2),
-            'jml_jld' => fake()->randomNumber(2),
-            'id_perolehan' => fake()->randomNumber(2),
-            'harga' => fake()->numberBetween(5000, 50000)
+            'id_penerbit' =>  Penerbit::factory(),
+            'id_perolehan' =>  Perolehan::factory(),
+            'jumlah_total' => $total,
+            'satuan' => 'Eksemplar',
+            'stok_tersedia' => $total,
+            'harga' => fake()->numberBetween(5000, 86000),
+            'tipe_harga' => 'Eksemplar',
+            'ketersediaan' => 'Tersedia',
+            'cover' => fake()->image(),
+            'created_by' => 1
         ];
     }
 }

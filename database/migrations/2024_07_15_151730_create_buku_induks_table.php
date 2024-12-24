@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('buku_induk', function (Blueprint $table) {
             $table->id('kode_buku_induk');
-            $table->string('no_barcode');
+            $table->string('no_barcode', 20);
             $table->string('pengarang', 70);
             $table->string('judul_buku', 70);
             // $table->foreignId('kode_ddc')->constrained(
@@ -28,11 +28,13 @@ return new class extends Migration
             $table->foreign('id_penerbit')->references('id_penerbit')->on('penerbit');
             $table->unsignedBigInteger('id_perolehan');
             $table->foreign('id_perolehan')->references('id_perolehan')->on('perolehan');
-            $table->integer('jml_eks');
-            $table->integer('jml_jld');
+            $table->integer('jumlah_total');
+            $table->string('satuan', 10);
+            $table->integer('stok_tersedia');
             $table->decimal('harga');
             $table->string('tipe_harga', 13);
-            $table->string('ketersediaan', 10);
+            $table->string('ketersediaan', 20);
+            $table->string('cover')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id_user')->on('users');
             // $table->date('tanggal');

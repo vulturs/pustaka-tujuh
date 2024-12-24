@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $title }}</title>
+    @vite('resources/css/app.css')
+    {{-- <link rel="stylesheet" href="{{ asset('css/flowbite.min.css') }}"> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="css/select2.min.css"> --}}
+    <link rel="stylesheet" href={{ asset('css/style.css') }}>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body class="font-body">
+    <h1 align="center">Data Peminjaman<br><span style="font-size: 1.2rem">({{ now()->format('d F Y') }})</span></h1>
+    <table border="1" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">ID Peminjaman</th>
+            <th scope="col" class="px-6 py-3">Nama Anggota</th>
+            <th scope="col" class="px-6 py-3">Judul Buku</th>
+            <th scope="col" class="px-6 py-3">Pengarang</th>
+            <th scope="col" class="px-6 py-3">Kode DDC</th>
+            <th scope="col" class="px-6 py-3">Tanggal Peminjaman</th>
+            <th scope="col" class="px-6 py-3">Batas Pengembalian</th>
+            <th scope="col" class="px-6 py-3">Pendataan Oleh</th>
+        </tr>
+    </thead>
+    <tbody>
+        @forelse ($peminjaman as $pinjam)
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-95000 whitespace-nowrap dark:text-white">
+                    {{ $pinjam->id_peminjaman }}
+                </th>
+                <td style="padding: 8px;" class="px-6 py-4">
+                    {{ $pinjam->nama_anggota }}
+                </td>
+                <td style="padding: 8px;" class="px-6 py-4">
+                    {{ $pinjam->judul_buku }}
+                </td>
+                <td style="padding: 8px;" class="px-6 py-4">
+                    {{ $pinjam->pengarang }}
+                </td>
+                <td align="center" class="px-6 py-4">
+                    {{ $pinjam->kode_ddc }}
+                </td>
+                <td align="center" class="px-6 py-4">
+                    {{ \Carbon\Carbon::parse($pinjam->tanggal_peminjaman)->format('d M Y') }}
+                </td>
+                <td align="center" class="px-6 py-4">
+                    {{ \Carbon\Carbon::parse($pinjam->tanggal_pengembalian)->format('d M Y') }}
+                </td>
+                <td style="padding: 8px;" class="px-6 py-4">
+                    {{ $pinjam->nama }}
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td class="text-center text-mute" colspan="10">Data peminjaman tidak tersedia</td>
+            </tr>
+        @endforelse
+    </tbody>
+</table>
+
+
+</body>
+
+</html>

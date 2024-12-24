@@ -27,7 +27,7 @@ return new class extends Migration
             // $table->unsignedBigInteger('id_klasifikasi');
             $table->string('callNumber', 10);
             $table->string('ISBN', 20);
-            $table->string('catatan', 200);
+            $table->string('subjek', 200);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();

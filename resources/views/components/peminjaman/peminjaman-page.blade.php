@@ -30,10 +30,24 @@
                 </td>
 
 
-                <td class="text-center">
+                <td class="text-center w-64">
                     <a href="{{ route('proses-pengembalian', $pinjam->id_peminjaman) }}"
-                        class="text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        class="text-violet-700 bg-violet-300 transition duration-300 ease-in-out hover:text-white hover:bg-violet-700 hover:shadow-xl hover:shadow-violet-500 focus:ring-violet-300 focus:shadow-violet-400 font-medium rounded-full text-xs px-4 py-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                         Proses Pengembalian</a>
+                </td>
+                <td class="text-center">
+                    <div class="flex">
+                        <a href="{{ route('edit-peminjaman', $pinjam->id_peminjaman) }}" button type="button"
+                            class="text-white text-xs bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:ring-violet-300 font-medium rounded-lg px-5 py-2.5 me-2 mb-2 dark:bg-violet-600 dark:hover:bg-violet-700 focus:outline-none dark:focus:ring-violet-800">Edit</a>
+                        <form action="{{ route('delete-peminjaman', $pinjam->id_peminjaman) }}" method="POST"
+                            style="display:inline;"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         @empty

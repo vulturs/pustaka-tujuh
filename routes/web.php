@@ -47,6 +47,8 @@ Route::post('/tambah-koleksi', [KoleksiController::class, 'store'])->name('store
 Route::get('/koleksi/{id}/edit', [KoleksiController::class, 'edit'])->name('edit-koleksi')->middleware('auth');
 Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('update-koleksi')->middleware('auth');
 Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
+Route::get('/koleksi/print', [KoleksiController::class, 'print'])->name('print-koleksi')->middleware('auth');
+Route::get('/koleksi/to-excel', [KoleksiController::class, 'excel'])->name('koleksi-excel')->middleware('auth');
 
 //CRUD ANGGOTA
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota')->middleware('auth');
@@ -55,6 +57,8 @@ Route::post('/tambah-anggota', [AnggotaController::class, 'store'])->name('store
 Route::get('/anggota/{id}/edit', [AnggotaController::class, 'edit'])->name('edit-anggota')->middleware('auth');
 Route::put('/anggota/{id}/update', [AnggotaController::class, 'update'])->name('update-anggota')->middleware('auth');
 Route::delete('/anggota/{id}', [AnggotaController::class, 'destroy'])->name('delete-anggota')->middleware('auth');
+Route::get('/anggota/print', [AnggotaController::class, 'print'])->name('anggota-print')->middleware('auth');
+Route::get('/anggota/to-excel', [AnggotaController::class, 'excel'])->name('anggota-to-excel')->middleware('auth');
 
 //CRUD KUNJUNGAN
 Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan')->middleware('auth');
@@ -96,7 +100,7 @@ Route::get('/administrasi/klasifikasi', [KlasifikasiController::class, 'index'])
 Route::get('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'create'])->name('tambah-klasifikasi');
 Route::get('/administrasi/klasifikasi/{id}/edit', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
 Route::put('/administrasi/klasifikasi/{id}/update', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
-Route::delete('/administrasi/klasifikasi/{id_kelas}', [Klasifikasi::class, 'destroy'])->name('delete-klasifikasi');
+Route::delete('/administrasi/klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
 Route::post('/administrasi/tambah-klasifikasi', [KlasifikasiController::class, 'store'])->name('store-klasifikasi');
 
 //CRUD JENIS PELANGGARAN
@@ -112,9 +116,12 @@ Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminja
 Route::get('/tambah-peminjaman', [PeminjamanController::class, 'create'])->name('tambah-peminjaman')->middleware('auth');
 Route::post('/tambah-peminjamn', [PeminjamanController::class, 'store'])->name('store-peminjaman')->middleware('auth');
 Route::get('/proses-pengembalian/{id}', [PeminjamanController::class, 'proses_kembali'])->name('proses-pengembalian')->middleware('auth');
-// Route::get('/koleksi/{id}/edit', [KoleksiController::class, 'edit'])->name('edit-koleksi')->middleware('auth');
-// Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('update-koleksi')->middleware('auth');
-// Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
+Route::get('/peminjaman/{id}/edit', [PeminjamanController::class, 'edit'])->name('edit-peminjaman')->middleware('auth');
+Route::put('/peminjaman/{id}/update', [PeminjamanController::class, 'update'])->name('update-peminjaman')->middleware('auth');
+Route::delete('/peminjaman/{id}/delete', [PeminjamanController::class, 'destroy'])->name('delete-peminjaman')->middleware('auth');
+Route::get('/peminjaman/print', [PeminjamanController::class, 'print'])->name('peminjaman-print')->middleware('auth');
+Route::get('/peminjaman/to-excel', [PeminjamanController::class, 'excel'])->name('peminjaman-to-excel')->middleware('auth');
+
 
 //CRUD KATALOG
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog')->middleware('auth');
@@ -133,3 +140,5 @@ Route::post('/pengembalian/add', [PengembalianController::class, 'store'])->name
 Route::get('/pengembalian/{id}/edit', [PengembalianController::class, 'edit'])->name('edit-pengembalian')->middleware('auth');
 Route::put('/pengembalian/{id}/update', [PengembalianController::class, 'update'])->name('update-pengembalian')->middleware('auth');
 Route::delete('/pengembalian/{id}', [PengembalianController::class, 'destroy'])->name('delete-pengembalian')->middleware('auth');
+Route::get('/pengembalian/print', [PengembalianController::class, 'print'])->name('pengembalian-print')->middleware('auth');
+Route::get('/pengembalian/to-excel', [PengembalianController::class, 'excel'])->name('kembali-to-excel')->middleware('auth');

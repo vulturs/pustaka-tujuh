@@ -9,8 +9,9 @@
                     @forelse ($klasifikasi as $klasi)
                         @if (old('id_klasifikasi', $koleksi->id_klasifikasi) == $klasi->id_klasifikasi)
                             <option value="{{ $klasi->id_klasifikasi }}" selected>{{ $klasi->kode_ddc }}</option>
+                        @else
+                            <option value="{{ $klasi->id_klasifikasi }}">{{ $klasi->kode_ddc }}</option>
                         @endif
-                        <option value="{{ $klasi->id_klasifikasi }}">{{ $klasi->kode_ddc }}</option>
                     @empty
                         <option value="1" {{ old('id_klasifikasi') == 'klasifikasi' ? 'selected' : '' }}>
                             Klasifikasi
@@ -57,8 +58,9 @@
                     @forelse ($penerbit as $terbit)
                         @if (old('id_penerbit', $koleksi->id_penerbit) == $terbit->id_penerbit)
                             <option value="{{ $terbit->id_penerbit }}" selected>{{ $terbit->nama_penerbit }}</option>
+                        @else
+                            <option value="{{ $terbit->id_penerbit }}">{{ $terbit->nama_penerbit }}</option>
                         @endif
-                        <option value="{{ $terbit->id_penerbit }}">{{ $terbit->nama_penerbit }}</option>
                     @empty
                         <option value="1" {{ old('id_penerbit') == 'penerbit' ? 'selected' : '' }}>
                             Penerbit
@@ -80,8 +82,9 @@
                     @forelse ($perolehan as $oleh)
                         @if (old('id_perolehan', $koleksi->id_perolehan) == $oleh->id_perolehan)
                             <option value="{{ $oleh->id_perolehan }}" selected>{{ $oleh->nama_sumber }}</option>
+                        @else
+                            <option value="{{ $oleh->id_perolehan }}">{{ $oleh->nama_sumber }}</option>
                         @endif
-                        <option value="{{ $oleh->id_perolehan }}">{{ $oleh->nama_sumber }}</option>
                     @empty
                         <option value="1" {{ old('id_perolehan') == 'perolehan' ? 'selected' : '' }}>
                             Perolehan

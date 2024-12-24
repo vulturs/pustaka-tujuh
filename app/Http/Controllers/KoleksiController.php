@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BukuInduk;
-use App\Models\Klasifikasi;
+use App\Exports\ExportFileKoleksi;
 use App\Models\Penerbit;
+use App\Models\BukuInduk;
 use App\Models\Perolehan;
+use App\Models\Klasifikasi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KoleksiController extends Controller
 {
@@ -16,7 +20,7 @@ class KoleksiController extends Controller
     {
         return view('components.koleksi.koleksi-page', [
             'title' => 'Koleksi',
-            'koleksi' => BukuInduk::filter()->orderBy('kode_buku_induk')->paginate(10)
+            'koleksi' => BukuInduk::filter()->orderBy('buku_induk.created_at', 'desc')->paginate(5)
         ]);
     }
 
@@ -42,6 +46,10 @@ class KoleksiController extends Controller
         //     $stok = $request->jml_eks;
         // }
 
+        // dd($request->all());
+        // return $request->file('cover')->store('cover-images');
+
+
         $validated = $request->validate([
             'no_barcode' => 'required|string|max:100',
             'pengarang' => 'required|string',
@@ -57,9 +65,21 @@ class KoleksiController extends Controller
             'harga' => 'required|numeric',
             'tipe_harga' => 'required|string',
             'ketersediaan' => 'required|string',
+            'cover' => 'nullable|mimes:png,jpg,jpeg|max:4048',
             'created_by' => 'required|numeric',
         ]);
 
+
+        $photo = $request->file('cover');
+        $filename = date('d-m-Y') . "-" . $photo->getClientOriginalName();
+        $path = 'cover-images/' . $filename;
+
+        Storage::disk('public')->put($path, file_get_contents($photo));
+
+        // return $request->all();
+
+
+        $validated['cover'] = $filename;
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         BukuInduk::create($validated);
@@ -88,6 +108,23 @@ class KoleksiController extends Controller
         // dd($anggota->nama_anggota);
     }
 
+    public function print(Request $request)
+    {
+        $title = 'Data Koleksi.pdf';
+        $data = BukuInduk::filter()->orderBy('buku_induk.created_at', 'desc')->get();
+        // dd($data);
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('components.koleksi.print-koleksi', compact('data', 'title'))
+                ->setPaper('a3', 'landscape');
+            return $pdf->stream('Data Koleksi.pdf');
+        }
+    }
+
+    public function excel()
+    {
+        return Excel::download(new ExportFileKoleksi, 'Data Koleksi ' . now()->format('d-m-Y') . '.xlsx');
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -98,6 +135,8 @@ class KoleksiController extends Controller
         if (is_null($koleksi)) {
             return redirect()->route('koleksi')->with('error', 'Buku Induk tidak ditemukan.');
         }
+
+        // dd($request->all());
 
         $valid = $request->validate([
             'no_barcode' => 'required|string|max:100',
@@ -114,11 +153,25 @@ class KoleksiController extends Controller
             'harga' => 'required|numeric',
             'tipe_harga' => 'required|string',
             'ketersediaan' => 'required|string',
+            'cover' => 'nullable|mimes:png,jpg,jpeg|max:4048',
             'created_by' => 'required|numeric',
         ]);
 
-        // $anggota->update($valid);
-        BukuInduk::where('kode_buku_induk', $koleksi->kode_buku_induk)->update($valid);
+
+        // dd($valid);
+        if ($request->hasFile('cover')) {
+            $photo = $request->file('cover');
+            $filename = date('d-m-Y') . "-" . $photo->getClientOriginalName();
+            $path = 'cover-images/' . $filename;
+
+            Storage::disk('public')->put($path, file_get_contents($photo));
+
+            $valid['cover'] = $filename;
+        }
+
+
+        // dd($valid);
+        $koleksi->update($valid);
 
         return redirect()->route('koleksi')->with('success', 'Data buku induk berhasil diperbarui.');
     }

@@ -71,14 +71,26 @@
             </div>
         </div>
 
-        <div class="overflow-y-auto max-h-full grid md:grid-cols-1 lg:grid-cols-3 gap-5" id="container">
+        <div class="overflow-y-auto overflow-x-hidden max-h-full grid md:grid-cols-1 lg:grid-cols-3 gap-5 pb-3"
+            id="container">
             @forelse ($katalog as $kat)
                 @php
                     $call = $kat->callNumber;
                     $cn = explode(' ', $call);
                 @endphp
                 <div class="bg-white rounded-xl drop-shadow-lg relative group" style="width: 472px; height:283px;">
-
+                    <div
+                        class="absolute flex flex-col top-0 right-0 transform translate-x-full opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                        <a href="{{ route('katalog-detail', $kat->id_katalog) }}">
+                            <div
+                                class="flex p-2 cursor-pointer transition-all hover:bg-blue-500 text-white bg-blue-400 rounded-bl-xl rounded-tr-xl">
+                                <div class="material-symbols-rounded me-1">
+                                    info
+                                </div>
+                                <span class="font-semibold">Detail</span>
+                            </div>
+                        </a>
+                    </div>
                     <table class="m-5">
                         <tr>
                             <td class="pe-4 font-bold pb-1">
@@ -141,7 +153,7 @@
                 </table>
             @endforelse
         </div>
-        <div class="mt-3">
+        <div class="">
             {{ $katalog->links() }}
         </div>
     </div>
