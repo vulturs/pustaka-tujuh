@@ -12,32 +12,39 @@
             <div class="flex flex-col gap-4">
                 <form class="form" method="post" action="{{ route('store-koleksi') }}" enctype="multipart/form-data">
                     @csrf
+
                     <label>
-                        <input required placeholder="" type="text" class="input" name="no_barcode"
-                            value="{{ old('no_barcode') }}">
-                        <span>No Barcode</span>
+                        <input required placeholder="" type="text" class="input" name="judul_buku"
+                            value="{{ old('judul_buku') }}">
+                        <span>Judul</span>
                     </label>
 
                     <label>
                         <input required placeholder="" type="text" class="input" name="pengarang"
                             value="{{ old('pengarang') }}">
-                        <span>pengarang</span>
+                        <span>Pengarang</span>
                     </label>
 
                     <label>
-                        <input required placeholder="" type="text" class="input" name="judul_buku"
-                            value="{{ old('judul_buku') }}">
-                        <span>Judul Buku</span>
+                        <div class="relative">
+                            <input required placeholder="" type="number" class="input" name="kode_ddc" id="kode_ddc">
+                            <span class="">Kode DDC</span>
+                            <ul id="autocomplete-list"
+                                class="absolute border w-1/5 bg-white rounded-md drop-shadow-xl z-20"></ul>
+                        </div>
                     </label>
 
-                    <label>
-                        {{ $klasifikasi }}
-                    </label>
 
                     <label>
                         <input required name="tahun" value="{{ old('tahun') }}" placeholder="" type="number"
                             min="1900" max="{{ date('Y') }}" class="input">
-                        <span style="top:35px; font-size:.7rem;">Tahun</span>
+                        <span>Tahun Terbit</span>
+                    </label>
+
+                    <label>
+                        <input required name="kota_terbit" value="{{ old('kota_terbit') }}" placeholder=""
+                            type="text" class="input">
+                        <span>Kota Terbit</span>
                     </label>
 
                     <label>
@@ -55,10 +62,30 @@
                     </label>
 
                     <label>
-                        <input required id="jumlah_total" placeholder="" type="number" class="input"
-                            name="jumlah_total" value="{{ old('jumlah_total') }}">
-                        <span>Jumlah</span>
+                        <input placeholder="" type="number" class="input" name="isbn" value="{{ old('isbn') }}">
+                        <span>ISBN</span>
                     </label>
+
+                    <hr class="my-1">
+
+                    <label>
+                        <input required placeholder="" type="number" class="input" name="jum_hlm"
+                            value="{{ old('jum_hlm') }}">
+                        <span>Jumlah Halaman</span>
+                    </label>
+
+                    <label>
+                        <input required placeholder="" type="number" class="input" name="dimensi"
+                            value="{{ old('dimensi') }}">
+                        <span>Dimensi</span>
+                    </label>
+
+                    <label>
+                        <input placeholder="" type="text" class="input" name="edisi" value="{{ old('edisi') }}">
+                        <span>Edisi</span>
+                    </label>
+
+                    <hr class="my-1">
 
                     <label>
                         <select id="satuan" name="satuan" value="{{ old('satuan') }}" autocomplete="satuan"
@@ -69,9 +96,10 @@
                         </select>
                         <span style="top: 2rem">Satuan</span>
                     </label>
-
                     <label>
-                        {{ $perolehan }}
+                        <input required id="jumlah_total" placeholder="" type="number" class="input"
+                            name="jumlah_total" value="{{ old('jumlah_total') }}">
+                        <span>Jumlah</span>
                     </label>
 
                     <label>
@@ -80,7 +108,14 @@
                         <span>Harga</span>
                     </label>
 
+                    <hr class="my-1">
+
                     <label>
+                        {{ $perolehan }}
+                    </label>
+
+
+                    {{-- <label>
                         <select id="tipe_harga" name="tipe_harga" value="{{ old('tipe_harga') }}"
                             autocomplete="tipe_harga" class="input" required>
                             <option value="">- Pilih satuan harga -</option>
@@ -88,7 +123,7 @@
                             <option value="Jilid">Jilid</option>
                         </select>
                         <span style="top: 2rem">Harga Per/</span>
-                    </label>
+                    </label> --}}
 
                     <label>
                         <input required placeholder="" type="text" class="input" name="ketersediaan"
@@ -96,9 +131,10 @@
                         <span>Ketersediaan</span>
                     </label>
 
-
+                    <input type="hidden" id="tipe_harga" name="tipe_harga">
                     <input type="hidden" name="created_by" value="{{ auth()->user()->id_user }}">
-                    <input type="hidden" id="stok_tersedia" name="stok_tersedia" value="{{ old('stok_tersedia') }}">
+                    <input type="hidden" id="stok_tersedia" name="stok_tersedia"
+                        value="{{ old('stok_tersedia') }}">
 
 
 
@@ -178,6 +214,80 @@
     </div>
 </div>
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const satuanSelect = document.getElementById('satuan');
+        const tipeHargaInput = document.getElementById('tipe_harga');
+
+        // Update value of hidden input when the select value changes
+        satuanSelect.addEventListener('change', () => {
+            tipeHargaInput.value = satuanSelect.value;
+        });
+
+
+        // Klasifikasi
+        const inputField = document.getElementById('kode_ddc');
+        const autocompleteList = document.getElementById('autocomplete-list');
+
+        inputField.addEventListener('input', async () => {
+            const query = inputField.value;
+
+            if (query.length > 0) {
+                const response = await fetch(`/klasifikasi/search?search=${query}`);
+                const results = await response.json();
+
+                // Tampilkan hasil autocomplete
+                autocompleteList.innerHTML = '';
+                results.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = item.kode_ddc;
+
+                    listItem.classList.add('block', 'border-b', 'text-center', 'p-2',
+                        'cursor-pointer',
+                        'hover:bg-gray-200');
+
+                    listItem.addEventListener('click', () => {
+                        inputField.value = item.kode_ddc;
+                        autocompleteList.innerHTML = '';
+                    });
+                    autocompleteList.appendChild(listItem);
+                });
+            } else {
+                autocompleteList.innerHTML = '';
+            }
+        });
+
+        inputField.addEventListener('blur', async () => {
+            setTimeout(() => autocompleteList.innerHTML = '', 200); // Hapus daftar setelah blur
+        });
+
+        // Tambahkan data jika belum ada
+        // const form = inputField.closest('form');
+        // form.addEventListener('submit', async (event) => {
+        //     event.preventDefault();
+
+        //     const klasifikasiValue = inputField.value;
+        //     const response = await fetch('/klasifikasi/add', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+        //                 .content
+        //         },
+        //         body: JSON.stringify({
+        //             kode_ddc: klasifikasiValue
+        //         })
+        //     });
+
+        //     const result = await response.json();
+        //     if (result.success) {
+        //         alert(result.message);
+        //         form.submit();
+        //     } else {
+        //         alert('Gagal menyimpan data');
+        //     }
+        // });
+    });
+
     // IIFE to handle file input preview functionality
     (function() {
         const fileInput = document.getElementById('fileInput');

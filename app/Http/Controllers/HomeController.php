@@ -114,8 +114,9 @@ class HomeController extends Controller
         // $kunjungan = Kunjungan::all();
         $title = "Dashboard";
         $pinjam = DataPinjam::filter()->orderBy('data_pinjam.created_at', 'desc')->limit(6)->get();
-        $kunjung = Kunjungan::filter()->orderBy('kunjungan.created_at', 'desc')->limit(6)->get();
+        $kunjung = Kunjungan::filter()->orderBy('kunjungan_created_at', 'desc')->limit(6)->get();
 
+        // dd($kunjung);
         return view('home', compact(
             'users',
             'anggota',
@@ -146,7 +147,7 @@ class HomeController extends Controller
             'data_kelas.jurusan'
         )
             ->join('buku_induk', 'data_pinjam.kode_buku_induk', '=', 'buku_induk.kode_buku_induk')
-            ->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->join('anggota', 'data_pinjam.id_anggota', '=', 'anggota.id_anggota')
             ->join('data_kelas', 'anggota.kelas_id', '=', 'data_kelas.kelas_id')
             ->whereYear('data_pinjam.created_at', $year)

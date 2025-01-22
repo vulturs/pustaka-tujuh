@@ -15,7 +15,7 @@
 
                 <div class="">
                     <button onclick="toggleDropdown()" id="dropbtn"
-                        class="focus:outline-none text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:ring-violet-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
+                        class="focus:outline-none text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:ring-violet-300 font-medium rounded-md text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800">
                         Pilih Anggota
                     </button>
                     <div id="myDropdown"
@@ -32,7 +32,7 @@
                         @endforeach
                     </div>
                     <button onclick="myFunctionBuku()" id="dropbtn"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 me-2 ms-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 ms-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         Pilih Koleksi
                     </button>
                     <div id="myDropdownBuku"

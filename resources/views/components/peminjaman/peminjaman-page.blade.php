@@ -20,10 +20,12 @@
                     {{ $pinjam->kode_ddc }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $pinjam->tanggal_peminjaman }}
+                    {{ \Carbon\Carbon::parse($pinjam->tanggal_peminjaman)->format('d M Y') }}
+                    {{-- {{ $pinjam->tanggal_peminjaman->format('d M Y') }} --}}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $pinjam->tanggal_pengembalian }}
+                    {{ \Carbon\Carbon::parse($pinjam->batas_pengembalian)->format('d M Y') }}
+                    {{-- {{ $pinjam->batas_pengembalian }} --}}
                 </td>
                 <td class="px-6 py-4">
                     {{ $pinjam->nama }}

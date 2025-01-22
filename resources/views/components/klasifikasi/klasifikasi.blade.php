@@ -1,10 +1,10 @@
     <x-topbar :$title></x-topbar>
 
-    <div class="rounded-2xl bg-slate-100 p-5 mb-4">
+    <div class="rounded-2xl xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 p-5 mb-4">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
             <div class="flex items-center justify-between mb-5">
-                <div class="flex items-baseline">
-                    <form action="/administrasi/klasifikasi" class="w-80 ml-0 mb-4 flex items-center justify-between">
+                <div class="flex lg:w-2/4 2xl:w-1/3 items-baseline">
+                    <form action="/administrasi/klasifikasi" class="w-full ml-0 mb-4 flex items-center justify-between">
                         <div class="w-full">
                             <div
                                 class="relative rounded-full border border-slate-200 overflow-hidden bg-white drop-shadow-lg w-full">
@@ -80,9 +80,9 @@
                             <label for="checkbox-all-search" class="sr-only">checkbox</label> --}}
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        {{-- <th scope="col" class="px-6 py-3">
                             ID Klasifikasi
-                        </th>
+                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             Kode_DDC
                         </th>

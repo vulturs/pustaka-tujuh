@@ -14,7 +14,7 @@ class KatalogController extends Controller
     {
         // $anggota = new Anggota();
         $title = 'Katalog';
-        $katalog = Katalog::filter()->orderBy('id_katalog')->paginate(9);
+        $katalog = Katalog::filter()->orderBy('judul_buku')->paginate(9);
         return view('components.katalogs.katalog-page', compact('title', 'katalog'));
     }
 
@@ -42,7 +42,7 @@ class KatalogController extends Controller
             'edisi' => 'required',
             'callNumber' => 'required',
             'ISBN' => 'required',
-            'catatan' => 'required',
+            'subjek' => 'required',
             'created_by' => 'required'
         ]);
 
@@ -105,7 +105,16 @@ class KatalogController extends Controller
             Katalog::withJoins()->where('katalog.id_katalog', $id)->firstOrFail();
 
         $pdf = Pdf::loadView('components.katalogs.print-katalog', compact('katalog'))
-            ->setPaper([0, 0, 354.375, 212.625]); // Ukuran 12.5cm x 7.5cm
+            ->setPaper([0, 0, 354.375, 212.625]) // Ukuran 12.5cm x 7.5cm
+            ->setOptions([
+                'isHtml5ParserEnabled' => true,
+                'isRemoteEnabled' => true,
+                'defaultFont' => 'sans-serif',
+                'margin-left' => 0,
+                'margin-right' => 0,
+                'margin-top' => 0,
+                'margin-bottom' => 0,
+            ]);
 
         return $pdf->stream('katalog.pdf');
     }

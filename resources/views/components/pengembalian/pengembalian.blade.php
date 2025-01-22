@@ -1,6 +1,6 @@
 <x-topbar :$title></x-topbar>
 
-<div class="rounded-2xl bg-slate-100 p-5 mb-4" style="height:87vh;">
+<div class="rounded-2xl xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 p-5 mb-4">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
             <div class="flex items-baseline">
@@ -52,7 +52,7 @@
 
         </div>
 
-        <div class="mx-8">
+        <div class="overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -113,13 +113,13 @@
                                 {{ $kembali->judul_buku }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $kembali->tanggal_peminjaman }}
+                                {{ \Carbon\Carbon::parse($kembali->tanggal_peminjaman)->format('d M Y') }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $kembali->tanggal_pengembalian }}
+                                {{ \Carbon\Carbon::parse($kembali->batas_pengembalian)->format('d M Y') }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $kembali->tanggal_dikembalikan }}
+                                {{ \Carbon\Carbon::parse($kembali->tanggal_dikembalikan)->format('d M Y') }}
                             </td>
                             @if ($kembali->jenis_pelanggaran != null)
                                 <td class="px-6 py-4">
@@ -162,7 +162,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center text-mute" colspan="10">Data peminjaman tidak tersedia</td>
+                            <td class="text-center text-mute" colspan="10">Tidak ada data pengembalian</td>
                         </tr>
                     @endforelse
                 </tbody>

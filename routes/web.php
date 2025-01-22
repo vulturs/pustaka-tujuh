@@ -26,9 +26,9 @@ use App\View\Components\klasifikasi\klasifikasiPage;
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/data-peminjaman', [HomeController::class, 'getDataPeminjaman']);
-Route::get('/cari-katalog', [Login::class, 'cari'])->name('cari-katalog')->middleware('guest');
+Route::get('/cari-katalog', [Login::class, 'cari'])->name('cari-katalog');
 
-Route::get('/login', [Login::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [Login::class, 'index'])->name('login');
 Route::post('/login', [Login::class, 'authenticate'])->middleware('guest');
 Route::get('/logout', [Login::class, 'logout'])->name('logout');
 
@@ -49,6 +49,8 @@ Route::put('/koleksi/{id}/update', [KoleksiController::class, 'update'])->name('
 Route::delete('/koleksi/{id}', [KoleksiController::class, 'destroy'])->name('delete-koleksi')->middleware('auth');
 Route::get('/koleksi/print', [KoleksiController::class, 'print'])->name('print-koleksi')->middleware('auth');
 Route::get('/koleksi/to-excel', [KoleksiController::class, 'excel'])->name('koleksi-excel')->middleware('auth');
+
+Route::get('/klasifikasi/search', [KoleksiController::class, 'getKlasifikasi']);
 
 //CRUD ANGGOTA
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota')->middleware('auth');
@@ -125,7 +127,7 @@ Route::get('/peminjaman/to-excel', [PeminjamanController::class, 'excel'])->name
 
 //CRUD KATALOG
 Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog')->middleware('auth');
-Route::get('/katalog-detail/{id}', [KatalogController::class, 'detail'])->name('katalog-detail')->middleware('auth');
+Route::get('/katalog-detail/{id}', [KatalogController::class, 'detail'])->name('katalog-detail');
 Route::get('/print-katalog/{id}', [KatalogController::class, 'printPDF'])->name('print-katalog');
 Route::get('/katalog/add', [KatalogController::class, 'create'])->name('tambah-katalog')->middleware('auth');
 Route::post('/katalog/add', [KatalogController::class, 'store'])->name('store-katalog')->middleware('auth');

@@ -89,12 +89,12 @@
                     <div class="w-full">
                         <span class="text-slate-500 text-sm">Batas Pengembalian</span><br>
                         <input required class="font-medium text-lg w-full" placeholder="" type="date-local"
-                            value="{{ \Carbon\Carbon::parse($pinjam->tanggal_pengembalian)->format('d M Y') }}"
-                            id="tanggal_pengembalian" name="tanggal_pengembalian" readonly>
+                            value="{{ \Carbon\Carbon::parse($pinjam->batas_pengembalian)->format('d M Y') }}"
+                            id="batas_pengembalian" name="batas_pengembalian" readonly>
                     </div>
                     <div class="w-full">
                         <span class="text-slate-500 text-sm">Di Kembalikan Pada</span><br>
-                        @if (now() <= $pinjam->tanggal_pengembalian)
+                        @if (now() <= $pinjam->batas_pengembalian)
                             <input required class="font-medium text-lg text-green-600 w-full" placeholder=""
                                 type="date-local" value="{{ \Carbon\Carbon::parse(now())->format('d M Y') }}"
                                 id="dikembalikan" name="dikembalikan" readonly>
@@ -106,7 +106,8 @@
                     </div>
                 </div>
                 <div>
-                    <select id="id_pelanggaran" name="id_pelanggaran" autocomplete="id_pelanggaran">
+                    <select class="py-2 border border-slate-400 rounded-md w-full px-3" id="id_pelanggaran"
+                        name="id_pelanggaran" autocomplete="id_pelanggaran">
                         <option value="">-- Pelanggaran --</option>
                         @forelse ($pelanggaran as $langgar)
                             <option value="{{ $langgar->id_pelanggaran }}"
@@ -116,8 +117,10 @@
                         @endforelse
                     </select>
                 </div>
-                <div>
-                    <input type="number" id="denda" placeholder="Denda" name="denda" readonly>
+                <div class="mb-2">
+                    <label for="denda">Denda :</label>
+                    <input type="number" id="denda" placeholder="" name="denda" readonly>
+                    <hr>
                 </div>
                 <label>
                     <textarea name="keterangan" rows="2" placeholder="" class="input01">{{ old('keterangan') }}</textarea>

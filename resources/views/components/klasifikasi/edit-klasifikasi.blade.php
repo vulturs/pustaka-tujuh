@@ -8,7 +8,7 @@
             </h3>
         </div>
         <div class="flex flex-col gap-4 p-6">
-            <form class="form" method="post" action="{{ route('update-klasifikasi', $klasifikasi->id_klasifikasi) }}">
+            <form class="form" method="post" action="{{ route('update-klasifikasi', $klasifikasi->kode_ddc) }}">
                 @method('put')
                 @csrf
                 <label>

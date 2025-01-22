@@ -55,6 +55,7 @@ class PeminjamanController extends Controller
             'created_by'  => 'required',
         ]);
 
+        $validated['status'] = 1;
         $validated['excerpt'] = Str::limit($request->body, 200);
 
         $buku = BukuInduk::select('stok_tersedia')->where('kode_buku_induk', $request->kode_buku_induk)->first();

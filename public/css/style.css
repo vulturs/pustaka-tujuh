@@ -89,6 +89,11 @@
     background: transparent;
 }
 
+.login-box .user-box input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .login-box .user-box label {
     position: absolute;
     top: 0;
@@ -649,6 +654,37 @@
     text-decoration: none;
     /* color: #ACD793; */
     transform: translateX(30%);
+}
+
+@media (min-width: 1000px) {
+    .fancy::before {
+        top: 50%;
+        left: 0.5em;
+        transform: translateY(-50%);
+        transform: translateX(130%);
+        transition: background 0.3s linear, width 0.3s linear;
+    }
+
+    .fancy .text {
+        padding-left: 2em;
+        transform: translateX(30%);
+    }
+}
+
+@media (min-width: 1500px) {
+    .fancy::before {
+        top: 50%;
+        left: 1.5em;
+        position: absolute;
+        transform: translateY(-50%);
+        transform: translateX(230%);
+        transition: background 0.3s linear, width 0.3s linear;
+    }
+
+    .fancy .text {
+        padding-left: 2em;
+        transform: translateX(30%);
+    }
 }
 
 .fancy .top-key {

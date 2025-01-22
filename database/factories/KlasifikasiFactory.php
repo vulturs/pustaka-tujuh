@@ -18,7 +18,7 @@ class KlasifikasiFactory extends Factory
     public function definition(): array
     {
         return [
-            'kode_ddc' => fake()->numberBetween(000, 800),
+            'kode_ddc' => fake()->numberBetween(100, 800),
             'klasifikasi' => fake()->word(1),
             'keterangan' => fake()->word(30),
             'created_by' => 1

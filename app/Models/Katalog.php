@@ -24,7 +24,7 @@ class Katalog extends Model
         'edisi',
         'callNumber',
         'ISBN',
-        'catatan',
+        'subjek',
         'created_by'
     ];
 
@@ -44,15 +44,15 @@ class Katalog extends Model
     public function scopeWithJoins($query): void
     {
         $query->join('buku_induk', 'katalog.kode_buku_induk', '=', 'buku_induk.kode_buku_induk')
-            ->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('users', 'katalog.created_by', '=', 'users.id_user')
             ->select(
                 'katalog.*',
-                'buku_induk.judul_buku',
-                'buku_induk.pengarang',
+                'buku_induk.*',
                 'penerbit.nama_penerbit',
-                'klasifikasi.kode_ddc'
+                'klasifikasi.kode_ddc',
+                'klasifikasi.klasifikasi',
             );
         // $query->where('nama_anggota', 'like', '%' . request('search') . '%');
     }

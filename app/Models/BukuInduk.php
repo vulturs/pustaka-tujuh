@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class BukuInduk extends Model
 {
@@ -13,28 +13,49 @@ class BukuInduk extends Model
     protected $primaryKey = 'kode_buku_induk';
 
     protected $fillable = [
-        'no_barcode',
-        'pengarang',
         'judul_buku',
-        'id_klasifikasi',
+        'pengarang',
+        'kode_ddc',
         'tahun',
+        'kota_terbit',
         'bahasa',
         'id_penerbit',
-        'id_perolehan',
-        'jumlah_total',
+        'isbn',
+        'jum_hlm',
+        'dimensi',
+        'edisi',
         'satuan',
+        'jumlah_total',
         'stok_tersedia',
         'harga',
         'tipe_harga',
+        'id_perolehan',
         'ketersediaan',
         'cover',
         'created_by'
-
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($bukuInduk) {
+
+            // Buat callNumber
+            $kodeDdc = $bukuInduk->kode_ddc;
+            $pengarang = strtoupper(substr($bukuInduk->pengarang, 0, 3)); // 3 huruf awal pengarang
+            $judulBuku = strtoupper(substr($bukuInduk->judul_buku, 0, 1)); // Huruf awal judul buku
+            $callNumber = "{$kodeDdc} {$pengarang} {$judulBuku}";
+
+            Katalog::create([
+                'kode_buku_induk' => $bukuInduk->kode_buku_induk,
+                'callNumber' => $callNumber,
+                'created_by' => auth()->user()->id_user,
+            ]);
+        });
+    }
 
     public function scopeFilter(Builder $query): void
     {
-        $query->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+        $query->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
             ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
@@ -56,7 +77,7 @@ class BukuInduk extends Model
 
     public function choose()
     {
-        return $this->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+        return $this->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
             ->join('users', 'buku_induk.created_by', '=', 'users.id_user')
@@ -67,7 +88,7 @@ class BukuInduk extends Model
     }
     public function allKoleksi()
     {
-        return $this->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+        return $this->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
             ->join('perolehan', 'buku_induk.id_perolehan', '=', 'perolehan.id_perolehan')
             ->join('users', 'buku_induk.created_by', '=', 'users.id_user')

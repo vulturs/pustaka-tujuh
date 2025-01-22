@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pelanggaran', function (Blueprint $table) {
             $table->id('id_pelanggaran');
             $table->string('jenis_pelanggaran', 10);
-            $table->string('keterangan', 100);
+            $table->string('keterangan', 100)->nullable();
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id_user')->on('users');
             $table->timestamps();

@@ -29,7 +29,7 @@
     </div>
 @endif --}}
 
-<div class="rounded-2xl bg-slate-100 p-5 mb-4">
+<div class="rounded-2xl xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 p-5 mb-4">
     <div class="grid row-span-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 mb-4">
 
         <div class="card-cust work">
@@ -89,12 +89,18 @@
                                         calendar_month
                                     </span>
                                 </div>
-                                <span class="text-3xl ms-2 z-40 font-semibold text-blue-900 ps-2">
-                                    {{ date_format(now(), 'H:i') }}
-                                    {{-- <i class="text-sm">.WIB</i> --}}
-                                </span>
-                                {{-- <span>{{ date_format(now(), 'l') }}</span> --}}
-                                <span class="z-40 text-blue-900 font-medium">{{ date_format(now(), 'l, F d Y') }}</span>
+                                <div
+                                    class="flex xl:flex-col w-full 2xl:flex-row mx-2 2xl:mx-8 items-center justify-between">
+                                    <span class="text-3xl 2xl:ps-4 z-40 font-semibold text-blue-900">
+                                        {{ date_format(now(), 'H:i') }}
+                                        {{-- <i class="text-sm">.WIB</i> --}}
+                                    </span>
+                                    {{-- <span>{{ date_format(now(), 'l') }}</span> --}}
+                                    <span
+                                        class="z-40 text-blue-900 2xl:hidden font-medium">{{ date_format(now(), 'd F Y') }}</span>
+                                    <span
+                                        class="z-40 hidden 2xl:block text-blue-900 font-medium">{{ date_format(now(), 'l, d F Y') }}</span>
+                                </div>
                             </div>
 
                         </div>
@@ -109,7 +115,7 @@
                             <div class="flex items-center">
                                 <div class="bg-blue-400 w-fit rounded-xl my-2 mb-3 ms-1 p-3 py-2 pt-3">
                                     <span class="material-symbols-rounded z-40 text-white">
-                                        manage_accounts
+                                        library_books
                                     </span>
                                 </div>
                                 <div class="flex flex-col">
@@ -216,8 +222,8 @@
                         Daftar Pengunjung
                         <div class="text-sm font-extralight">Klik lihat detail untuk melihat data lengkap</div>
                     </div>
-                    <div class="bg-white max-h-96 overflow-y-auto rounded-2xl shadow-sm">
-                        <table style="font-size: .8rem; line-height:1rem;"
+                    <div class="bg-white h-96 text-gray-800 overflow-y-auto rounded-2xl shadow-sm">
+                        <table class="w-full" style="font-size: .8rem; line-height:1rem;"
                             class="mx-4 mt-2 mb-7 text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead style="font-size: .7rem;"
                                 class="sticky top-0 border-b bg-white border-slate-300 text-center text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
@@ -249,8 +255,8 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-center text-mute" colspan="4">Data peminjaman tidak
-                                            tersedia</td>
+                                        <td class="text-center text-mute text-slate-400 py-5" colspan="4">Belum ada
+                                            kunjungan</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -273,7 +279,7 @@
         {{-- End Pengunjung --}}
     </div>
 
-    <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 mb-4">
+    <div class="grid 2xl:grid-cols-3 md:grid-cols-2 gap-5 mb-4">
 
         <div class="grid grid-cols-3 col-span-2 gap-4 bg-white p-6 drop-shadow-lg rounded-3xl">
             <!-- Grafik -->
@@ -536,11 +542,16 @@
 
         // Hitung nilai maksimum dan minimum dari data yang difilter
         var allData = Object.values(filteredSeries).flat();
+        if (allData.length === 0) {
+            allData = [0];
+        }
+
         var minValue = Math.min(...allData);
         var maxValue = Math.max(...allData);
 
-        var tickAmount = Math.ceil((maxValue - minValue) / 10);
+        var tickAmount = Math.max(Math.ceil((maxValue - minValue) / 10), 1);
         var adjustedMax = Math.ceil(maxValue / tickAmount) * tickAmount;
+
 
         // Update chart dengan data yang telah difilter
         var chartSeries = Object.keys(filteredSeries).map(function(jurusan, index) {
@@ -589,13 +600,18 @@
         });
 
         // Hitung nilai maksimum dan minimum dari data yang difilter
+        // Hitung nilai maksimum dan minimum dari data yang difilter
         var allData = Object.values(filteredSeries).flat();
+        if (allData.length === 0) {
+            allData = [0];
+        }
+
         var minValue = Math.min(...allData);
         var maxValue = Math.max(...allData);
 
-        // Tentukan interval tick yang sesuai
-        var tickAmount = Math.ceil((maxValue - minValue) / 10);
+        var tickAmount = Math.max(Math.ceil((maxValue - minValue) / 10), 1);
         var adjustedMax = Math.ceil(maxValue / tickAmount) * tickAmount;
+
 
         var chartSeries = Object.keys(filteredSeries).map(function(jurusan, index) {
             return {
@@ -815,7 +831,7 @@
         var optionsPinjam = {
             chart: {
                 height: 350,
-                type: "area", // Ubah tipe chart menjadi area
+                type: "bar", // Ubah tipe chart menjadi area
                 events: {
                     mounted: function(chartContext, config) {
                         let areas = document.querySelectorAll('.apexcharts-area');

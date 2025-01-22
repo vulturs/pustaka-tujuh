@@ -1,6 +1,6 @@
 <x-topbar :$title></x-topbar>
 
-<div class="p-5 me-4 bg-slate-100 rounded-2xl mb-4">
+<div class="p-5 me-4 xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 rounded-2xl mb-4">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
             <div class="flex items-baseline">

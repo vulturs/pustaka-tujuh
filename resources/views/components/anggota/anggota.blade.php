@@ -1,7 +1,7 @@
 <x-topbar :$title></x-topbar>
 
-<div class="rounded-2xl bg-slate-100 p-5 mb-4">
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
+<div class="rounded-2xl xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 p-5 mb-4">
+    <div class="relative shadow-md sm:rounded-lg p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
             <div class="flex items-baseline">
                 <form action="/anggota" class="w-80 ml-0 mb-4 flex items-center justify-between">
@@ -33,7 +33,7 @@
                 <a href="{{ route('anggota-to-excel') }}?export=pdf" target="_blank"
                     class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 align-items-center px-5 rounded-md">
                     <span class="me-2">
-                        Export to Excel (.xlsx)
+                        Export to Excel
                     </span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" width="1.5rem">
                         <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -71,36 +71,38 @@
             </div>
         </div>
 
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        ID Anggota
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Nama Anggota
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Kelas
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Tanggal Masuk
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Keterangan
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Pendataan Oleh
-                    </th>
-                    <th scope="col" class="px-6 text-center py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {{ $slot }}
-            </tbody>
-        </table>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            ID Anggota
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Nama Anggota
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Kelas
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tanggal Masuk
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Keterangan
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Pendataan Oleh
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ $slot }}
+                </tbody>
+            </table>
+        </div>
         {{ $anggota->links() }}
     </div>
 </div>

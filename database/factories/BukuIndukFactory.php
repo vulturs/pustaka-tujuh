@@ -22,19 +22,23 @@ class BukuIndukFactory extends Factory
     {
         $total = fake()->randomNumber(2);
         return [
-            'no_barcode' => fake()->numberBetween($a = 000000, $b = 999999),
             'pengarang' =>  fake()->name(),
             'judul_buku' =>  fake()->word(4),
-            'id_klasifikasi' =>  Klasifikasi::factory(),
+            'kode_ddc' =>  Klasifikasi::factory(),
             'tahun' => fake()->year(),
+            'kota_terbit' => fake()->city(),
             'bahasa' => "Indonesia",
             'id_penerbit' =>  Penerbit::factory(),
-            'id_perolehan' =>  Perolehan::factory(),
+            'isbn' => fake()->numberBetween($a = 1001110011011, $b = 1199002199199),
+            'jum_hlm' => fake()->randomNumber(3),
+            'dimensi' => fake()->randomNumber(2),
+            'edisi' => "Pertama",
             'jumlah_total' => $total,
             'satuan' => 'Eksemplar',
             'stok_tersedia' => $total,
-            'harga' => fake()->numberBetween(5000, 86000),
+            'harga' => fake()->numberBetween(5000, 250000),
             'tipe_harga' => 'Eksemplar',
+            'id_perolehan' =>  Perolehan::factory(),
             'ketersediaan' => 'Tersedia',
             'cover' => fake()->image(),
             'created_by' => 1

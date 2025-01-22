@@ -18,6 +18,7 @@ class DataPinjam extends Model
         'tanggal_peminjaman',
         'batas_pengembalian',
         'created_by',
+        'status',
     ];
 
     public function scopeFilter(Builder $query): void
@@ -25,7 +26,7 @@ class DataPinjam extends Model
         $query->join('anggota', 'data_pinjam.id_anggota', '=', 'anggota.id_anggota')
             ->join('users', 'data_pinjam.created_by', '=', 'users.id_user')
             ->join('buku_induk', 'data_pinjam.kode_buku_induk', '=', 'buku_induk.kode_buku_induk')
-            ->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->select('*')
             ->where('anggota.nama_anggota', 'like', '%' . request('search') . '%')
             ->orWhere('buku_induk.judul_buku', 'like', '%' . request('search') . '%')
@@ -40,7 +41,7 @@ class DataPinjam extends Model
             ->join('users', 'data_pinjam.created_by', '=', 'users.id_user')
             ->join('buku_induk', 'data_pinjam.kode_buku_induk', '=', 'buku_induk.kode_buku_induk')
             ->join('penerbit', 'buku_induk.id_penerbit', '=', 'penerbit.id_penerbit')
-            ->join('klasifikasi', 'buku_induk.id_klasifikasi', '=', 'klasifikasi.id_klasifikasi')
+            ->join('klasifikasi', 'buku_induk.kode_ddc', '=', 'klasifikasi.kode_ddc')
             ->select(
                 'data_pinjam.*',
                 'anggota.id_anggota',

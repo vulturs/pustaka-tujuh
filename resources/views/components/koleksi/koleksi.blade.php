@@ -4,12 +4,12 @@
     }
 </style>
 <x-topbar :$title></x-topbar>
-<div class="rounded-2xl bg-slate-100 p-5 mb-4">
+<div class="rounded-2xl xl:h-[85vh] overflow-y-auto 2xl:h-[88vh] bg-slate-100 p-5 mb-4">
 
     <div class="relative shadow-cust rounded-xl p-4 bg-white dark:bg-gray-900">
         <div class="flex items-center justify-between mb-5">
-            <div class="flex items-baseline">
-                <form action="/koleksi" class="w-80 ml-0 mb-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <form action="/koleksi" class="w-80 ml-0 flex justify-between">
                     <div class="w-full">
                         <div
                             class="relative rounded-full border border-slate-200 overflow-hidden bg-white drop-shadow-lg w-full">
@@ -27,7 +27,7 @@
                     </div>
                 </form>
                 <a href="{{ route('print-koleksi') }}?export=pdf" target="_blank"
-                    class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 align-items-center px-5 rounded-md">
+                    class="flex ms-5 hover:bg-red-500 bg-red-600 text-white py-2 items-center px-5 rounded-md">
                     <span class="me-2">
                         Print (PDF)
                     </span>
@@ -36,9 +36,9 @@
                     </span>
                 </a>
                 <a href="{{ route('koleksi-excel') }}?export=pdf" target="_blank"
-                    class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 align-items-center px-5 rounded-md">
+                    class="flex ms-5 hover:bg-green-500 bg-green-600 text-white py-2 items-center px-5 rounded-md">
                     <span class="me-2">
-                        Export to Excel (.xlsx)
+                        Export to Excel
                     </span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" width="1.5rem">
                         <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -84,9 +84,6 @@
                             Kode Buku Induk
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            No Barcode
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Pengarang
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -107,6 +104,21 @@
                         <th scope="col" class="px-6 py-3">
                             Penerbit
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            ISBN
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Perolehan
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Cover
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Harga
+                        </th>
+                        <th scope="col" class="px-6 text-center py-3">
+                            Harga Per/
+                        </th>
                         <th scope="col" class="px-6 text-center py-3">
                             Jumlah Total
                         </th>
@@ -115,18 +127,6 @@
                         </th>
                         <th scope="col" class="px-6 text-center py-3">
                             Satuan
-                        </th>
-                        <th scope="col" class="px-6 text-center py-3">
-                            Perolehan
-                        </th>
-                        <th scope="col" class="px-6 text-center py-3">
-                            Harga
-                        </th>
-                        <th scope="col" class="px-6 text-center py-3">
-                            Cover
-                        </th>
-                        <th scope="col" class="px-6 text-center py-3">
-                            Harga Per/
                         </th>
                         <th scope="col" class="px-6 text-center py-3">
                             Ketersediaan

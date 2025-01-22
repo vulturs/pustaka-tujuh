@@ -15,9 +15,6 @@
                         {{ $collect->kode_buku_induk }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $collect->no_barcode }}
-                    </td>
-                    <td class="px-6 py-4">
                         {{ $collect->pengarang }}
                     </td>
                     <td class="px-6 py-4">
@@ -37,6 +34,26 @@
                         {{ $collect->nama_penerbit }}
                     </td>
 
+                    <td class="px-6 py-4">
+                        {{ $collect->isbn }}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{ $collect->nama_sumber }}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        <img src="{{ asset('storage/cover-images/' . $collect->cover) }}" alt="">
+                    </td>
+
+                    <td class="px-6 py-4">
+                        Rp.{{ $collect->harga }}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{ $collect->tipe_harga }}
+                    </td>
+
                     <td class="px-6 text-center py-4">
                         {{ $collect->jumlah_total }}
                     </td>
@@ -45,22 +62,11 @@
                         {{ $collect->stok_tersedia }}
                     </td>
 
+
                     <td class="px-6 text-center py-4">
                         {{ $collect->satuan }}
                     </td>
 
-                    <td class="px-6 py-4">
-                        {{ $collect->nama_sumber }}
-                    </td>
-                    <td class="px-6 py-4">
-                        Rp.{{ $collect->harga }}
-                    </td>
-                    <td class="px-6 py-4">
-                        <img src="{{ asset('storage/cover-images/' . $collect->cover) }}" alt="">
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ $collect->tipe_harga }}
-                    </td>
                     <td class="px-6 py-4">
                         @if ($collect->ketersediaan == 'Tersedia')
                             @if ($collect->stok_tersedia < $collect->jumlah_total && $collect->stok_tersedia > 0)

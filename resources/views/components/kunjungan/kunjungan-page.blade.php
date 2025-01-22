@@ -20,7 +20,7 @@
                     {{ $kunjungans->tujuan_kunjungan }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $kunjungans->nama }}
+                    {{ $kunjungans->nama ?? 'Anggota' }}
                 </td>
 
                 <td class="px-6 flex py-4 justify-center">
